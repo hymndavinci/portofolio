@@ -9,6 +9,7 @@ import Skills from '@/components/portfolio/skills'
 import Experience from '@/components/portfolio/experience'
 import Certificates from '@/components/portfolio/certificates'
 import Projects from '@/components/portfolio/projects'
+import Blog from '@/components/portfolio/blog'
 import Contact from '@/components/portfolio/contact'
 import Sidebar, { MobileSidebar } from '@/components/portfolio/sidebar'
 import Footer from '@/components/portfolio/footer'
@@ -37,6 +38,7 @@ export default function Home() {
               <Experience />
               <Certificates />
               <Projects />
+              <Blog />
               <Contact />
             </div>
 

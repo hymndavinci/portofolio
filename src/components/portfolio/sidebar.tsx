@@ -2,6 +2,8 @@
 
 import { Reveal } from './reveal'
 import { User, Languages, GraduationCap, BookOpen } from 'lucide-react'
+import Link from 'next/link'
+import { blogPosts } from '@/lib/blog-data'
 
 const profileData = [
   { label: 'Name', value: 'M Bintang Kurniawan' },
@@ -29,22 +31,7 @@ const educationData = [
   },
 ]
 
-const latestPosts = [
-  {
-    title: 'Bentuk Cinta',
-    date: 'February 24, 2026',
-    views: 40,
-    href: '#',
-    color: 'from-violet-500/30 to-purple-800/30',
-  },
-  {
-    title: 'Merelakannya?',
-    date: 'November 20, 2024',
-    views: 41,
-    href: '#',
-    color: 'from-emerald-500/30 to-teal-800/30',
-  },
-]
+// latestPosts now comes from blog.tsx (blogPosts)
 
 export default function Sidebar() {
   return (
@@ -129,13 +116,13 @@ export default function Sidebar() {
               <BookOpen className="h-3 w-3 text-[var(--home-accent)]" />
               <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">Latest Posts</p>
             </div>
-            <span className="text-[10px] tabular-nums text-[var(--home-muted)]">{latestPosts.length}</span>
+            <span className="text-[10px] tabular-nums text-[var(--home-muted)]">{blogPosts.length}</span>
           </div>
           <div className="space-y-2 p-3">
-            {latestPosts.map((post) => (
-              <Reveal key={post.title}>
-                <a
-                  href={post.href}
+            {blogPosts.map((post) => (
+              <Reveal key={post.id}>
+                <Link
+                  href={`/blog/${post.slug}`}
                   className="block rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2.5 transition hover:border-white/20"
                 >
                   <div className="flex items-start gap-2.5">
@@ -147,19 +134,11 @@ export default function Sidebar() {
                       <p className="mt-0.5 flex flex-wrap items-center gap-1 text-[10px] text-white/40">
                         <span>{post.date}</span>
                         <span aria-hidden="true" className="text-white/25">&bull;</span>
-                        <span className="inline-flex items-center gap-0.5">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3" aria-hidden="true">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                            <circle cx="9" cy="7" r="4" />
-                          </svg>
-                          <span className="tabular-nums">{post.views}</span>
-                        </span>
+                        <span className="tabular-nums">{post.views} views</span>
                       </p>
                     </div>
                   </div>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -236,6 +215,41 @@ export function MobileSidebar() {
                   </span>
                 </div>
               </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      {/* Latest Posts Card — Mobile */}
+      <div className="rounded-2xl border border-white/10 bg-black/20">
+        <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div className="flex items-center gap-1.5">
+            <BookOpen className="h-3 w-3 text-[var(--home-accent)]" />
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">Latest Posts</p>
+          </div>
+          <span className="text-[10px] tabular-nums text-[var(--home-muted)]">{blogPosts.length}</span>
+        </div>
+        <div className="space-y-2 p-3">
+          {blogPosts.map((post) => (
+            <Reveal key={post.id}>
+              <a
+                href={post.href}
+                className="block rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2.5 transition hover:border-white/20"
+              >
+                <div className="flex items-start gap-2.5">
+                  <div className={`relative mt-0.5 h-9 w-9 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br ${post.color} flex items-center justify-center`}>
+                    <span className="text-xs font-bold text-white/30">{post.title.charAt(0)}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-semibold text-white/80 line-clamp-2">{post.title}</p>
+                    <p className="mt-0.5 flex flex-wrap items-center gap-1 text-[10px] text-white/40">
+                      <span>{post.date}</span>
+                      <span aria-hidden="true" className="text-white/25">&bull;</span>
+                      <span className="tabular-nums">{post.views} views</span>
+                    </p>
+                  </div>
+                </div>
+              </a>
             </Reveal>
           ))}
         </div>
