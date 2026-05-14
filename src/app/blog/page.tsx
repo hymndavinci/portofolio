@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { blogPosts } from '@/lib/blog-data'
-import { ArrowLeft, Eye, Calendar, BookOpen, Tag } from 'lucide-react'
+import { ArrowLeft, Eye, Calendar, BookOpen, Tag, Feather } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Journal — Hymn',
@@ -52,7 +52,7 @@ export default function BlogListPage() {
               <div
                 className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br ${post.color}`}
               >
-                <span className="text-lg font-bold text-white/30">{post.title.charAt(0)}</span>
+                <Feather className="h-5 w-5 text-white/40" />
               </div>
 
               {/* Info */}

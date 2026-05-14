@@ -1,7 +1,7 @@
 'use client'
 
 import { Reveal } from './reveal'
-import { User, Languages, GraduationCap, BookOpen } from 'lucide-react'
+import { User, Languages, GraduationCap, BookOpen, Feather } from 'lucide-react'
 import Link from 'next/link'
 import { blogPosts } from '@/lib/blog-data'
 
@@ -127,7 +127,7 @@ export default function Sidebar() {
                 >
                   <div className="flex items-start gap-2.5">
                     <div className={`relative mt-0.5 h-9 w-9 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br ${post.color} flex items-center justify-center`}>
-                      <span className="text-xs font-bold text-white/30">{post.title.charAt(0)}</span>
+                      <Feather className="h-4 w-4 text-white/40" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-[11px] font-semibold text-white/80 line-clamp-2">{post.title}</p>
@@ -238,7 +238,7 @@ export function MobileSidebar() {
               >
                 <div className="flex items-start gap-2.5">
                   <div className={`relative mt-0.5 h-9 w-9 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br ${post.color} flex items-center justify-center`}>
-                    <span className="text-xs font-bold text-white/30">{post.title.charAt(0)}</span>
+                    <Feather className="h-4 w-4 text-white/40" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-[11px] font-semibold text-white/80 line-clamp-2">{post.title}</p>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Reveal } from './reveal'
-import { ArrowLeft, Eye, User, Calendar, Tag, BookOpen, ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, Eye, User, Calendar, Tag, BookOpen, ArrowUpRight, Feather } from 'lucide-react'
 import { blogPosts } from '@/lib/blog-data'
 
 export default function Blog() {

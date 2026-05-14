@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getPostBySlug, getRelatedPosts, blogPosts } from '@/lib/blog-data'
-import { ArrowLeft, Eye, Calendar, User, Tag, BookOpen } from 'lucide-react'
+import { ArrowLeft, Eye, Calendar, User, Tag, BookOpen, Feather } from 'lucide-react'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -139,7 +139,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <div
                       className={`flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br ${rel.color}`}
                     >
-                      <span className="text-sm font-bold text-white/30">{rel.title.charAt(0)}</span>
+                      <Feather className="h-5 w-5 text-white/40" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-[10px] uppercase tracking-[0.2em] text-white/30">{rel.date}</p>
