@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Navbar from '@/components/portfolio/navbar'
 import Hero from '@/components/portfolio/hero'
 import About from '@/components/portfolio/about'
@@ -13,20 +10,31 @@ import Blog from '@/components/portfolio/blog'
 import Contact from '@/components/portfolio/contact'
 import Sidebar, { MobileSidebar } from '@/components/portfolio/sidebar'
 import Footer from '@/components/portfolio/footer'
+import MotionMain from '@/components/portfolio/motion-main'
 
-export default function Home() {
+async function getLanyardData(userId: string) {
+  try {
+    const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`, {
+      next: { revalidate: 60 } // Cache selama 60 detik
+    })
+    if (!res.ok) return null
+    return await res.json()
+  } catch (error) {
+    console.error('Failed to fetch Lanyard data on server:', error)
+    return null
+  }
+}
+
+export default async function Home() {
+  const initialPresence = await getLanyardData("443335216833101825")
+
   return (
     <div className="home-portfolio min-h-screen bg-[var(--home-bg)] text-[var(--home-ink)]">
       <div className="relative isolate">
-        <Navbar />
+        <Navbar initialPresence={initialPresence} />
 
-        <motion.main
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-10 mx-auto w-full max-w-screen-xl px-4 pb-20 pt-24 sm:px-6 lg:px-10"
-        >
-          <Hero />
+        <MotionMain>
+          <Hero initialPresence={initialPresence} />
 
           {/* Two-column layout */}
           <div className="mt-20 lg:flex lg:items-start lg:gap-10">
@@ -52,7 +60,7 @@ export default function Home() {
           </div>
 
           <Footer />
-        </motion.main>
+        </MotionMain>
       </div>
     </div>
   )

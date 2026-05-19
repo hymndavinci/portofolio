@@ -38,8 +38,12 @@ const socials = [
   },
 ]
 
-export default function Hero() {
-  const { presence, mounted } = useLanyard("443335216833101825")
+interface HeroProps {
+  initialPresence?: any
+}
+
+export default function Hero({ initialPresence }: HeroProps) {
+  const { presence, mounted } = useLanyard("443335216833101825", initialPresence)
   const discordStatus = presence?.data?.discord_status || 'offline'
 
   const statusColors: Record<string, string> = {
@@ -53,7 +57,7 @@ export default function Hero() {
   // Fetch avatar dari Discord CDN via data Lanyard, fallback ke /profile.png
   const discordUser = presence?.data?.discord_user
   const avatarSrc =
-    mounted && discordUser?.avatar
+    discordUser?.avatar
       ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.${discordUser.avatar.startsWith('a_') ? 'gif' : 'png'}?size=512`
       : '/profile.png'
 

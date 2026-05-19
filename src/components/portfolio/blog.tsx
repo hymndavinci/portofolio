@@ -1,11 +1,25 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Reveal } from './reveal'
 import { ArrowLeft, Eye, User, Calendar, Tag, BookOpen, ArrowUpRight, Feather } from 'lucide-react'
 import { blogPosts } from '@/lib/blog-data'
 
 export default function Blog() {
+  const [viewsMap, setViewsMap] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    fetch('/api/views')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && typeof data === 'object') {
+          setViewsMap(data)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
   return (
     <section id="blog" className="scroll-mt-24">
       <div className="space-y-8">
@@ -39,92 +53,96 @@ export default function Blog() {
             </Reveal>
 
             <div className="space-y-5">
-              {blogPosts.map((post, i) => (
-                <Reveal key={post.id} delay={i * 0.08}>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="group block overflow-hidden rounded-2xl border border-white/10 bg-black/20 transition-all duration-300 hover:border-white/20 hover:bg-black/30"
-                  >
-                    {/* Top bar */}
-                    <div className="flex items-center justify-between border-b border-white/[0.07] px-5 py-2.5">
-                      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-[var(--home-muted)]">
-                        <ArrowLeft className="h-3 w-3" />
-                        <span>Back to Journal</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-[10px] text-[var(--home-muted)]">
-                        <span className="flex items-center gap-1 transition group-hover:text-white/60">
-                          <BookOpen className="h-3 w-3" /> Read
-                        </span>
-                        <span className="flex items-center gap-1 transition group-hover:text-white/60">
-                          <ArrowUpRight className="h-3 w-3" /> Open
-                        </span>
-                      </div>
-                    </div>
+              {blogPosts.map((post, i) => {
+                const liveViews = viewsMap[post.slug] !== undefined ? viewsMap[post.slug] : post.views
 
-                    {/* Main content */}
-                    <div className="flex divide-x divide-white/[0.07]">
-
-                      {/* Left — article info */}
-                      <div className="flex-1 space-y-3 p-5">
-                        <p className="text-[10px] uppercase tracking-[0.35em] text-[var(--home-muted)]">
-                          {post.category}
-                        </p>
-                        <h3 className="text-[22px] font-bold leading-tight text-white transition group-hover:text-white/90 sm:text-[26px]">
-                          {post.title}
-                        </h3>
-                        <div className="flex items-center gap-1.5">
-                          <User className="h-3 w-3 text-[var(--home-muted)]" />
-                          <span className="text-[11px] text-[var(--home-muted)]">{post.slug}</span>
+                return (
+                  <Reveal key={post.id} delay={i * 0.08}>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group block overflow-hidden rounded-2xl border border-white/10 bg-black/20 transition-all duration-300 hover:border-white/20 hover:bg-black/30"
+                    >
+                      {/* Top bar */}
+                      <div className="flex items-center justify-between border-b border-white/[0.07] px-5 py-2.5">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-[var(--home-muted)]">
+                          <ArrowLeft className="h-3 w-3" />
+                          <span>Back to Journal</span>
                         </div>
-                        <p className="text-[13px] leading-relaxed text-white/55 line-clamp-2">
-                          {post.tagline}
-                        </p>
-                        <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px] text-white/35">
-                          <span className="inline-flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />{post.date}
+                        <div className="flex items-center gap-3 text-[10px] text-[var(--home-muted)]">
+                          <span className="flex items-center gap-1 transition group-hover:text-white/60">
+                            <BookOpen className="h-3 w-3" /> Read
                           </span>
-                          <span aria-hidden="true" className="text-white/20">&bull;</span>
-                          <span className="inline-flex items-center gap-1">
-                            <Eye className="h-3 w-3" />{post.views}
-                          </span>
-                          <span aria-hidden="true" className="text-white/20">&bull;</span>
-                          <span className="inline-flex items-center gap-1">
-                            <User className="h-3 w-3" />{post.author}
+                          <span className="flex items-center gap-1 transition group-hover:text-white/60">
+                            <ArrowUpRight className="h-3 w-3" /> Open
                           </span>
                         </div>
                       </div>
 
-                      {/* Right — Story details panel */}
-                      <div className="hidden w-[160px] shrink-0 flex-col sm:flex">
-                        <div className="border-b border-white/[0.07] px-4 py-3">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">
-                            Story details
+                      {/* Main content */}
+                      <div className="flex divide-x divide-white/[0.07]">
+
+                        {/* Left — article info */}
+                        <div className="flex-1 space-y-3 p-5">
+                          <p className="text-[10px] uppercase tracking-[0.35em] text-[var(--home-muted)]">
+                            {post.category}
                           </p>
+                          <h3 className="text-[22px] font-bold leading-tight text-white transition group-hover:text-white/90 sm:text-[26px]">
+                            {post.title}
+                          </h3>
+                          <div className="flex items-center gap-1.5">
+                            <User className="h-3 w-3 text-[var(--home-muted)]" />
+                            <span className="text-[11px] text-[var(--home-muted)]">{post.slug}</span>
+                          </div>
+                          <p className="text-[13px] leading-relaxed text-white/55 line-clamp-2">
+                            {post.tagline}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px] text-white/35">
+                            <span className="inline-flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />{post.date}
+                            </span>
+                            <span aria-hidden="true" className="text-white/20">&bull;</span>
+                            <span className="inline-flex items-center gap-1">
+                              <Eye className="h-3 w-3" />{liveViews}
+                            </span>
+                            <span aria-hidden="true" className="text-white/20">&bull;</span>
+                            <span className="inline-flex items-center gap-1">
+                              <User className="h-3 w-3" />{post.author}
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex flex-1 flex-col divide-y divide-white/[0.07]">
-                          {[
-                            { icon: Calendar, label: 'Date',     value: post.date.split(',')[0] },
-                            { icon: Eye,      label: 'Views',    value: String(post.views) },
-                            { icon: User,     label: 'Author',   value: post.author },
-                            { icon: Tag,      label: 'Category', value: post.category },
-                          ].map(({ icon: Icon, label, value }) => (
-                            <div key={label} className="flex items-center justify-between gap-2 px-4 py-2.5">
-                              <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-[var(--home-muted)]">
-                                <Icon className="h-2.5 w-2.5" />
-                                {label}
-                              </span>
-                              <span className="text-right text-[10px] font-medium tabular-nums text-white/60">
-                                {value}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
 
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
+                        {/* Right — Story details panel */}
+                        <div className="hidden w-[160px] shrink-0 flex-col sm:flex">
+                          <div className="border-b border-white/[0.07] px-4 py-3">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">
+                              Story details
+                            </p>
+                          </div>
+                          <div className="flex flex-1 flex-col divide-y divide-white/[0.07]">
+                            {[
+                              { icon: Calendar, label: 'Date',     value: post.date.split(',')[0] },
+                              { icon: Eye,      label: 'Views',    value: String(liveViews) },
+                              { icon: User,     label: 'Author',   value: post.author },
+                              { icon: Tag,      label: 'Category', value: post.category },
+                            ].map(({ icon: Icon, label, value }) => (
+                              <div key={label} className="flex items-center justify-between gap-2 px-4 py-2.5">
+                                <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-[var(--home-muted)]">
+                                  <Icon className="h-2.5 w-2.5" />
+                                  {label}
+                                </span>
+                                <span className="text-right text-[10px] font-medium tabular-nums text-white/60">
+                                  {value}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                      </div>
+                    </Link>
+                  </Reveal>
+                )
+              })}
             </div>
 
             {/* Footer quote */}

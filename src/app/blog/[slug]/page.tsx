@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getPostBySlug, getRelatedPosts, blogPosts } from '@/lib/blog-data'
 import { ArrowLeft, Eye, Calendar, User, Tag, BookOpen, Feather } from 'lucide-react'
+import { db } from '@/lib/db'
+import ViewTracker from '@/components/ViewTracker'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -27,12 +29,16 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug)
   if (!post) return notFound()
 
+  // Ambil real view count dari DB (fallback ke views bawaan jika belum ada record)
+  const viewRecord = await db.postView.findUnique({ where: { slug } })
+  const realViews = viewRecord?.views ?? post.views
+
   const related = getRelatedPosts(post)
   const paragraphs = post.content.split('\n\n').filter(Boolean)
 
   const storyDetails = [
     { icon: Calendar, label: 'Date',     value: post.date },
-    { icon: Eye,      label: 'Views',    value: String(post.views) },
+    { icon: Eye,      label: 'Views',    value: null },   // rendered by ViewTracker
     { icon: User,     label: 'Author',   value: post.author },
     { icon: Tag,      label: 'Category', value: post.category },
   ]
@@ -100,7 +106,8 @@ export default async function BlogPostPage({ params }: Props) {
             </span>
             <span className="text-white/15">&bull;</span>
             <span className="inline-flex items-center gap-1.5">
-              <Eye className="h-3 w-3" />{post.views}
+              <Eye className="h-3 w-3" />
+              <ViewTracker slug={slug} initialViews={realViews} />
             </span>
             <span className="text-white/15">&bull;</span>
             <span className="inline-flex items-center gap-1.5">
@@ -188,7 +195,9 @@ export default async function BlogPostPage({ params }: Props) {
                     {label}
                   </span>
                   <span className="text-[11px] font-medium text-white/60 text-right tabular-nums">
-                    {value}
+                    {label === 'Views'
+                      ? <ViewTracker slug={slug} initialViews={realViews} />
+                      : value}
                   </span>
                 </div>
               ))}

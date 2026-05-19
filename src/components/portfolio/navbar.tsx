@@ -15,13 +15,17 @@ const navLinks = [
   { label: 'Connect', href: '#contact' },
 ]
 
-export default function Navbar() {
+interface NavbarProps {
+  initialPresence?: any
+}
+
+export default function Navbar({ initialPresence }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { presence, mounted } = useLanyard("443335216833101825")
+  const { presence, mounted } = useLanyard("443335216833101825", initialPresence)
 
   const discordUser = presence?.data?.discord_user
   const avatarSrc =
-    mounted && discordUser?.avatar
+    discordUser?.avatar
       ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.${discordUser.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
       : '/profile.png'
 

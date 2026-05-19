@@ -33,8 +33,8 @@ export interface LanyardData {
   }
 }
 
-export function useLanyard(userId: string) {
-  const [presence, setPresence] = useState<LanyardData | null>(null)
+export function useLanyard(userId: string, initialData?: LanyardData | null) {
+  const [presence, setPresence] = useState<LanyardData | null>(initialData || null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export function useLanyard(userId: string) {
   }, [])
 
   useEffect(() => {
-    if (!mounted || !userId) return
+    if (!userId) return
 
     const fetchPresence = async () => {
       try {
@@ -54,9 +54,12 @@ export function useLanyard(userId: string) {
       }
     }
 
-    fetchPresence()
-    const interval = setInterval(fetchPresence, 30000)
-    return () => clearInterval(interval)
+    // Hanya fetch client-side jika belum ada data atau setelah mounted
+    if (mounted) {
+      fetchPresence()
+      const interval = setInterval(fetchPresence, 30000)
+      return () => clearInterval(interval)
+    }
   }, [userId, mounted])
 
   return { presence, mounted }

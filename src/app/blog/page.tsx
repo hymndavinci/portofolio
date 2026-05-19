@@ -1,14 +1,20 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { blogPosts } from '@/lib/blog-data'
-import { ArrowLeft, Eye, Calendar, BookOpen, Tag, Feather } from 'lucide-react'
+import { db } from '@/lib/db'
+import { ArrowLeft, Eye, Calendar, Feather } from 'lucide-react'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Journal — Hymn',
   description: 'Thoughts, reflections, and stories.',
 }
 
-export default function BlogListPage() {
+export default async function BlogListPage() {
+  // Fetch semua view counts dari DB dalam 1 query
+  const allViews = await db.postView.findMany()
+  const viewMap = Object.fromEntries(allViews.map((v) => [v.slug, v.views]))
   return (
     <div className="min-h-screen bg-[#000] text-white" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
 
@@ -68,12 +74,13 @@ export default function BlogListPage() {
                 </div>
                 <p className="text-[12px] text-white/40 line-clamp-1">{post.tagline}</p>
                 <div className="flex items-center gap-3 pt-0.5 text-[11px] text-white/25">
-                  <span className="inline-flex items-center gap-1">
+                  <span className="inline-flex items-center gap-1.5">
                     <Calendar className="h-3 w-3" />{post.date}
                   </span>
                   <span>&bull;</span>
-                  <span className="inline-flex items-center gap-1">
-                    <Eye className="h-3 w-3" />{post.views}
+                  <span className="inline-flex items-center gap-1.5">
+                    <Eye className="h-3 w-3" />
+                    {(viewMap[post.slug] ?? post.views).toLocaleString()}
                   </span>
                 </div>
               </div>
