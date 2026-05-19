@@ -53,7 +53,7 @@ export default function Hero() {
   // Fetch avatar dari Discord CDN via data Lanyard, fallback ke /profile.png
   const discordUser = presence?.data?.discord_user
   const avatarSrc =
-    discordUser?.avatar
+    mounted && discordUser?.avatar
       ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.${discordUser.avatar.startsWith('a_') ? 'gif' : 'png'}?size=512`
       : '/profile.png'
 
