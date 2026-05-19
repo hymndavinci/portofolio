@@ -46,7 +46,8 @@ export function useLanyard(userId: string, initialData?: LanyardData | null) {
 
     const fetchPresence = async () => {
       try {
-        const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`)
+        // Pakai internal proxy untuk bypass TLS cert mismatch api.lanyard.rest
+        const response = await fetch(`/api/lanyard/${userId}`)
         const data = await response.json()
         setPresence(data)
       } catch (error) {
@@ -54,7 +55,6 @@ export function useLanyard(userId: string, initialData?: LanyardData | null) {
       }
     }
 
-    // Hanya fetch client-side jika belum ada data atau setelah mounted
     if (mounted) {
       fetchPresence()
       const interval = setInterval(fetchPresence, 30000)
@@ -64,3 +64,4 @@ export function useLanyard(userId: string, initialData?: LanyardData | null) {
 
   return { presence, mounted }
 }
+
