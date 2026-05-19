@@ -46,7 +46,7 @@ export function useLanyard(userId: string) {
 
     const fetchPresence = async () => {
       try {
-        const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`)
+        const response = await fetch(`/api/lanyard/${userId}`)
         const data = await response.json()
         setPresence(data)
       } catch (error) {
