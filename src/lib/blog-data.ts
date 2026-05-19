@@ -17,92 +17,82 @@ export const blogPosts: BlogPost[] = [
     id: '1',
     title: 'I Was Trying to Be Someone',
     slug: 'i-was-trying-to-be-someone',
-    tagline:
-      'Tentang usaha menjadi seseorang yang berbeda demi dicintai — dan menyadari itu bukan cinta yang sebenarnya.',
+    tagline: 'Sebuah upaya panjang untuk menjadi seseorang yang berbeda demi diterima — hingga menyadari bahwa diri yang asli sudah lama hilang di tengah jalan.',
     date: 'February 24, 2026',
     views: 50,
     author: 'Hymn',
     category: 'Love',
     color: 'from-violet-500/20 to-purple-900/20',
     relatedSlugs: ['merelakannya'],
-    content: `Pernah tidak, kamu sadar bahwa kamu sedang berpura-pura? Bukan di panggung, bukan di depan kamera — tapi di depan seseorang yang kamu cintai. Berpura-pura bahwa kamu tidak keberatan dengan hal-hal yang sebenarnya mengganggumu. Berpura-pura bahwa versi dirimu yang sekarang sudah cukup, padahal jauh di dalam, kamu terus mencoba jadi orang lain yang lebih pas dengan apa yang dia inginkan.
+    content: `Pernah nggak kamu sadar bahwa kamu sedang berpura-pura menjadi seseorang yang bukan dirimu sendiri? Bukan di depan orang banyak, bukan di panggung — tapi di depan seseorang yang kamu harap bisa menerima kamu apa adanya.
 
-Aku pernah ada di titik itu.
+Kamu mulai mengubah cara bicaramu. Cara bersikap. Cara mengekspresikan rasa. Bukan karena dia memintanya, tapi karena kamu takut. Takut kalau menjadi dirimu sendiri tidak cukup. Takut kalau versi aslimu terlalu banyak, terlalu berlebihan, atau justru terlalu sedikit.
 
-Aku berusaha keras. Bukan karena dia secara eksplisit memintaku berubah — tapi karena aku membaca setiap isyarat kecil, setiap reaksinya, setiap diam yang terasa seperti penilaian. Dan pelan-pelan, aku mulai membentuk ulang diriku. Cara bicaraku. Cara berskapku. Bahkan cara aku mengekspresikan rasa. Semua demi satu hal — supaya aku jadi orang yang cukup layak untuk dicintai olehnya.
+Jadi kamu berubah. Pelan-pelan. Tanpa kamu sadari, kamu mulai menjadi seseorang yang kamu pikir lebih layak untuk diterima.
 
-Ironisnya, semakin aku berusaha, semakin aku tidak mengenali diri sendiri.
+Dan lelahnya bukan seperti kelelahan setelah berlari. Ini lelah yang berbeda — lelah yang datang setiap pagi bahkan sebelum harimu dimulai. Karena setiap hari, kamu bangun dan langsung memakai topeng yang kamu bikin sendiri, dengan tanganmu sendiri.
 
-Kelelahan paling menyiksa bukan dari kerja keras. Tapi dari terus-menerus menjadi seseorang yang bukan kamu. Kamu bangun, dan sebelum hari dimulai pun, kamu sudah memakai topeng. Topeng yang kamu bikin sendiri, dengan tanganmu sendiri, karena kamu pikir itu adalah bentuk cinta. Padahal itu adalah bentuk ketakutan — takut tidak diterima apa adanya.
+Kamu membaca setiap isyaratnya, setiap diamnya, setiap reaksi kecilnya — dan kamu jadikan itu panduan untuk terus memodifikasi dirimu. Semakin keras kamu berusaha, semakin kamu tidak mengenali bayangan dirimu sendiri.
 
-Bentuk cinta yang paling menyiksa bukan ketika kamu tidak dicintai. Tapi ketika kamu berubah jadi seseorang yang asing demi dicintai.
+Kamu berdiri di depan cermin dan yang kamu lihat bukan kamu. Itu seseorang yang kamu rekayasa dengan hati-hati agar bisa pas di ruang yang dia sediakan. Dan di suatu titik, kamu mulai lupa rasa aslimu sendiri. Cara tertawamu yang sebenarnya. Hal-hal yang sungguh-sungguh kamu sukai sebelum kamu mulai menyesuaikan segalanya.
 
-Aku tidak menyalahkan dia. Mungkin dia tidak pernah memintaku berubah. Mungkin semua itu hanya ada di kepalaku — ekspektasi yang aku ciptakan sendiri, standar yang aku susun berdasarkan ketakutanku sendiri. Tapi yang jelas, di suatu momen, aku menyadari bahwa orang yang sedang berjuang dalam hubungan itu bukan aku yang sebenarnya. Ia adalah versi yang sudah terlalu lama kurekayasa.
+Kamu pikir itu bentuk usaha. Bahwa rela berubah berarti kamu sungguh-sungguh. Tapi yang sebenarnya terjadi adalah kamu sedang melarikan diri dari dirimu sendiri, dengan dia sebagai alasannya.
 
-Cinta yang sesungguhnya, menurutku, tidak memintamu berhenti menjadi dirimu sendiri. Ia datang menemukan kamu di tempat kamu berdiri — bukan di tempat yang kamu paksakan. Dan kalau seseorang hanya bisa mencintaimu setelah kamu berubah, maka yang dia cintai bukan kamu. Ia mencintai karakter yang kamu mainkan.
+Dan ketika semuanya berakhir, kamu sadar — orang yang ada di sana selama ini bukan kamu yang asli. Yang diperjuangkan, yang dipertahankan, yang dimodifikasi terus-menerus — itu bukan kamu.
 
-Aku belajar itu dengan cara yang tidak mudah.
-
-Dan sekarang, setelah semuanya berlalu, aku hanya ingin jadi diriku sendiri lagi. Pelan-pelan. Tanpa perlu membuktikan bahwa aku cukup untuk siapapun. Karena cinta yang benar tidak membuat kamu kelelahan menjadi seseorang lain — ia membuat kamu merasa aman menjadi dirimu sendiri, bahkan di bagian-bagian yang tidak sempurna sekalipun.`,
+Sekarang kamu tahu: yang layak hadir di sisimu adalah seseorang yang membuat kamu merasa aman untuk berdiri — apa adanya, tanpa perlu mengecil, tanpa perlu berpura-pura.`,
   },
   {
     id: '2',
     title: 'Merelakannya?',
     slug: 'merelakannya',
-    tagline:
-      'Kadang cinta memang tak selalu tentang memiliki, tapi tentang melepaskan dengan ikhlas.',
+    tagline: 'Ada hal-hal yang memang harus dilepaskan — bukan karena tidak mampu memegang, melainkan karena mempertahankannya hanya akan mengikis lebih dalam.',
     date: 'August 15, 2025',
     views: 41,
     author: 'Hymn',
     category: 'Personal',
     color: 'from-emerald-500/20 to-teal-900/20',
-    relatedSlugs: ['i-was-trying-to-be-someone'],
-    content: `Merelakan adalah salah satu hal paling berat yang pernah kulakukan. Bukan karena tidak mampu, tapi karena bagian dari diriku masih ingin memegang erat sesuatu yang sebenarnya sudah bukan milikku lagi.
+    relatedSlugs: ['i-was-trying-to-be-someone', 'cs-ive-always-had-vision-of-us-standing-like-this'],
+    content: `Merelakan seseorang yang kamu cintai adalah proses panjang yang perlahan mengikis bahagia dalam dirimu. Bukan karena perasaanmu kurang kuat, tapi karena semesta seolah tak pernah berpihak. Kamu pernah berdoa dengan air mata yang jatuh diam-diam di malam hari. Kamu pernah berharap setiap harimu hanya tentang dia.
 
-Aku mengenalnya sejak 2020. Empat tahun bukan waktu yang singkat untuk sekadar kenal. Dalam rentang itu, ada terlalu banyak hal yang terjadi — percakapan tengah malam yang tidak punya alasan jelas, momen-momen kecil yang entah kenapa selalu terasa bermakna, dan perasaan yang tumbuh pelan-pelan tanpa pernah benar-benar kuminta. Sampai akhirnya di penghujung Desember 2024, sesuatu yang selama ini hanya ada di antara kata-kata akhirnya menjadi nyata.
+Namun pada akhirnya, kamu harus sadar bahwa tidak semua rasa layak diperjuangkan sampai habis-habisan. Kamu mulai belajar menerima, walau hatimu menolak. Kamu mulai berjalan menjauh, walau jiwamu ingin tetap tinggal. Kamu mulai belajar tersenyum di tengah luka yang tak pernah bisa kamu sembuhkan sendiri.
 
-Dan delapan bulan kemudian, di pertengahan Agustus yang panas, semuanya berakhir.
+Setiap hari kamu berpura-pura tidak apa-apa, walau di dalam kepalamu namanya masih berisik. Suaranya masih terngiang, senyumnya masih kamu ingat dengan jelas. Kamu mencoba menghapus kenangan, tapi kenangan tak bisa kamu buang begitu saja.
 
-Mungkin itulah yang membuat merelakan terasa lebih berat dari yang seharusnya. Bukan hanya delapan bulan yang harus kuikhlaskan, tapi empat tahun perasaan yang perlahan menumpuk. Terlalu intens, terlalu dalam, terlalu banyak kenangan yang tersimpan bahkan sebelum kami benar-benar bersama.
+Kamu mencoba mencintai orang lain, tapi tak ada yang mampu menggantikan tempatnya. Kamu mencoba membenci, tapi hatimu tetap lembut jika bicara tentang dia. Dan di antara semua itu, kamu tetap menyimpan rasa dalam diam, dalam jarak, dalam rindu yang tak bisa kamu tunjukkan.
 
-Kita sering salah memahami arti merelakan. Kita pikir merelakan berarti berhenti peduli, berhenti merasa, atau bahkan berhenti mencintai. Padahal tidak. Merelakan justru adalah bentuk cinta yang paling jujur. Ketika kamu tahu bahwa mempertahankan hanya akan melukai, memilih untuk melepas adalah keberanian yang sesungguhnya.
+Kamu belajar mengikhlaskan tanpa menghapus rasa. Belajar menerima tanpa benar-benar rela. Belajar berjalan sendiri tanpa arah yang jelas. Dan mungkin inilah bentuk paling sunyi dari sebuah perasaan: ketika kamu harus melepaskan seseorang yang kamu tahu adalah satu-satunya yang ingin kamu genggam selamanya.
 
-Ada momen di mana aku duduk diam, mencoba memahami kenapa sesuatu harus berakhir meski rasanya belum cukup. Kenapa waktu tidak bisa diputar. Kenapa tidak semua yang kita inginkan bisa kita miliki. Dan semakin aku mencari jawaban, semakin aku sadar bahwa beberapa hal memang tidak membutuhkan penjelasan. Mereka hanya perlu diterima.
-
-Merelakan bukan berarti melupakan. Ia berarti membiarkan kenangan itu tetap ada, tanpa harus terus menyakiti. Membiarkan rasa itu menjadi bagian dari perjalanan, bukan beban yang harus terus dibawa. Karena ada bedanya antara mengingat dan menyiksa diri sendiri dengan ingatan.
-
-Yang paling sulit dari merelakan adalah ketika kamu masih peduli. Ketika kamu masih ingin yang terbaik untuknya, tapi kamu tahu bahwa yang terbaik itu bukan kamu. Itu bukan kekalahan. Itu kedewasaan.
-
-Jadi merelakannya? Ya. Dengan segala rasa yang masih tersisa, dengan segala kenangan yang masih kadang datang — dari 2020 hingga Agustus itu — aku memilih untuk merelakan. Bukan karena tidak sayang, tapi justru karena sayang.`,
+Kamu tetap berdoa agar dia bahagia, walau bukan denganmu. Kamu tetap berharap dia baik-baik saja, meski kamu sendiri tidak pernah benar-benar baik sejak kehilangan dia. Dan akhirnya kamu sadar, merelakan bukan soal berhenti merasa — tapi soal keberanian untuk melepaskan saat tetap bersamanya hanya membuatmu terluka lebih dalam setiap harinya.`,
   },
   {
     id: '3',
-    title: 'cz i always had vision of us like this',
-    slug: 'cz-i-always-had-vision-of-us-like-this',
-    tagline: 'Masa depan yang sudah terlanjur kususun rapi di kepalaku, yang kini harus kuterima sebagai sekadar angan.',
+    title: "cs i've always had vision of us standing like this",
+    slug: 'cs-ive-always-had-vision-of-us-standing-like-this',
+    tagline: 'Sebuah bayangan yang terbentuk sejak awal — tentang kita yang berdiri berdampingan dengan jujur, yang tak pernah sempat menjadi nyata.',
     date: 'May 19, 2026',
     views: 0,
     author: 'Hymn',
     category: 'Personal',
     color: 'from-blue-500/20 to-indigo-900/20',
-    relatedSlugs: ['merelakannya'],
-    content: `Aku selalu punya bayangan tentang kita. Sesuatu yang sangat spesifik, sederhana, dan mungkin... terlalu naif.
+    relatedSlugs: ['i-was-trying-to-be-someone', 'merelakannya'],
+    content: `Kamu pernah punya bayangan itu, kan? Sesuatu yang muncul diam-diam, bahkan sebelum kamu sadar sedang merasakannya. Bukan sesuatu yang besar atau dramatis — hanya sebuah gambar sederhana. Tentang kamu dan dia. Berdiri berdampingan. Di suatu tempat yang tidak pernah kamu namai, tapi selalu terasa nyata di kepalamu.
 
-Di kepalaku, ada skenario di mana kita tidak perlu lagi bersembunyi di balik pesan teks panjang atau panggilan telepon larut malam. Aku membayangkan sore-sore yang tenang, kopi yang mulai mendingin di atas meja, dan kita yang duduk berhadapan—membicarakan hal-hal sepele tanpa takut kehabisan topik. Aku membayangkan masa depan di mana semua 'mungkin' dan 'suatu saat nanti' yang pernah kita sebutkan akhirnya menjadi 'sekarang'.
+Bayangan itu hadir sebelum kalian benar-benar menjadi apa-apa. Sebelum kamu sadar bahwa kamu sedang jatuh. Ia masuk diam-diam, seperti seseorang yang sudah ada di dalam rumah sebelum kamu sempat membuka pintunya.
 
-Because I always had a vision of us like this. Sebuah visi yang begitu jelas, seolah-olah aku sudah pernah menjalaninya di kehidupan yang lain.
+Cs I've always had a vision of us standing like this.
 
-Mungkin itulah alasan mengapa melepaskanmu terasa seperti menghancurkan rumahku sendiri. Karena aku tidak hanya kehilangan kamu di masa sekarang. Aku juga kehilangan semua versi masa depan yang sudah terlanjur kususun rapi dengan namamu di dalamnya. Aku harus mengubur rencana-rencana yang belum sempat terjadi, melerai angan-angan yang sempat kuanggap sebagai takdir.
+Dan rasanya waktu itu — menyenangkan sekaligus menakutkan. Kamu tidak tahu apakah itu nyata atau hanya kepalamu yang sedang terlalu kreatif. Kamu tidak tahu apakah dia juga melihat hal yang sama, atau hanya kamu yang diam-diam sedang membangun gedung di atas tanah kosong.
 
-Kita sering kali berpegang terlalu erat bukan hanya pada orangnya, tapi pada potensi apa yang bisa terjadi jika kita bersama mereka. Dan ketika kenyataan menampar bahwa potensi itu tak akan pernah terwujud, sakitnya terasa berlipat ganda.
+Tapi bayangan itu tidak pernah pergi. Justru semakin tajam seiring waktu.
 
-Melihat kembali ke belakang—kepada masa-masa di mana aku mencoba menjadi versi lain dari diriku agar cukup untukmu, lalu pada hari di pertengahan Agustus di mana aku akhirnya memutuskan untuk merelakan segalanya—aku menyadari satu hal. Visi tentang kita itu memang indah. Ia pernah menjadi alasan kuat untuk terus berharap. 
+Sayangnya, semakin jelas gambar itu di kepalamu, semakin kamu mulai kehilangan dirimu sendiri di dalamnya. Tanpa sadar, kamu mulai menyesuaikan segalanya — cara bicaramu, cara bersikap, cara kamu hadir — supaya terasa pas di sebelahnya. Supaya kamu layak masuk ke dalam gambar yang sudah kamu susun sendiri itu.
 
-Tapi angan tidak bisa dijadikan tempat tinggal.
+Dan ketika semuanya berakhir, kamu baru menyadari: visi yang selama ini kamu pegang tidak pernah benar-benar terjadi. Bukan karena kalian tidak punya waktu. Tapi karena orang yang berdiri di sebelahnya selama ini bukan kamu yang sebenarnya.
 
-Kini, visi itu hanya akan tetap menjadi visi. Tersimpan rapi di salah satu sudut kepalaku, sebagai fiksi paling indah yang pernah kupercaya akan menjadi nyata. 
+Itu yang paling sulit untuk direlakan — bukan dia, bukan kenangan tentang kalian. Tapi gambar itu. Bayangan tentang dua orang yang berdiri berdampingan dengan jujur, tanpa rekayasa, tanpa topeng yang dipakai demi diterima.
 
-Mungkin kita tidak akan pernah sampai di ujung cerita itu. Tapi tidak apa-apa, karena setidaknya, aku pernah memiliki bayangan seindah itu tentang kita.`,
+Visi itu masih ada di kepalamu. Mungkin selamanya. Tapi sekarang kamu tahu: ia bukan tentang dia dan kamu yang kemarin. Mungkin ia adalah petunjuk tentang seperti apa kamu harus berdiri — untuk dirimu sendiri, terlebih dahulu — sebelum bisa berdiri jujur di sebelah siapa pun.`,
   },
 ]
 
