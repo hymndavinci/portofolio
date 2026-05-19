@@ -33,8 +33,8 @@ export interface LanyardData {
   }
 }
 
-export function useLanyard(userId: string, initialData?: LanyardData | null) {
-  const [presence, setPresence] = useState<LanyardData | null>(initialData || null)
+export function useLanyard(userId: string) {
+  const [presence, setPresence] = useState<LanyardData | null>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -42,12 +42,11 @@ export function useLanyard(userId: string, initialData?: LanyardData | null) {
   }, [])
 
   useEffect(() => {
-    if (!userId) return
+    if (!mounted || !userId) return
 
     const fetchPresence = async () => {
       try {
-        // Pakai internal proxy untuk bypass TLS cert mismatch api.lanyard.rest
-        const response = await fetch(`/api/lanyard/${userId}`)
+        const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`)
         const data = await response.json()
         setPresence(data)
       } catch (error) {
@@ -55,13 +54,10 @@ export function useLanyard(userId: string, initialData?: LanyardData | null) {
       }
     }
 
-    if (mounted) {
-      fetchPresence()
-      const interval = setInterval(fetchPresence, 30000)
-      return () => clearInterval(interval)
-    }
+    fetchPresence()
+    const interval = setInterval(fetchPresence, 30000)
+    return () => clearInterval(interval)
   }, [userId, mounted])
 
   return { presence, mounted }
 }
-

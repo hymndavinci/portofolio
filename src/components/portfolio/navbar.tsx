@@ -15,13 +15,10 @@ const navLinks = [
   { label: 'Connect', href: '#contact' },
 ]
 
-interface NavbarProps {
-  initialPresence?: any
-}
 
-export default function Navbar({ initialPresence }: NavbarProps) {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { presence, mounted } = useLanyard("443335216833101825", initialPresence)
+  const { presence, mounted } = useLanyard("443335216833101825")
 
   const discordUser = presence?.data?.discord_user
   const avatarSrc =

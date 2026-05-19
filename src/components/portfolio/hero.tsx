@@ -38,12 +38,8 @@ const socials = [
   },
 ]
 
-interface HeroProps {
-  initialPresence?: any
-}
-
-export default function Hero({ initialPresence }: HeroProps) {
-  const { presence, mounted } = useLanyard("443335216833101825", initialPresence)
+export default function Hero() {
+  const { presence, mounted } = useLanyard("443335216833101825")
   const discordStatus = presence?.data?.discord_status || 'offline'
 
   const statusColors: Record<string, string> = {

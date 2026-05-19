@@ -12,33 +12,14 @@ import Sidebar, { MobileSidebar } from '@/components/portfolio/sidebar'
 import Footer from '@/components/portfolio/footer'
 import MotionMain from '@/components/portfolio/motion-main'
 
-async function getLanyardData(userId: string) {
-  try {
-    // Fetch lewat internal proxy untuk bypass TLS cert mismatch api.lanyard.rest
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000'
-    const res = await fetch(`${baseUrl}/api/lanyard/${userId}`, {
-      next: { revalidate: 60 }
-    })
-    if (!res.ok) return null
-    return await res.json()
-  } catch (error) {
-    console.error('Failed to fetch Lanyard data on server:', error)
-    return null
-  }
-}
-
-export default async function Home() {
-  const initialPresence = await getLanyardData("443335216833101825")
-
+export default function Home() {
   return (
     <div className="home-portfolio min-h-screen bg-[var(--home-bg)] text-[var(--home-ink)]">
       <div className="relative isolate">
-        <Navbar initialPresence={initialPresence} />
+        <Navbar />
 
         <MotionMain>
-          <Hero initialPresence={initialPresence} />
+          <Hero />
 
           {/* Two-column layout */}
           <div className="mt-20 lg:flex lg:items-start lg:gap-10">
