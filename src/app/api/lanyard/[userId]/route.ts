@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import https from 'https'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // Proxy ke Lanyard API pakai https.request native agar bisa bypass TLS cert mismatch
 // (api.lanyard.rest pakai cert *.up.railway.app yang ditolak Node.js)
