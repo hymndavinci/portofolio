@@ -3,8 +3,30 @@ import https from 'https'
 
 export const dynamic = 'force-dynamic'
 
-// Proxy ke Lanyard API — bypass TLS cert mismatch (api.lanyard.rest pakai cert *.up.railway.app)
-const agent = new https.Agent({ rejectUnauthorized: false })
+// Proxy ke Lanyard API pakai https.request native agar bisa bypass TLS cert mismatch
+// (api.lanyard.rest pakai cert *.up.railway.app yang ditolak Node.js)
+function fetchLanyard(userId: string): Promise<unknown> {
+  return new Promise((resolve, reject) => {
+    const req = https.request(
+      {
+        hostname: 'api.lanyard.rest',
+        path: `/v1/users/${userId}`,
+        method: 'GET',
+        rejectUnauthorized: false, // bypass TLS cert mismatch
+      },
+      (res) => {
+        let raw = ''
+        res.on('data', (chunk) => { raw += chunk })
+        res.on('end', () => {
+          try { resolve(JSON.parse(raw)) }
+          catch (e) { reject(e) }
+        })
+      }
+    )
+    req.on('error', reject)
+    req.end()
+  })
+}
 
 export async function GET(
   _req: Request,
@@ -12,12 +34,7 @@ export async function GET(
 ) {
   const { userId } = await params
   try {
-    const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`, {
-      // @ts-expect-error — node-fetch agent, supported in Next.js runtime
-      agent,
-      next: { revalidate: 30 },
-    })
-    const data = await res.json()
+    const data = await fetchLanyard(userId)
     return NextResponse.json(data)
   } catch (err) {
     console.error('Lanyard proxy error:', err)

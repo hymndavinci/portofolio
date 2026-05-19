@@ -14,8 +14,12 @@ import MotionMain from '@/components/portfolio/motion-main'
 
 async function getLanyardData(userId: string) {
   try {
-    const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`, {
-      next: { revalidate: 60 } // Cache selama 60 detik
+    // Fetch lewat internal proxy untuk bypass TLS cert mismatch api.lanyard.rest
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+    const res = await fetch(`${baseUrl}/api/lanyard/${userId}`, {
+      next: { revalidate: 60 }
     })
     if (!res.ok) return null
     return await res.json()
