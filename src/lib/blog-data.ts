@@ -75,6 +75,35 @@ Yang paling sulit dari merelakan adalah ketika kamu masih peduli. Ketika kamu ma
 
 Jadi merelakannya? Ya. Dengan segala rasa yang masih tersisa, dengan segala kenangan yang masih kadang datang — dari 2020 hingga Agustus itu — aku memilih untuk merelakan. Bukan karena tidak sayang, tapi justru karena sayang.`,
   },
+  {
+    id: '3',
+    title: 'cz i always had vision of us like this',
+    slug: 'cz-i-always-had-vision-of-us-like-this',
+    tagline: 'Masa depan yang sudah terlanjur kususun rapi di kepalaku, yang kini harus kuterima sebagai sekadar angan.',
+    date: 'May 19, 2026',
+    views: 0,
+    author: 'Hymn',
+    category: 'Personal',
+    color: 'from-blue-500/20 to-indigo-900/20',
+    relatedSlugs: ['merelakannya'],
+    content: `Aku selalu punya bayangan tentang kita. Sesuatu yang sangat spesifik, sederhana, dan mungkin... terlalu naif.
+
+Di kepalaku, ada skenario di mana kita tidak perlu lagi bersembunyi di balik pesan teks panjang atau panggilan telepon larut malam. Aku membayangkan sore-sore yang tenang, kopi yang mulai mendingin di atas meja, dan kita yang duduk berhadapan—membicarakan hal-hal sepele tanpa takut kehabisan topik. Aku membayangkan masa depan di mana semua 'mungkin' dan 'suatu saat nanti' yang pernah kita sebutkan akhirnya menjadi 'sekarang'.
+
+Because I always had a vision of us like this. Sebuah visi yang begitu jelas, seolah-olah aku sudah pernah menjalaninya di kehidupan yang lain.
+
+Mungkin itulah alasan mengapa melepaskanmu terasa seperti menghancurkan rumahku sendiri. Karena aku tidak hanya kehilangan kamu di masa sekarang. Aku juga kehilangan semua versi masa depan yang sudah terlanjur kususun rapi dengan namamu di dalamnya. Aku harus mengubur rencana-rencana yang belum sempat terjadi, melerai angan-angan yang sempat kuanggap sebagai takdir.
+
+Kita sering kali berpegang terlalu erat bukan hanya pada orangnya, tapi pada potensi apa yang bisa terjadi jika kita bersama mereka. Dan ketika kenyataan menampar bahwa potensi itu tak akan pernah terwujud, sakitnya terasa berlipat ganda.
+
+Melihat kembali ke belakang—kepada masa-masa di mana aku mencoba menjadi versi lain dari diriku agar cukup untukmu, lalu pada hari di pertengahan Agustus di mana aku akhirnya memutuskan untuk merelakan segalanya—aku menyadari satu hal. Visi tentang kita itu memang indah. Ia pernah menjadi alasan kuat untuk terus berharap. 
+
+Tapi angan tidak bisa dijadikan tempat tinggal.
+
+Kini, visi itu hanya akan tetap menjadi visi. Tersimpan rapi di salah satu sudut kepalaku, sebagai fiksi paling indah yang pernah kupercaya akan menjadi nyata. 
+
+Mungkin kita tidak akan pernah sampai di ujung cerita itu. Tapi tidak apa-apa, karena setidaknya, aku pernah memiliki bayangan seindah itu tentang kita.`,
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
