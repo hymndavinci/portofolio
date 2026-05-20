@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 interface Contribution {
   date: string
@@ -24,6 +24,8 @@ const levelColors = [
 const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 function ContributionGrid({ data, year }: { data: ContributionData; year: number }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  
   const contributions = data.contributions
   const total = data.total[year] ?? 0
 
@@ -52,6 +54,13 @@ function ContributionGrid({ data, year }: { data: ContributionData; year: number
     }
   })
 
+  // Auto scroll to right (latest contributions) on mobile
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
+    }
+  }, [data])
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-1">
@@ -61,7 +70,7 @@ function ContributionGrid({ data, year }: { data: ContributionData; year: number
 
       <div className="flex gap-[2px]">
         {/* Day labels */}
-        <div className="flex flex-col pr-1" style={{ paddingTop: '16px', gap: '1px' }}>
+        <div className="flex flex-col pr-1 shrink-0" style={{ paddingTop: '16px', gap: '1px' }}>
           {[0,1,2,3,4,5,6].map((d) => (
             <div key={d} style={{ height: '10px', lineHeight: '10px' }}>
               <span className="text-[8px] text-[var(--home-muted)]">
@@ -71,36 +80,42 @@ function ContributionGrid({ data, year }: { data: ContributionData; year: number
           ))}
         </div>
 
-        <div className="flex-1 overflow-hidden">
-          {/* Month labels */}
-          <div className="relative h-[14px] mb-[2px]">
-            {monthLabels.map((m) => (
-              <span
-                key={m.label + m.weekIndex}
-                className="absolute text-[9px] text-[var(--home-muted)]"
-                style={{ left: `${(m.weekIndex / weeks.length) * 100}%` }}
-              >
-                {m.label}
-              </span>
-            ))}
-          </div>
+        <div 
+          ref={scrollRef}
+          className="flex-1 overflow-x-auto overflow-y-hidden scrollbar-hide"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <div className="min-w-max">
+            {/* Month labels */}
+            <div className="relative h-[14px] mb-[2px]">
+              {monthLabels.map((m) => (
+                <span
+                  key={m.label + m.weekIndex}
+                  className="absolute text-[9px] text-[var(--home-muted)]"
+                  style={{ left: `${(m.weekIndex / weeks.length) * 100}%` }}
+                >
+                  {m.label}
+                </span>
+              ))}
+            </div>
 
-          {/* Grid */}
-          <div className="flex gap-[2px]">
-            {weeks.map((week, wi) => (
-              <div key={wi} className="flex flex-col gap-[2px]">
-                {Array(7).fill(null).map((_, di) => {
-                  const cell = week[di]
-                  return (
-                    <div
-                      key={di}
-                      title={cell ? `${cell.count} contributions on ${cell.date}` : ''}
-                      className={`w-[10px] h-[10px] rounded-[2px] ${cell ? levelColors[cell.level] : 'bg-transparent'}`}
-                    />
-                  )
-                })}
-              </div>
-            ))}
+            {/* Grid */}
+            <div className="flex gap-[2px]">
+              {weeks.map((week, wi) => (
+                <div key={wi} className="flex flex-col gap-[2px]">
+                  {Array(7).fill(null).map((_, di) => {
+                    const cell = week[di]
+                    return (
+                      <div
+                        key={di}
+                        title={cell ? `${cell.count} contributions on ${cell.date}` : ''}
+                        className={`w-[10px] h-[10px] rounded-[2px] ${cell ? levelColors[cell.level] : 'bg-transparent'}`}
+                      />
+                    )
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

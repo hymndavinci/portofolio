@@ -5,6 +5,7 @@ import { getPostBySlug, getRelatedPosts, blogPosts } from '@/lib/blog-data'
 import { ArrowLeft, Eye, Calendar, User, Tag, BookOpen, Feather } from 'lucide-react'
 import { db } from '@/lib/db'
 import ViewTracker from '@/components/ViewTracker'
+import BlogActions from '@/components/portfolio/blog-actions'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -56,19 +57,10 @@ export default async function BlogPostPage({ params }: Props) {
             <ArrowLeft className="h-3 w-3" />
             Back to Journal
           </Link>
-          <div className="flex items-center gap-5 text-[11px] uppercase tracking-[0.2em] text-white/30">
-            <button className="flex items-center gap-1.5 transition hover:text-white/60">
-              <BookOpen className="h-3 w-3" /> Save
-            </button>
-            <button className="flex items-center gap-1.5 transition hover:text-white/60">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-              Copy
-            </button>
-            <button className="flex items-center gap-1.5 transition hover:text-white/60">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="22"/></svg>
-              Share
-            </button>
-          </div>
+          <BlogActions 
+            title={post.title} 
+            url={`https://hymndavinci.web.id/blog/${slug}`} 
+          />
         </div>
       </div>
 

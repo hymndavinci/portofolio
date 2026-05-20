@@ -299,7 +299,7 @@ export function MobileSidebar() {
             return (
               <Reveal key={post.id}>
                 <a
-                  href={post.href}
+                  href={`/blog/${post.slug}`}
                   className="block rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2.5 transition hover:border-white/20"
                 >
                   <div className="flex items-start gap-2.5">
