@@ -98,7 +98,16 @@ function getActivityImage(activity: LanyardData['data']['activities'][0]): strin
     const withoutPrefix = img.replace('mp:external/', '')
     const slashIndex = withoutPrefix.indexOf('/')
     if (slashIndex === -1) return null
-    const afterHash = withoutPrefix.slice(slashIndex + 1)
+    let afterHash = withoutPrefix.slice(slashIndex + 1)
+    
+    // Safely extract the http or https URL
+    if (afterHash.includes('https/')) {
+      return 'https://' + afterHash.split('https/')[1]
+    } else if (afterHash.includes('http/')) {
+      return 'http://' + afterHash.split('http/')[1]
+    }
+    
+    // Fallback original replacement
     return afterHash.replace(/^(https?)\//, '$1://')
   }
 

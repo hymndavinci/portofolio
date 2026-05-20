@@ -75,7 +75,7 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
           className="object-cover"
           sizes="(max-width: 1024px) 256px, 280px"
           priority
-          unoptimized={liveAvatarSrc.endsWith('.gif')}
+          unoptimized
         />
       </motion.div>
 
