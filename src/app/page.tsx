@@ -11,15 +11,57 @@ import Contact from '@/components/portfolio/contact'
 import Sidebar, { MobileSidebar } from '@/components/portfolio/sidebar'
 import Footer from '@/components/portfolio/footer'
 import MotionMain from '@/components/portfolio/motion-main'
+import https from 'https'
 
-export default function Home() {
+export const dynamic = 'force-dynamic'
+
+const DISCORD_USER_ID = '443335216833101825'
+
+async function getDiscordAvatarSrc(): Promise<string> {
+  try {
+    const data = await new Promise<{ success: boolean; data: { discord_user: { id: string; avatar: string } } }>(
+      (resolve, reject) => {
+        const req = https.request(
+          {
+            hostname: 'api.lanyard.rest',
+            path: `/v1/users/${DISCORD_USER_ID}`,
+            method: 'GET',
+            rejectUnauthorized: false,
+          },
+          (res) => {
+            let raw = ''
+            res.on('data', (chunk) => { raw += chunk })
+            res.on('end', () => {
+              try { resolve(JSON.parse(raw)) }
+              catch (e) { reject(e) }
+            })
+          }
+        )
+        req.on('error', reject)
+        req.end()
+      }
+    )
+    const user = data?.data?.discord_user
+    if (user?.avatar) {
+      const ext = user.avatar.startsWith('a_') ? 'gif' : 'png'
+      return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${ext}?size=512`
+    }
+  } catch {
+    // fallback ke profile.png jika fetch gagal
+  }
+  return '/profile.png'
+}
+
+export default async function Home() {
+  const avatarSrc = await getDiscordAvatarSrc()
+
   return (
     <div className="home-portfolio min-h-screen bg-[var(--home-bg)] text-[var(--home-ink)]">
       <div className="relative isolate">
         <Navbar />
 
         <MotionMain>
-          <Hero />
+          <Hero avatarSrc={avatarSrc} />
 
           {/* Two-column layout */}
           <div className="mt-20 lg:flex lg:items-start lg:gap-10">

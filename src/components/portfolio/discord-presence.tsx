@@ -149,56 +149,54 @@ export default function DiscordPresence({ presence, mounted }: { presence: Lanya
       </div>
 
       {activity && (
-        <div className="w-full overflow-hidden rounded-[1.5rem] border border-white/5 bg-[#0A0A0A] p-5 shadow-sm transition-all hover:border-white/10">
-          <div className="flex flex-col">
-            <div className="mb-4 flex items-center gap-2 text-[var(--home-muted)]">
-              {getActivityIcon(activity.type)}
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">
-                {activityTypeLabels[activity.type] || ''} {activity.name}
-              </p>
-            </div>
+        <div className="flex flex-col">
+          <div className="mb-4 flex items-center gap-2 text-[var(--home-muted)]">
+            {getActivityIcon(activity.type)}
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">
+              {activityTypeLabels[activity.type] || ''} {activity.name}
+            </p>
+          </div>
 
-            <div className="flex items-start gap-4">
-              <div className="relative h-16 w-16 shrink-0 rounded-xl bg-black/50 overflow-hidden shadow-inner">
-                {activityImage ? (
-                  // eslint-disable-next-line @next/next/no-img-element
+          <div className="flex items-start gap-4">
+            <div className="relative h-16 w-16 shrink-0 rounded-xl bg-black/50 overflow-hidden shadow-inner">
+              {activityImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={activityImage}
+                  alt={activity.assets?.large_text || activity.name}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-xl font-bold uppercase text-white/20">
+                  {activity.name.charAt(0)}
+                </div>
+              )}
+              {activity.assets?.small_image && (
+                <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full border-[3px] border-transparent bg-black overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={activityImage}
-                    alt={activity.assets?.large_text || activity.name}
+                    src={getActivityImage({ ...activity, assets: { large_image: activity.assets.small_image } }) || ''}
+                    alt={activity.assets.small_text || ''}
                     className="h-full w-full object-cover"
                   />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-xl font-bold uppercase text-white/20">
-                    {activity.name.charAt(0)}
-                  </div>
-                )}
-                {activity.assets?.small_image && (
-                  <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full border-[3px] border-[#0A0A0A] bg-black overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={getActivityImage({ ...activity, assets: { large_image: activity.assets.small_image } }) || ''}
-                      alt={activity.assets.small_text || ''}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
 
-              <div className="flex flex-1 flex-col justify-center">
-                <p className="text-[15px] font-semibold text-white">{activity.name}</p>
-                {activity.details && (
-                  <p className="mt-0.5 text-[13px] text-[var(--home-muted)]">{activity.details}</p>
-                )}
-                {activity.state && (
-                  <p className="text-[13px] text-[var(--home-muted)]">{activity.state}</p>
-                )}
-                {activity.timestamps?.start && elapsedTime && (
-                  <div className="mt-4 flex items-center justify-between">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-muted)]">Elapsed</p>
-                    <p className="text-[11px] font-medium tabular-nums text-[var(--home-muted)]">{elapsedTime}</p>
-                  </div>
-                )}
-              </div>
+            <div className="flex flex-1 flex-col justify-center">
+              <p className="text-[15px] font-semibold text-white">{activity.name}</p>
+              {activity.details && (
+                <p className="mt-0.5 text-[13px] text-[var(--home-muted)]">{activity.details}</p>
+              )}
+              {activity.state && (
+                <p className="text-[13px] text-[var(--home-muted)]">{activity.state}</p>
+              )}
+              {activity.timestamps?.start && elapsedTime && (
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-muted)]">Elapsed</p>
+                  <p className="text-[11px] font-medium tabular-nums text-[var(--home-muted)]">{elapsedTime}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

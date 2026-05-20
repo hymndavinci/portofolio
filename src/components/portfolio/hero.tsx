@@ -38,7 +38,7 @@ const socials = [
   },
 ]
 
-export default function Hero() {
+export default function Hero({ avatarSrc }: { avatarSrc: string }) {
   const { presence, mounted } = useLanyard("443335216833101825")
   const discordStatus = presence?.data?.discord_status || 'offline'
 
@@ -50,12 +50,12 @@ export default function Hero() {
   }
   const dotColor = mounted ? statusColors[discordStatus] : statusColors.offline
 
-  // Fetch avatar dari Discord CDN via data Lanyard, fallback ke /profile.png
+  // Update avatarSrc secara real-time jika Lanyard sudah load & avatar berubah
   const discordUser = presence?.data?.discord_user
-  const avatarSrc =
+  const liveAvatarSrc =
     mounted && discordUser?.avatar
       ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.${discordUser.avatar.startsWith('a_') ? 'gif' : 'png'}?size=512`
-      : '/profile.png'
+      : avatarSrc
 
   return (
     <section
@@ -69,13 +69,13 @@ export default function Hero() {
         className="relative mx-auto h-56 w-56 overflow-hidden rounded-full border-2 border-white/10 bg-[var(--home-soft)] shadow-[0_0_60px_rgba(239,68,68,0.08)] sm:h-72 sm:w-72 lg:mx-0"
       >
         <Image
-          src={avatarSrc}
+          src={liveAvatarSrc}
           alt="hymndavinci profile photo"
           fill
           className="object-cover"
           sizes="(max-width: 1024px) 256px, 280px"
           priority
-          unoptimized={avatarSrc.endsWith('.gif')}
+          unoptimized={liveAvatarSrc.endsWith('.gif')}
         />
       </motion.div>
 

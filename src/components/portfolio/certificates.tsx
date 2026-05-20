@@ -6,10 +6,10 @@ import { Award } from 'lucide-react'
 const certs = [
   {
     id: '01',
-    title: 'Intro to Software Engineering',
-    issuer: 'RevoU',
-    year: '2024',
-    description: 'Intro to Software Engineering fundamentals.',
+    title: '#JuaraVibeCoding',
+    issuer: 'Google',
+    year: '2025',
+    description: 'Kompetisi coding berbasis AI yang diselenggarakan oleh Google Indonesia.',
     status: 'Completed',
   },
 ]

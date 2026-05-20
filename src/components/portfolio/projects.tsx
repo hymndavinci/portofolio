@@ -3,8 +3,28 @@
 import { Reveal } from './reveal'
 import { ArrowUpRight } from 'lucide-react'
 
-// Kosongin dulu project-nya sesuai request
-const projects: any[] = []
+const projects = [
+  {
+    id: 'kasir-pintar',
+    title: 'KasirPintar AI',
+    description: 'Aplikasi manajemen keuangan untuk UMKM yang ditenagai Google Gemini AI. Catat transaksi, scan struk, dan dapatkan analisa bisnis secara instan. Semua data tersimpan di perangkat — 100% privacy-first.',
+    badge: 'AI · Finance',
+    live: true,
+    tags: ['Next.js', 'TypeScript', 'Google Gemini AI', 'PWA', 'localStorage'],
+    href: 'https://kasirpintarai.vercel.app',
+    github: 'https://github.com/hymndavinci/Kasir-Pintar',
+  },
+  {
+    id: 'bintang-movies',
+    title: 'BintangMovies',
+    description: 'Netflix-style streaming web app untuk browsing dan nonton film & serial TV dengan subtitle Indonesia. Didukung TMDB API, multi video player, dan fitur Film Sub Indo via IdlixAPI.',
+    badge: 'Streaming · Entertainment',
+    live: true,
+    tags: ['React', 'TypeScript', 'Vite', 'TMDB API', 'React Router'],
+    href: 'https://hymndavinci.web.id',
+    github: null,
+  },
+]
 
 export default function PersonalProjects() {
   return (
@@ -32,12 +52,8 @@ export default function PersonalProjects() {
             <div className="space-y-6">
               {projects.map((p, i) => (
                 <Reveal key={p.id} delay={i * 0.1}>
-                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 transition hover:border-white/20">
-                    <div className="flex h-52 w-full items-center justify-center border-b border-white/10 bg-[#0a0a0a]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/10">
-                        <rect width="20" height="14" x="2" y="3" rx="2" /><path d="M8 21h8m-4-4v4" />
-                      </svg>
-                    </div>
+                  <div className="group overflow-hidden rounded-2xl border border-white/10 bg-black/20 transition hover:border-white/20">
+
 
                     <div className="p-5 space-y-3">
                       <div className="flex flex-wrap items-center gap-2">
@@ -59,11 +75,17 @@ export default function PersonalProjects() {
                       </div>
 
                       {p.href && (
-                        <div className="pt-2">
+                        <div className="pt-2 flex items-center gap-2">
                           <a href={p.href} target="_blank" rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 rounded border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-white/20 hover:text-white">
                             Live <ArrowUpRight className="h-3 w-3" />
                           </a>
+                          {p.github && (
+                            <a href={p.github} target="_blank" rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 rounded border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-white/20 hover:text-white">
+                              GitHub <ArrowUpRight className="h-3 w-3" />
+                            </a>
+                          )}
                         </div>
                       )}
                     </div>

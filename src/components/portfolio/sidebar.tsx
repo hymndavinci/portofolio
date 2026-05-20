@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { Reveal } from './reveal'
-import { User, Languages, GraduationCap, BookOpen, Feather } from 'lucide-react'
+import { User, Languages, GraduationCap, BookOpen, Feather, Github } from 'lucide-react'
 import Link from 'next/link'
 import { blogPosts } from '@/lib/blog-data'
+import GitHubContributions from './github-stats'
 
 const profileData = [
   { label: 'Name', value: 'M Bintang Kurniawan' },
@@ -122,6 +123,19 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
+
+        {/* GitHub Stats Card */}
+        <Reveal>
+          <div className="rounded-2xl border border-white/10 bg-black/20">
+            <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
+              <Github className="h-3 w-3 text-[var(--home-accent)]" />
+              <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">GitHub Stats</p>
+            </div>
+            <div className="p-3">
+              <GitHubContributions />
+            </div>
+          </div>
+        </Reveal>
 
         {/* Latest Posts Card */}
         <div className="rounded-2xl border border-white/10 bg-black/20">
@@ -250,6 +264,24 @@ export function MobileSidebar() {
           ))}
         </div>
       </div>
+
+      {/* GitHub Stats Card — Mobile */}
+      <Reveal>
+        <div className="rounded-2xl border border-white/10 bg-black/20">
+          <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
+            <Github className="h-3 w-3 text-[var(--home-accent)]" />
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">GitHub Stats</p>
+          </div>
+          <div className="p-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://raw.githubusercontent.com/hymndavinci/hymndavinci/output/github-contribution-grid-snake-dark.svg"
+              alt="GitHub Contribution Snake"
+              className="w-full"
+            />
+          </div>
+        </div>
+      </Reveal>
 
       {/* Latest Posts Card — Mobile */}
       <div className="rounded-2xl border border-white/10 bg-black/20">

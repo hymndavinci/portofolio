@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "prisma generate && prisma db push && next build --webpack",
+    "build:local": "prisma generate && next build --webpack",
     "start": "next start",
     "lint": "eslint .",
     "db:push": "prisma db push",
