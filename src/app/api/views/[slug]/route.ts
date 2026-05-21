@@ -10,19 +10,27 @@ interface Params {
 export async function GET(_req: Request, { params }: Params) {
   const { slug } = await params
   const post = getPostBySlug(slug)
-  const defaultViews = post?.views ?? 0
+
+  if (!post) {
+    return NextResponse.json({ error: 'Post not found' }, { status: 404 })
+  }
+
   const record = await db.postView.findUnique({ where: { slug } })
-  return NextResponse.json({ views: record?.views ?? defaultViews })
+  return NextResponse.json({ views: record?.views ?? post.views })
 }
 
 // POST /api/views/[slug] — increment +1
 export async function POST(_req: Request, { params }: Params) {
   const { slug } = await params
   const post = getPostBySlug(slug)
-  const defaultViews = post?.views ?? 0
+
+  if (!post) {
+    return NextResponse.json({ error: 'Post not found' }, { status: 404 })
+  }
+
   const record = await db.postView.upsert({
     where: { slug },
-    create: { slug, views: defaultViews + 1 },
+    create: { slug, views: post.views + 1 },
     update: { views: { increment: 1 } },
   })
   return NextResponse.json({ views: record.views })
