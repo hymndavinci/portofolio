@@ -193,6 +193,10 @@ html.light-mode {
   color-scheme: light;
 }
 
+html.light-mode .home-portfolio {
+  color: var(--home-ink) !important;
+}
+
 html.light-mode ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.12);
 }

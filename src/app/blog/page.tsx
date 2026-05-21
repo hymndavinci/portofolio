@@ -16,7 +16,7 @@ export default async function BlogListPage() {
   const allViews = await db.postView.findMany()
   const viewMap = Object.fromEntries(allViews.map((v) => [v.slug, v.views]))
   return (
-    <div className="min-h-screen bg-[#000] text-white" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
+    <div className="min-h-screen" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
 
       {/* Top bar */}
       <div className="sticky top-0 z-20 border-b border-white/10 bg-black/80 backdrop-blur">
