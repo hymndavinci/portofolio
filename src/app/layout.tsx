@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${jakarta.variable} antialiased`}
+        className={`${jakarta.variable} antialiased home-portfolio`}
         suppressHydrationWarning
       >
         {/* Background Effects */}
