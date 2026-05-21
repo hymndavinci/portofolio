@@ -77,7 +77,7 @@ export default async function Home() {
               <Contact />
             </div>
 
-            {/* Desktop sticky sidebar */}
+            {/* Desktop sidebar */}
             <Sidebar />
           </div>
 

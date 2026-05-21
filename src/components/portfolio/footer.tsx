@@ -17,7 +17,7 @@ export default function Footer() {
       {/* Huge name */}
       <div className="mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 lg:px-8 text-center">
         <Reveal>
-          <p className="text-[clamp(6rem,24vw,18rem)] font-sans font-bold uppercase tracking-[0.12em] leading-none text-transparent" style={{ WebkitTextStroke: '2px rgba(255, 255, 255, 1)' }}>
+          <p className="text-[clamp(6rem,24vw,18rem)] font-sans font-bold uppercase tracking-[0.12em] leading-none text-transparent" style={{ WebkitTextStroke: '2px var(--hymn-stroke)' }}>
             HYMN
           </p>
         </Reveal>

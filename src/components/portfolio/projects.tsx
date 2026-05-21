@@ -46,53 +46,71 @@ export default function PersonalProjects() {
                 <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--home-muted)]">Featured</span>
                 <span className="text-[10px] text-[var(--home-muted)]">Top picks</span>
               </div>
-            </Reveal>
-
-            {/* Project cards */}
-            <div className="space-y-6">
+            </Reveal>            {/* Project list */}
+            <div className="space-y-0">
               {projects.map((p, i) => (
-                <Reveal key={p.id} delay={i * 0.1}>
-                  <div className="group overflow-hidden rounded-2xl border border-white/10 bg-black/20 transition hover:border-white/20">
+                <Reveal key={p.id} delay={i * 0.08}>
+                  <div className="group flex items-start gap-6 rounded-2xl -mx-6 p-6 py-7 transition-all duration-200 hover:bg-white/[0.02]">
 
+                    {/* Number */}
+                    <span className="mt-1 shrink-0 font-mono text-[11px] tabular-nums text-white/20 select-none">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
 
-                    <div className="p-5 space-y-3">
+                    {/* Content */}
+                    <div className="min-w-0 flex-1 space-y-2">
                       <div className="flex flex-wrap items-center gap-2">
                         {p.live && (
-                          <span className="rounded border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400">Live</span>
+                          <span className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-emerald-400">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            Live
+                          </span>
                         )}
                         {p.badge && (
-                          <span className="rounded border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">{p.badge}</span>
+                          <span className="text-[9px] uppercase tracking-[0.2em] text-white/25">{p.badge}</span>
                         )}
                       </div>
 
-                      <p className="text-[17px] font-bold text-white">{p.title}</p>
-                      <p className="text-[13px] text-[var(--home-muted)]">{p.description}</p>
+                      <h3 className="text-[20px] font-bold leading-tight tracking-tight text-white transition group-hover:text-white/90 sm:text-[24px]">
+                        {p.title}
+                      </h3>
 
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        {p.tags.map((tag: string) => (
-                          <span key={tag} className="rounded border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[11px] text-[var(--home-muted)]">{tag}</span>
+                      <p className="text-[12px] leading-relaxed text-white/40 max-w-lg">
+                        {p.description}
+                      </p>
+
+                      {/* Tech stack */}
+                      <div className="flex flex-wrap items-center gap-x-0 pt-1">
+                        {p.tags.map((tag: string, ti: number) => (
+                          <span key={tag} className="text-[10px] text-white/25">
+                            {tag}
+                            {ti < p.tags.length - 1 && <span className="mx-2 text-white/15">·</span>}
+                          </span>
                         ))}
                       </div>
+                    </div>
 
+                    {/* Actions */}
+                    <div className="flex shrink-0 flex-col items-end gap-2 pt-1">
                       {p.href && (
-                        <div className="pt-2 flex items-center gap-2">
-                          <a href={p.href} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-white/20 hover:text-white">
-                            Live <ArrowUpRight className="h-3 w-3" />
-                          </a>
-                          {p.github && (
-                            <a href={p.github} target="_blank" rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-white/20 hover:text-white">
-                              GitHub <ArrowUpRight className="h-3 w-3" />
-                            </a>
-                          )}
-                        </div>
+                        <a href={p.href} target="_blank" rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
+                          Live <ArrowUpRight className="h-3 w-3" />
+                        </a>
+                      )}
+                      {p.github && (
+                        <a href={p.github} target="_blank" rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
+                          GitHub <ArrowUpRight className="h-3 w-3" />
+                        </a>
                       )}
                     </div>
+
                   </div>
                 </Reveal>
               ))}
             </div>
+
           </>
         ) : (
           <Reveal delay={0.05}>

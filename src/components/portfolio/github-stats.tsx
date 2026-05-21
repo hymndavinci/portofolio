@@ -25,12 +25,32 @@ const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'
 
 function ContributionGrid({ data, year }: { data: ContributionData; year: number }) {
   const scrollRef = useRef<HTMLDivElement>(null)
-  
-  const contributions = data.contributions
+
   const total = data.total[year] ?? 0
 
-  const firstDate = new Date(contributions[0]?.date)
-  const startDay = firstDate.getDay()
+  // Build a lookup map from API data
+  const apiMap = new Map<string, Contribution>()
+  for (const c of data.contributions) {
+    apiMap.set(c.date, c)
+  }
+
+  // Generate every day from Jan 1 to Dec 31 (or today if current year)
+  const now = new Date()
+  const isCurrentYear = year === now.getFullYear()
+  const endDate = isCurrentYear ? now : new Date(year, 11, 31)
+  const startDate = new Date(year, 0, 1)
+
+  const contributions: Contribution[] = []
+  const cursor = new Date(startDate)
+  while (cursor <= endDate) {
+    const dateStr = cursor.toISOString().slice(0, 10)
+    contributions.push(
+      apiMap.get(dateStr) ?? { date: dateStr, count: 0, level: 0 }
+    )
+    cursor.setDate(cursor.getDate() + 1)
+  }
+
+  const startDay = startDate.getDay()
   const padded: (Contribution | null)[] = [
     ...Array(startDay).fill(null),
     ...contributions,

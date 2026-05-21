@@ -53,7 +53,7 @@ export default function Experience() {
                 <div className="flex-1 space-y-3 pb-2">
                   <div className="flex flex-wrap items-center gap-3">
                     <h3 className="text-[17px] font-bold text-white">{exp.role}</h3>
-                    <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-medium tracking-wider text-[var(--home-muted)]">{exp.status}</span>
+                    <span className="rounded-full border border-white/10 bg-transparent px-3 py-1 text-[10px] font-medium tracking-wider text-[var(--home-muted)]">{exp.status}</span>
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[var(--home-muted)]">
                     <Building2 className="h-3.5 w-3.5" />

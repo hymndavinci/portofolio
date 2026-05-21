@@ -50,7 +50,7 @@ export default function Sidebar() {
   }, [])
 
   return (
-    <aside className="hidden lg:block lg:w-[340px] lg:shrink-0 lg:border-l lg:border-white/10 lg:pl-8 sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide">
+    <aside className="hidden lg:block lg:w-[340px] lg:shrink-0 lg:pl-8">
       <div className="space-y-3 pb-6">
 
         {/* Profile Card */}
@@ -273,12 +273,7 @@ export function MobileSidebar() {
             <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">GitHub Stats</p>
           </div>
           <div className="p-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://raw.githubusercontent.com/hymndavinci/hymndavinci/output/github-contribution-grid-snake-dark.svg"
-              alt="GitHub Contribution Snake"
-              className="w-full"
-            />
+            <GitHubContributions />
           </div>
         </div>
       </Reveal>
