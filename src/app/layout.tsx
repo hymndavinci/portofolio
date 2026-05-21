@@ -10,6 +10,19 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+const themeInitScript = `
+(function () {
+  try {
+    var savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-mode');
+    } else {
+      document.documentElement.classList.remove('light-mode');
+    }
+  } catch (_) {}
+})();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://hymndavinci.web.id'),
   title: "Hymn",
@@ -51,6 +64,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${jakarta.variable} antialiased home-portfolio`}
         suppressHydrationWarning
