@@ -26,10 +26,10 @@ export default function PersonalProjects() {
               </div>
             </Reveal>
 
-            <div className="space-y-4">
+            <div className="space-y-0">
               {projects.map((p, i) => (
                 <Reveal key={p.id} delay={i * 0.08}>
-                  <div className="group flex items-start gap-6 rounded-3xl border border-white/10 bg-white/[0.025] p-6 py-7 transition-all duration-200 hover:border-white/20 hover:bg-white/[0.04]">
+                  <div className="group -mx-6 flex items-start gap-6 rounded-3xl p-6 py-7 transition-colors duration-200 hover:bg-white/[0.02]">
                     <span className="mt-1 shrink-0 font-mono text-[11px] tabular-nums text-white/20 select-none">
                       {String(i + 1).padStart(2, '0')}
                     </span>
@@ -65,18 +65,18 @@ export default function PersonalProjects() {
 
                     <div className="flex shrink-0 flex-col items-end gap-2 pt-1">
                       <Link href={`/projects/${p.slug}`}
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
                         Details <ArrowUpRight className="h-3 w-3" />
                       </Link>
                       {p.href && (
                         <a href={p.href} target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
                           Live <ArrowUpRight className="h-3 w-3" />
                         </a>
                       )}
                       {p.github && (
                         <a href={p.github} target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
                           GitHub <ArrowUpRight className="h-3 w-3" />
                         </a>
                       )}
