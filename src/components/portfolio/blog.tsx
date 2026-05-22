@@ -31,10 +31,10 @@ export default function Blog() {
               Journal
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Latest Posts
+              Writing
             </h2>
             <p className="text-[14px] text-[var(--home-muted)]">
-              Every story is part of life&apos;s journey.
+              Notes, reflections, and personal writing kept in one quiet corner.
             </p>
           </div>
         </Reveal>
@@ -47,7 +47,7 @@ export default function Blog() {
                   Stories
                 </span>
                 <span className="text-[10px] text-[var(--home-muted)]">
-                  {blogPosts.length} picks
+                  {blogPosts.length} entries
                 </span>
               </div>
             </Reveal>
