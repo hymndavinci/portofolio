@@ -43,13 +43,13 @@ function HeroAvatar({ src, status, mounted }: { src: string; status: string; mou
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="relative mx-auto h-56 w-56 sm:h-72 sm:w-72 lg:mx-0"
     >
-      <div className="absolute inset-[26px] overflow-hidden rounded-full border border-[color:var(--home-border-strong,rgba(255,255,255,0.15))] bg-[var(--home-soft)] shadow-[0_24px_70px_rgba(239,68,68,0.12)]">
+      <div className="absolute inset-[14px] overflow-hidden rounded-full border border-[color:var(--home-border-strong,rgba(255,255,255,0.15))] bg-[var(--home-soft)] shadow-[0_24px_70px_rgba(239,68,68,0.12)] sm:inset-[18px]">
         <Image
           src={src}
           alt="hymndavinci profile photo"
           fill
           className="object-cover"
-          sizes="(max-width: 1024px) 210px, 250px"
+          sizes="(max-width: 1024px) 220px, 260px"
           priority
           unoptimized
         />
