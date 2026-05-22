@@ -33,8 +33,8 @@ export default function PersonalProjects() {
         <Reveal>
           <div className="space-y-2">
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--home-muted)]">Projects</p>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Personal Project</h2>
-            <p className="text-[14px] text-[var(--home-muted)]">A focused set of projects with clear details and stable delivery.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Selected Work</h2>
+            <p className="text-[14px] text-[var(--home-muted)]">Focused builds with real features, clear interfaces, and stable delivery.</p>
           </div>
         </Reveal>
 
@@ -44,9 +44,11 @@ export default function PersonalProjects() {
             <Reveal delay={0.05}>
               <div className="flex items-center justify-between border-t border-white/10 pt-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--home-muted)]">Featured</span>
-                <span className="text-[10px] text-[var(--home-muted)]">Top picks</span>
+                <span className="text-[10px] text-[var(--home-muted)]">{projects.length} selected projects</span>
               </div>
-            </Reveal>            {/* Project list */}
+            </Reveal>
+
+            {/* Project list */}
             <div className="space-y-0">
               {projects.map((p, i) => (
                 <Reveal key={p.id} delay={i * 0.08}>
