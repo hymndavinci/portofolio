@@ -8,9 +8,9 @@ import { blogPosts } from '@/lib/blog-data'
 import GitHubContributions from './github-stats'
 
 const profileData = [
-  { label: 'Name', value: 'M Bintang Kurniawan' },
+  { label: 'Name', value: 'Muhammad Bintang Kurniawan' },
   { label: 'Pronouns', value: 'He/Him' },
-  { label: 'Age', value: '21 years old' },
+  { label: 'Age', value: '22 years old' },
   { label: 'Role', value: 'Developer' },
   { label: 'Focus', value: 'Consistency' },
   { label: 'Passion', value: 'Make good things' },
@@ -32,8 +32,6 @@ const educationData = [
     status: 'In Progress',
   },
 ]
-
-// latestPosts now comes from blog.tsx (blogPosts)
 
 export default function Sidebar() {
   const [viewsMap, setViewsMap] = useState<Record<string, number>>({})
@@ -62,9 +60,9 @@ export default function Sidebar() {
           <div className="divide-y divide-white/[0.07]">
             {profileData.map((item) => (
               <Reveal key={item.label}>
-                <div className="flex items-center justify-between gap-2 px-4 py-2.5">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">{item.label}</span>
-                  <span className="text-[12px] font-medium text-[var(--home-ink)]">{item.value}</span>
+                <div className="flex items-center justify-between gap-3 px-4 py-2.5">
+                  <span className="shrink-0 text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">{item.label}</span>
+                  <span className="min-w-0 truncate whitespace-nowrap text-right text-[12px] font-medium text-[var(--home-ink)]">{item.value}</span>
                 </div>
               </Reveal>
             ))}
@@ -205,9 +203,9 @@ export function MobileSidebar() {
         <div className="divide-y divide-white/[0.07]">
           {profileData.map((item) => (
             <Reveal key={item.label}>
-              <div className="flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--home-muted)]">{item.label}</span>
-                <span className="text-[12px] font-medium text-[var(--home-ink)]">{item.value}</span>
+                <span className="truncate whitespace-nowrap text-[12px] font-medium text-[var(--home-ink)] sm:text-right">{item.value}</span>
               </div>
             </Reveal>
           ))}
@@ -265,7 +263,6 @@ export function MobileSidebar() {
         </div>
       </div>
 
-      {/* GitHub Stats Card — Mobile */}
       <Reveal>
         <div className="rounded-2xl border border-white/10 bg-black/20">
           <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
@@ -278,7 +275,6 @@ export function MobileSidebar() {
         </div>
       </Reveal>
 
-      {/* Latest Posts Card — Mobile */}
       <div className="rounded-2xl border border-white/10 bg-black/20">
         <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
           <div className="flex items-center gap-1.5">
