@@ -1,30 +1,29 @@
 import { NextResponse } from 'next/server'
-import https from 'https'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
 
-function fetchLanyard(userId: string): Promise<unknown> {
-  return new Promise((resolve, reject) => {
-    const req = https.request(
-      {
-        hostname: 'api.lanyard.rest',
-        path: `/v1/users/${userId}`,
-        method: 'GET',
-        rejectUnauthorized: false,
+async function fetchLanyard(userId: string) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 8000)
+
+  try {
+    const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`, {
+      cache: 'no-store',
+      signal: controller.signal,
+      headers: {
+        'Accept': 'application/json',
       },
-      (res) => {
-        let raw = ''
-        res.on('data', (chunk) => { raw += chunk })
-        res.on('end', () => {
-          try { resolve(JSON.parse(raw)) }
-          catch (e) { reject(e) }
-        })
-      }
-    )
-    req.on('error', reject)
-    req.end()
-  })
+    })
+
+    if (!response.ok) {
+      throw new Error(`Lanyard responded with ${response.status}`)
+    }
+
+    return response.json()
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 export async function GET(
@@ -32,11 +31,12 @@ export async function GET(
   { params }: { params: Promise<{ userId: string }> }
 ) {
   const { userId } = await params
+
   try {
     const data = await fetchLanyard(userId)
     return NextResponse.json(data, {
       headers: {
-        'Cache-Control': 'public, s-maxage=20, stale-while-revalidate=40',
+        'Cache-Control': 'no-store, max-age=0',
       },
     })
   } catch (err) {
