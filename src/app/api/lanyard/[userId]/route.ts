@@ -4,8 +4,6 @@ import https from 'https'
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
 
-// Proxy ke Lanyard API pakai https.request native agar bisa bypass TLS cert mismatch
-// (api.lanyard.rest pakai cert *.up.railway.app yang ditolak Node.js)
 function fetchLanyard(userId: string): Promise<unknown> {
   return new Promise((resolve, reject) => {
     const req = https.request(
@@ -13,7 +11,7 @@ function fetchLanyard(userId: string): Promise<unknown> {
         hostname: 'api.lanyard.rest',
         path: `/v1/users/${userId}`,
         method: 'GET',
-        rejectUnauthorized: false, // bypass TLS cert mismatch
+        rejectUnauthorized: false,
       },
       (res) => {
         let raw = ''
@@ -36,7 +34,11 @@ export async function GET(
   const { userId } = await params
   try {
     const data = await fetchLanyard(userId)
-    return NextResponse.json(data)
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=20, stale-while-revalidate=40',
+      },
+    })
   } catch (err) {
     console.error('Lanyard proxy error:', err)
     return NextResponse.json({ success: false }, { status: 502 })
