@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Eye, Calendar, User, Tag, Feather } from 'lucide
 import { db } from '@/lib/db'
 import ViewTracker from '@/components/ViewTracker'
 import BlogActions from '@/components/portfolio/blog-actions'
+import Comments from '@/components/portfolio/comments'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -108,6 +109,8 @@ export default async function BlogPostPage({ params }: Props) {
               </p>
             ))}
           </div>
+
+          <Comments targetType="blog" targetSlug={slug} />
 
           {(previousPost || nextPost) && (
             <div className="mt-16 grid gap-3 border-t border-white/10 pt-10 sm:grid-cols-2">
