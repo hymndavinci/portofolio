@@ -65,41 +65,41 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="mx-auto max-w-screen-lg px-4 py-10 sm:px-6 sm:py-12 lg:flex lg:items-start lg:gap-12">
         <article className="min-w-0 flex-1">
-          <p className="mb-4 text-[10px] uppercase tracking-[0.4em] text-white/35">
+          <p className="mb-4 text-[10px] uppercase tracking-[0.4em] text-white/40">
             {post.category}
           </p>
 
-          <h1 className="mb-3 text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+          <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
             {post.title}
           </h1>
 
-          <div className="mb-5 flex min-w-0 items-center gap-1.5">
-            <User className="h-3 w-3 shrink-0 text-white/25" />
-            <span className="truncate text-[11px] text-white/30">{post.slug}</span>
+          <div className="mb-6 flex min-w-0 items-center gap-1.5">
+            <User className="h-3 w-3 shrink-0 text-white/30" />
+            <span className="truncate text-[11px] text-white/35">{post.slug}</span>
           </div>
 
-          <p className="mb-6 border-l-2 border-white/10 pl-4 text-[14px] leading-relaxed text-white/55">
+          <p className="mb-7 max-w-2xl border-l-2 border-white/10 pl-4 text-[14px] leading-relaxed text-white/60">
             {post.tagline}
           </p>
 
-          <div className="mb-12 flex flex-wrap items-center gap-3 text-[11px] text-white/30">
+          <div className="mb-12 flex flex-wrap items-center gap-3 border-y border-white/10 py-4 text-[11px] text-white/38">
             <span className="inline-flex items-center gap-1.5">
               <Calendar className="h-3 w-3" />{post.date}
             </span>
-            <span className="text-white/15">&bull;</span>
+            <span className="text-white/18">&bull;</span>
             <span className="inline-flex items-center gap-1.5">
               <Eye className="h-3 w-3" />
               <ViewTracker slug={slug} initialViews={realViews} />
             </span>
-            <span className="text-white/15">&bull;</span>
+            <span className="text-white/18">&bull;</span>
             <span className="inline-flex items-center gap-1.5">
               <User className="h-3 w-3" />{post.author}
             </span>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-6">
             {paragraphs.map((para, i) => (
-              <p key={i} className="text-[15px] leading-[1.9] text-white/70">
+              <p key={i} className="max-w-[720px] text-[15.5px] leading-[1.95] text-white/75 sm:text-[16px]">
                 {para}
               </p>
             ))}
@@ -108,10 +108,10 @@ export default async function BlogPostPage({ params }: Props) {
           {related.length > 0 && (
             <div className="mt-16 border-t border-white/10 pt-10">
               <div className="mb-5 flex items-center justify-between">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/50">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/55">
                   Related stories
                 </p>
-                <span className="text-[11px] text-white/25">{related.length} picks</span>
+                <span className="text-[11px] text-white/30">{related.length} picks</span>
               </div>
               <div className="space-y-3">
                 {related.map((rel) => (
@@ -126,13 +126,13 @@ export default async function BlogPostPage({ params }: Props) {
                       <Feather className="h-5 w-5 text-white/40" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/30">{rel.date}</p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">{rel.date}</p>
                       <p className="mt-0.5 text-[14px] font-bold text-white transition group-hover:text-white/80">
                         {rel.title}
                       </p>
-                      <p className="mt-0.5 line-clamp-1 text-[12px] text-white/40">{rel.tagline}</p>
+                      <p className="mt-0.5 line-clamp-1 text-[12px] text-white/45">{rel.tagline}</p>
                     </div>
-                    <ArrowLeft className="h-4 w-4 shrink-0 rotate-180 text-white/15 transition group-hover:text-white/50" />
+                    <ArrowLeft className="h-4 w-4 shrink-0 rotate-180 text-white/20 transition group-hover:text-white/50" />
                   </Link>
                 ))}
               </div>
@@ -142,14 +142,14 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mt-12 border-t border-white/10 pt-6">
             <Link
               href="/blog"
-              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/30 transition hover:text-white/60"
+              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/35 transition hover:text-white/65"
             >
               <ArrowLeft className="h-3 w-3" />
               Back to Journal
             </Link>
           </div>
 
-          <p className="mt-10 text-center text-[11px] italic text-white/15">
+          <p className="mt-10 text-center text-[11px] italic text-white/20">
             &ldquo;Every story is part of life&apos;s journey&rdquo;
           </p>
         </article>
@@ -157,18 +157,18 @@ export default async function BlogPostPage({ params }: Props) {
         <aside className="sticky top-20 hidden self-start lg:block lg:w-[220px] lg:shrink-0">
           <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
             <div className="border-b border-white/10 px-4 py-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/55">
                 Story details
               </p>
             </div>
             <div className="divide-y divide-white/[0.07]">
               {storyDetails.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center justify-between gap-2 px-4 py-3">
-                  <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-white/35">
+                  <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-white/40">
                     <Icon className="h-3 w-3" />
                     {label}
                   </span>
-                  <span className="text-right text-[11px] font-medium tabular-nums text-white/60">
+                  <span className="text-right text-[11px] font-medium tabular-nums text-white/65">
                     {value}
                   </span>
                 </div>
