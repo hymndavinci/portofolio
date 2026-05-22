@@ -6,11 +6,11 @@ import { Building2 } from 'lucide-react'
 const experiences = [
   {
     id: '01',
-    role: 'Owner',
+    role: 'Community Owner',
     status: 'Current',
     company: 'Dahayu',
     period: '2024 - now',
-    description: 'Founder of the Dahayu Community with 400+ active members. Led community growth, managed operations and moderation, organized events, and coordinated development projects to maintain an active and welcoming environment.',
+    description: 'Founded and managed Dahayu Community with 400+ active members. Led moderation, operations, community growth, events, and development coordination to keep the environment active and organized.',
   },
   {
     id: '02',
@@ -18,7 +18,7 @@ const experiences = [
     status: 'Ended',
     company: 'Discord Client',
     period: '2026',
-    description: 'Worked as a freelance developer to build and deliver a custom project for a client on Discord. Successfully translated client requirements into functional features, managed the development process independently, and ensured timely delivery.',
+    description: 'Built a custom Discord-based project for a client by translating requirements into functional features, managing the development process independently, and delivering the requested result on time.',
   },
   {
     id: '03',
@@ -26,7 +26,7 @@ const experiences = [
     status: 'Current',
     company: 'Kh1ev Community',
     period: '2024 - now',
-    description: 'Working on the official website for Kh1ev Community, focusing on frontend development and user experience.',
+    description: 'Developing the official Kh1ev Community website with a focus on frontend implementation, responsive layout, and clear user experience.',
   },
 ]
 
@@ -37,8 +37,8 @@ export default function Experience() {
         <Reveal>
           <div className="space-y-3">
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--home-muted)]">Experience</p>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Focused on community work</h2>
-            <p className="text-[14px] text-[var(--home-muted)]">Roles that prioritize clean delivery, steady collaboration, and thoughtful outcomes.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Practical Work</h2>
+            <p className="text-[14px] text-[var(--home-muted)]">Community, freelance, and website work shaped by clear execution and steady collaboration.</p>
           </div>
         </Reveal>
 
