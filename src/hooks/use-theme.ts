@@ -3,16 +3,21 @@
 import { useEffect, useState } from 'react'
 
 export function useTheme() {
-  const [isLight, setIsLight] = useState(false)
+  const [isLight, setIsLight] = useState(true)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     const saved = localStorage.getItem('portfolio-theme')
-    if (saved === 'light') {
-      setIsLight(true)
-      document.documentElement.classList.add('light-mode')
+
+    if (saved === 'dark') {
+      setIsLight(false)
+      document.documentElement.classList.remove('light-mode')
+      return
     }
+
+    setIsLight(true)
+    document.documentElement.classList.add('light-mode')
   }, [])
 
   const toggle = () => {
