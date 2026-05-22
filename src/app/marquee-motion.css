@@ -1,0 +1,5 @@
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-track {
+    animation: tech-marquee 22s linear infinite !important;
+  }
+}
