@@ -48,7 +48,7 @@ export default function Experience() {
               <div className="relative flex gap-6 sm:gap-8">
                 <div className="flex w-[46px] shrink-0 items-start justify-between pt-1">
                   <span className="text-[11px] uppercase tracking-widest text-[var(--home-muted)]">{exp.id}</span>
-                  <span className="relative z-10 mt-1 h-2 w-2 rounded-full bg-[#EF4444] shadow-[0_0_10px_rgba(239,68,68,0.4)]" />
+                  <span className="relative z-10 mt-1 h-2 w-2 rounded-full bg-[var(--home-accent)] shadow-[0_0_10px_var(--home-accent)]" />
                 </div>
                 <div className="flex-1 space-y-3 pb-2">
                   <div className="flex flex-wrap items-center gap-3">
