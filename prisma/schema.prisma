@@ -14,13 +14,14 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  email     String    @unique
-  name      String?
-  image     String?
-  comments  Comment[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id              String            @id @default(cuid())
+  email           String            @unique
+  name            String?
+  image           String?
+  comments        Comment[]
+  portfolioRating PortfolioRating?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
 }
 
 model Post {
@@ -52,4 +53,16 @@ model Comment {
 
   @@index([targetType, targetSlug, createdAt])
   @@index([userId])
+}
+
+model PortfolioRating {
+  id        String   @id @default(cuid())
+  rating    Int
+  message   String
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([rating, createdAt])
 }
