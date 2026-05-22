@@ -6,6 +6,7 @@ interface Skill {
   name: string
   short: string
   color: string
+  darkText?: boolean
 }
 
 interface SkillCategory {
@@ -21,7 +22,7 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'HTML5', short: 'HTML', color: '#E34F26' },
       { name: 'CSS3', short: 'CSS', color: '#1572B6' },
-      { name: 'JavaScript', short: 'JS', color: '#F7DF1E' },
+      { name: 'JavaScript', short: 'JS', color: '#F7DF1E', darkText: true },
       { name: 'TypeScript', short: 'TS', color: '#3178C6' },
       { name: 'PHP', short: 'PHP', color: '#777BB4' },
       { name: 'Python', short: 'PY', color: '#3776AB' },
@@ -32,9 +33,9 @@ const skillCategories: SkillCategory[] = [
     title: 'Tech Stack',
     subtitle: 'Frameworks & core libraries',
     skills: [
-      { name: 'React', short: 'R', color: '#61DAFB' },
+      { name: 'React', short: 'R', color: '#61DAFB', darkText: true },
       { name: 'Next.js', short: 'N', color: '#0f172a' },
-      { name: 'Tailwind CSS', short: 'TW', color: '#06B6D4' },
+      { name: 'Tailwind CSS', short: 'TW', color: '#06B6D4', darkText: true },
       { name: 'Prisma', short: 'PR', color: '#2D3748' },
       { name: 'Laravel', short: 'LA', color: '#FF2D20' },
       { name: 'Node.js', short: 'ND', color: '#339933' },
@@ -44,8 +45,8 @@ const skillCategories: SkillCategory[] = [
     title: 'Database',
     subtitle: 'Data layer services',
     skills: [
-      { name: 'MySQL', short: 'SQL', color: '#4479A1' },
-      { name: 'Supabase', short: 'SB', color: '#3ECF8E' },
+      { name: 'MySQL', short: 'SQL', color: '#2563eb' },
+      { name: 'Supabase', short: 'SB', color: '#059669' },
     ],
   },
 ]
@@ -79,7 +80,7 @@ export default function Skills() {
                       {category.subtitle}
                     </p>
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--home-muted)] opacity-75">
+                  <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--home-muted)] opacity-80">
                     {category.skills.length} tools
                   </span>
                 </div>
@@ -92,8 +93,11 @@ export default function Skills() {
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[color:var(--home-border,rgba(255,255,255,0.10))] bg-[var(--home-soft,rgba(255,255,255,0.035))] text-[12px] font-black tracking-tight"
-                          style={{ color: skill.color }}
+                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[12px] font-black tracking-tight shadow-sm"
+                          style={{
+                            backgroundColor: skill.color,
+                            color: skill.darkText ? '#020617' : '#ffffff',
+                          }}
                         >
                           {skill.short}
                         </div>
