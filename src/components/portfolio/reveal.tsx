@@ -21,9 +21,9 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
   return (
     <motion.div
       ref={ref}
-      initial={{ y: -8, opacity: 0 }}
-      animate={isInView ? { y: 0, opacity: 1 } : { y: -8, opacity: 0 }}
-      transition={{ duration: 0.38, delay: Math.min(delay, 0.12), ease: [0.22, 1, 0.36, 1] }}
+      initial={false}
+      animate={isInView ? { y: 0, opacity: 1 } : { y: 0, opacity: 1 }}
+      transition={{ duration: 0.28, delay: Math.min(delay, 0.08), ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
