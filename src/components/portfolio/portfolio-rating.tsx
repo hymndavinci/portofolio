@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useMemo, useState } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { Github, Loader2, Send, Star } from 'lucide-react'
 import { Reveal } from './reveal'
+import GoogleIcon from './google-icon'
 
 interface RatingUser {
   id: string
@@ -210,7 +211,7 @@ export default function PortfolioRating() {
                       onClick={() => signIn('google')}
                       className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-2 text-[11px] font-medium text-white/60 transition hover:border-white/30 hover:text-white"
                     >
-                      Google
+                      <GoogleIcon /> Google
                     </button>
                   </div>
                 </div>
