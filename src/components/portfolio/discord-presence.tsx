@@ -181,12 +181,12 @@ export default function DiscordPresence({ presence, mounted }: { presence: Lanya
                 )}
               </div>
               {activity.assets?.small_image && (
-                <div className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-transparent shadow-sm overflow-visible">
+                <div className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-transparent shadow-sm overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={getActivityImage({ ...activity, assets: { large_image: activity.assets.small_image } }) || ''}
                     alt={activity.assets.small_text || ''}
-                    className="h-full w-full object-contain drop-shadow-sm"
+                    className="h-full w-full rounded-full object-cover drop-shadow-sm"
                   />
                 </div>
               )}
