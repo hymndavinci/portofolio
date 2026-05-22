@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getPostBySlug, getRelatedPosts, blogPosts } from '@/lib/blog-data'
-import { ArrowLeft, Eye, Calendar, User, Tag, Feather } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Eye, Calendar, User, Tag, Feather } from 'lucide-react'
 import { db } from '@/lib/db'
 import ViewTracker from '@/components/ViewTracker'
 import BlogActions from '@/components/portfolio/blog-actions'
@@ -34,6 +34,10 @@ export default async function BlogPostPage({ params }: Props) {
 
   const viewRecord = await db.postView.findUnique({ where: { slug } })
   const realViews = viewRecord?.views ?? post.views
+
+  const currentIndex = blogPosts.findIndex((item) => item.slug === slug)
+  const previousPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null
+  const nextPost = currentIndex >= 0 && currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null
 
   const related = getRelatedPosts(post)
   const paragraphs = post.content.split('\n\n').filter(Boolean)
@@ -104,6 +108,38 @@ export default async function BlogPostPage({ params }: Props) {
               </p>
             ))}
           </div>
+
+          {(previousPost || nextPost) && (
+            <div className="mt-16 grid gap-3 border-t border-white/10 pt-10 sm:grid-cols-2">
+              {previousPost ? (
+                <Link
+                  href={`/blog/${previousPost.slug}`}
+                  className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.04]"
+                >
+                  <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35">
+                    <ArrowLeft className="h-3 w-3" /> Previous story
+                  </p>
+                  <p className="line-clamp-2 text-[14px] font-semibold leading-snug text-white/75 transition group-hover:text-white">
+                    {previousPost.title}
+                  </p>
+                </Link>
+              ) : <div />}
+
+              {nextPost ? (
+                <Link
+                  href={`/blog/${nextPost.slug}`}
+                  className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-left transition hover:border-white/20 hover:bg-white/[0.04] sm:text-right"
+                >
+                  <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35 sm:justify-end">
+                    Next story <ArrowRight className="h-3 w-3" />
+                  </p>
+                  <p className="line-clamp-2 text-[14px] font-semibold leading-snug text-white/75 transition group-hover:text-white">
+                    {nextPost.title}
+                  </p>
+                </Link>
+              ) : <div />}
+            </div>
+          )}
 
           {related.length > 0 && (
             <div className="mt-16 border-t border-white/10 pt-10">
