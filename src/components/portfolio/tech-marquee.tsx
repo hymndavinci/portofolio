@@ -15,7 +15,9 @@ function MarqueeGroup() {
     <div className="tech-marquee-group" aria-hidden="true">
       {techStack.map((item) => (
         <span key={item} className="tech-marquee-item">
-          {item}
+          <span className="tech-marquee-key">stack</span>
+          <span className="tech-marquee-eq">=</span>
+          <span className="tech-marquee-value">{item}</span>
         </span>
       ))}
     </div>
@@ -25,7 +27,11 @@ function MarqueeGroup() {
 export default function TechMarquee() {
   return (
     <section aria-label="Website technology stack" className="tech-marquee-shell mt-12">
-      <div className="tech-marquee-label">Built with</div>
+      <div className="tech-marquee-terminal">
+        <span className="tech-marquee-led" />
+        <span className="tech-marquee-led" />
+        <span className="tech-marquee-led" />
+      </div>
       <div className="tech-marquee-mask">
         <div className="tech-marquee-track">
           <MarqueeGroup />
