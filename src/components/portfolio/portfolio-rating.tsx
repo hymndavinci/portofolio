@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useState } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { Github, Loader2, Send, Star } from 'lucide-react'
+import { Github, Loader2, Send, Star, Trash2 } from 'lucide-react'
 import { Reveal } from './reveal'
 import GoogleIcon from './google-icon'
 
@@ -10,6 +10,7 @@ interface RatingUser {
   id: string
   name: string | null
   image: string | null
+  email?: string | null
 }
 
 interface RatingItem {
@@ -34,10 +35,14 @@ export default function PortfolioRating() {
   const [count, setCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [hasExistingRating, setHasExistingRating] = useState(false)
+  const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
 
   const roundedAverage = useMemo(() => average.toFixed(1), [average])
-  const featuredRatings = ratings.slice(0, 6)
+  const featuredRatings = ratings.slice(0, 4)
 
   const handleSignIn = (provider: 'github' | 'google') => {
     signIn(provider, { callbackUrl: getRatingReturnUrl() })
@@ -64,6 +69,15 @@ export default function PortfolioRating() {
           setRatings(data.ratings || [])
           setAverage(data.average || 0)
           setCount(data.count || 0)
+          setIsAdmin(Boolean(data.isAdmin))
+
+          if (data.currentUserRating) {
+            setSelectedRating(data.currentUserRating.rating)
+            setMessage(data.currentUserRating.message)
+            setHasExistingRating(true)
+          } else {
+            setHasExistingRating(false)
+          }
         }
       } catch (err) {
         if (active) setError(err instanceof Error ? err.message : 'Failed to load ratings')
@@ -77,7 +91,7 @@ export default function PortfolioRating() {
     return () => {
       active = false
     }
-  }, [])
+  }, [session?.user?.email])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -87,6 +101,7 @@ export default function PortfolioRating() {
 
     setSubmitting(true)
     setError('')
+    setSuccess('')
 
     try {
       const response = await fetch('/api/portfolio-rating', {
@@ -101,11 +116,45 @@ export default function PortfolioRating() {
       setRatings((current) => [data.rating, ...current.filter((item) => item.user.id !== data.rating.user.id)])
       setAverage(data.average || 0)
       setCount(data.count || 0)
-      setMessage('')
+      setIsAdmin(Boolean(data.isAdmin))
+      setHasExistingRating(true)
+      setMessage(data.rating.message)
+      setSelectedRating(data.rating.rating)
+      setSuccess('Rating submitted.')
+      window.setTimeout(() => setSuccess(''), 2400)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit rating')
     } finally {
       setSubmitting(false)
+    }
+  }
+
+  async function handleDelete(id: string) {
+    if (deletingId) return
+
+    setDeletingId(id)
+    setError('')
+    setSuccess('')
+
+    try {
+      const response = await fetch('/api/portfolio-rating', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      })
+      const data = await response.json()
+
+      if (!response.ok) throw new Error(data?.error || 'Failed to delete rating')
+
+      setRatings((current) => current.filter((item) => item.id !== data.deletedId))
+      setAverage(data.average || 0)
+      setCount(data.count || 0)
+      setSuccess('Rating deleted.')
+      window.setTimeout(() => setSuccess(''), 2400)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete rating')
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -159,7 +208,7 @@ export default function PortfolioRating() {
                     )}
                     <div className="min-w-0">
                       <p className="truncate text-[12px] font-semibold text-white/70">{session.user.name || session.user.email}</p>
-                      <p className="text-[10px] text-white/30">One account, one rating.</p>
+                      <p className="text-[10px] text-white/30">{hasExistingRating ? 'Update your existing rating.' : 'One account, one rating.'}</p>
                     </div>
                   </div>
                   <button type="button" onClick={handleSignOut} className="w-fit text-[11px] text-white/35 transition hover:text-white/65">
@@ -197,7 +246,7 @@ export default function PortfolioRating() {
                     className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-[11px] font-medium text-white/60 transition hover:border-white/30 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     {submitting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />}
-                    Submit
+                    {hasExistingRating ? 'Update' : 'Submit'}
                   </button>
                 </div>
               </form>
@@ -228,7 +277,11 @@ export default function PortfolioRating() {
           </div>
         </Reveal>
 
-        {error && <p className="text-[12px] text-red-400">{error}</p>}
+        {(success || error) && (
+          <p className={`text-[12px] ${success ? 'text-emerald-400' : 'text-red-400'}`}>
+            {success || error}
+          </p>
+        )}
 
         <div className="space-y-4">
           <div className="flex items-center justify-between gap-3">
@@ -257,10 +310,23 @@ export default function PortfolioRating() {
                           <p className="text-[10px] text-white/30">{formatDate(item.updatedAt)}</p>
                         </div>
                       </div>
-                      <div className="flex shrink-0 gap-0.5 pt-1">
-                        {[1, 2, 3, 4, 5].map((value) => (
-                          <Star key={value} className={`h-3.5 w-3.5 ${value <= item.rating ? 'fill-[var(--home-accent)] text-[var(--home-accent)]' : 'text-white/12'}`} />
-                        ))}
+                      <div className="flex shrink-0 items-center gap-2 pt-1">
+                        <div className="flex gap-0.5">
+                          {[1, 2, 3, 4, 5].map((value) => (
+                            <Star key={value} className={`h-3.5 w-3.5 ${value <= item.rating ? 'fill-[var(--home-accent)] text-[var(--home-accent)]' : 'text-white/12'}`} />
+                          ))}
+                        </div>
+                        {isAdmin && (
+                          <button
+                            type="button"
+                            onClick={() => handleDelete(item.id)}
+                            disabled={deletingId === item.id}
+                            className="rounded-md p-1 text-white/25 transition hover:bg-white/[0.04] hover:text-red-400 disabled:opacity-40"
+                            aria-label="Delete rating"
+                          >
+                            {deletingId === item.id ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
+                          </button>
+                        )}
                       </div>
                     </div>
                     <p className="line-clamp-3 whitespace-pre-wrap text-[13px] leading-relaxed text-white/55">{item.message}</p>
