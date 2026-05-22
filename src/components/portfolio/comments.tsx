@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { Github, Loader2, MessageCircle, Send } from 'lucide-react'
+import GoogleIcon from './google-icon'
 
 interface CommentUser {
   id: string
@@ -36,12 +37,10 @@ export default function Comments({ targetType, targetSlug }: CommentsProps) {
     async function loadComments() {
       setLoading(true)
       setError('')
-
       try {
         const params = new URLSearchParams({ targetType, targetSlug })
         const response = await fetch(`/api/comments?${params.toString()}`, { cache: 'no-store' })
         const data = await response.json()
-
         if (!response.ok) throw new Error(data?.error || 'Failed to load comments')
         if (active) setComments(data.comments || [])
       } catch (err) {
@@ -52,16 +51,12 @@ export default function Comments({ targetType, targetSlug }: CommentsProps) {
     }
 
     loadComments()
-
-    return () => {
-      active = false
-    }
+    return () => { active = false }
   }, [targetType, targetSlug])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const cleanBody = body.trim()
-
     if (cleanBody.length < 2 || submitting) return
 
     setSubmitting(true)
@@ -74,9 +69,7 @@ export default function Comments({ targetType, targetSlug }: CommentsProps) {
         body: JSON.stringify({ targetType, targetSlug, body: cleanBody }),
       })
       const data = await response.json()
-
       if (!response.ok) throw new Error(data?.error || 'Failed to post comment')
-
       setComments((current) => [data.comment, ...current])
       setBody('')
     } catch (err) {
@@ -158,7 +151,7 @@ export default function Comments({ targetType, targetSlug }: CommentsProps) {
                 onClick={() => signIn('google')}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-2 text-[11px] font-medium text-white/60 transition hover:border-white/30 hover:text-white"
               >
-                Google
+                <GoogleIcon /> Google
               </button>
             </div>
           </div>
