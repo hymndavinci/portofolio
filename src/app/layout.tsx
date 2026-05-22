@@ -24,7 +24,7 @@ const themeInitScript = `
 `;
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hymndavinci.web.id'),
+  metadataBase: new URL('https://hymndavinci.my.id'),
   title: "Hymn",
   description: "Developer building modern web experiences with clean UI and smooth interactions.",
   keywords: ["Portfolio", "Web Developer", "Software Engineer", "Next.js", "TypeScript", "React"],
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hymn — Portfolio",
     description: "Developer building modern web experiences with clean UI and smooth interactions.",
-    url: "https://hymndavinci.web.id",
+    url: "https://hymndavinci.my.id",
     siteName: "Hymn",
     images: [
       {
