@@ -285,6 +285,63 @@ html.light-mode .bg-grid-pattern {
   contain-intrinsic-size: 1px 720px;
 }
 
+.tech-marquee-mask {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: tech-marquee 24s linear infinite;
+}
+
+.tech-marquee-mask:hover .tech-marquee-track {
+  animation-play-state: paused;
+}
+
+.tech-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding-right: 1.75rem;
+  white-space: nowrap;
+}
+
+.tech-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.tech-marquee-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--home-accent);
+}
+
+html.light-mode .tech-marquee-item {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -292,5 +349,9 @@ html.light-mode .bg-grid-pattern {
 
   .home-portfolio::after {
     display: none;
+  }
+
+  .tech-marquee-track {
+    animation: none;
   }
 }
