@@ -127,7 +127,7 @@ export default function Navbar() {
               </span>
             </button>
 
-            <ul className="mx-auto flex w-full max-w-screen-xl flex-col gap-5 px-6 sm:gap-6 sm:px-10">
+            <ul className="mx-auto flex w-full max-w-screen-xl flex-col gap-4 px-6 sm:gap-5 sm:px-10">
               {navLinks.map((link, i) => (
                 <motion.li
                   key={link.href}
@@ -139,7 +139,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block w-fit font-sans font-semibold leading-[0.95] tracking-tight transition text-[clamp(2.75rem,8vw,6rem)] text-white hover:text-white/55"
+                    className="block w-fit font-sans font-semibold leading-[0.95] tracking-tight transition text-[clamp(2.15rem,6vw,4.5rem)] text-white hover:text-white/55"
                   >
                     {link.label}
                   </Link>
