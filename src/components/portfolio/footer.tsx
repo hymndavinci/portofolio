@@ -1,6 +1,7 @@
 'use client'
 
 import { Reveal } from './reveal'
+import TechMarquee from './tech-marquee'
 
 export default function Footer() {
   return (
@@ -13,7 +14,13 @@ export default function Footer() {
         </Reveal>
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 lg:px-8 text-center">
+      <div className="mx-auto w-full max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <TechMarquee />
+        </Reveal>
+      </div>
+
+      <div className="mx-auto w-full max-w-7xl px-4 pb-6 text-center sm:px-6 lg:px-8">
         <Reveal>
           <p className="text-[clamp(6rem,24vw,18rem)] font-sans font-bold uppercase tracking-[0.12em] leading-none text-transparent" style={{ WebkitTextStroke: '2px var(--hymn-stroke)' }}>
             HYMN
