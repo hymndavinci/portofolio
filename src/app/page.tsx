@@ -1,6 +1,5 @@
 import Navbar from '@/components/portfolio/navbar'
 import Hero from '@/components/portfolio/hero'
-import TechMarquee from '@/components/portfolio/tech-marquee'
 import About from '@/components/portfolio/about'
 import Learning from '@/components/portfolio/learning'
 import Skills from '@/components/portfolio/skills'
@@ -63,7 +62,6 @@ export default async function Home() {
 
         <MotionMain>
           <Hero avatarSrc={avatarSrc} />
-          <TechMarquee />
 
           {/* Two-column layout */}
           <div className="mt-20 lg:flex lg:items-start lg:gap-10">
