@@ -20,6 +20,11 @@ interface RatingItem {
   user: RatingUser
 }
 
+function getRatingReturnUrl() {
+  if (typeof window === 'undefined') return '/#rating'
+  return `${window.location.pathname}${window.location.search}#rating`
+}
+
 export default function PortfolioRating() {
   const { data: session, status } = useSession()
   const [ratings, setRatings] = useState<RatingItem[]>([])
@@ -33,6 +38,14 @@ export default function PortfolioRating() {
 
   const roundedAverage = useMemo(() => average.toFixed(1), [average])
   const featuredRatings = ratings.slice(0, 6)
+
+  const handleSignIn = (provider: 'github' | 'google') => {
+    signIn(provider, { callbackUrl: getRatingReturnUrl() })
+  }
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: getRatingReturnUrl() })
+  }
 
   useEffect(() => {
     let active = true
@@ -149,7 +162,7 @@ export default function PortfolioRating() {
                       <p className="text-[10px] text-white/30">One account, one rating.</p>
                     </div>
                   </div>
-                  <button type="button" onClick={() => signOut()} className="w-fit text-[11px] text-white/35 transition hover:text-white/65">
+                  <button type="button" onClick={handleSignOut} className="w-fit text-[11px] text-white/35 transition hover:text-white/65">
                     Sign out
                   </button>
                 </div>
@@ -197,14 +210,14 @@ export default function PortfolioRating() {
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
-                    onClick={() => signIn('github')}
+                    onClick={() => handleSignIn('github')}
                     className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-[11px] font-medium text-white/60 transition hover:border-white/30 hover:text-white"
                   >
                     <Github className="h-3.5 w-3.5" /> GitHub
                   </button>
                   <button
                     type="button"
-                    onClick={() => signIn('google')}
+                    onClick={() => handleSignIn('google')}
                     className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-[11px] font-medium text-white/60 transition hover:border-white/30 hover:text-white"
                   >
                     <GoogleIcon /> Google
