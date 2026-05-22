@@ -20,22 +20,10 @@ const learningItems = [
     description: 'Writing clear logic and understanding how code executes.',
   },
   {
-    id: '05',
-    icon: Database,
-    title: 'Databases',
-    description: 'Designing data models, writing queries, and managing relationships.',
-  },
-  {
     id: '02',
     icon: HardDrive,
     title: 'Data structures & algorithms',
     description: 'Learning how data is organized and how problems can be solved efficiently.',
-  },
-  {
-    id: '06',
-    icon: Terminal,
-    title: 'Operating systems',
-    description: 'Studying processes, files, memory, and the system layer underneath applications.',
   },
   {
     id: '03',
@@ -44,16 +32,28 @@ const learningItems = [
     description: 'Understanding how frontend, backend, APIs, and servers communicate.',
   },
   {
-    id: '07',
-    icon: Wrench,
-    title: 'Git, Linux & tooling',
-    description: 'Using developer tools to build, debug, and manage projects with better control.',
-  },
-  {
     id: '04',
     icon: Layout,
     title: 'Application architecture',
     description: 'Structuring features, data flow, and components so applications stay maintainable.',
+  },
+  {
+    id: '05',
+    icon: Database,
+    title: 'Databases',
+    description: 'Designing data models, writing queries, and managing relationships.',
+  },
+  {
+    id: '06',
+    icon: Terminal,
+    title: 'Operating systems',
+    description: 'Studying processes, files, memory, and the system layer underneath applications.',
+  },
+  {
+    id: '07',
+    icon: Wrench,
+    title: 'Git, Linux & tooling',
+    description: 'Using developer tools to build, debug, and manage projects with better control.',
   },
   {
     id: '08',
