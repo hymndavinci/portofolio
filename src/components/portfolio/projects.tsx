@@ -29,12 +29,14 @@ export default function PersonalProjects() {
             <div className="space-y-0">
               {projects.map((p, i) => (
                 <Reveal key={p.id} delay={i * 0.08}>
-                  <div className="group -mx-6 flex items-start gap-6 rounded-3xl p-6 py-7 transition-colors duration-200 hover:bg-white/[0.02]">
-                    <span className="mt-1 shrink-0 font-mono text-[11px] tabular-nums text-white/20 select-none">
+                  <div className="group relative -mx-6 flex items-start gap-6 overflow-hidden rounded-[28px] p-6 py-7">
+                    <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[28px] bg-white/[0.02] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
+                    <span className="relative z-10 mt-1 shrink-0 font-mono text-[11px] tabular-nums text-white/20 select-none">
                       {String(i + 1).padStart(2, '0')}
                     </span>
 
-                    <div className="min-w-0 flex-1 space-y-2">
+                    <div className="relative z-10 min-w-0 flex-1 space-y-2">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className={`flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.25em] ${p.status === 'Live' ? 'text-emerald-400' : 'text-white/30'}`}>
                           <span className={`h-1.5 w-1.5 rounded-full ${p.status === 'Live' ? 'bg-emerald-400 animate-pulse' : 'bg-white/25'}`} />
@@ -63,7 +65,7 @@ export default function PersonalProjects() {
                       </div>
                     </div>
 
-                    <div className="flex shrink-0 flex-col items-end gap-2 pt-1">
+                    <div className="relative z-10 flex shrink-0 flex-col items-end gap-2 pt-1">
                       <Link href={`/projects/${p.slug}`}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-1.5 text-[11px] font-medium text-white/50 transition hover:border-white/30 hover:text-white/80">
                         Details <ArrowUpRight className="h-3 w-3" />
