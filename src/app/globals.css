@@ -77,7 +77,6 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* Portfolio custom properties (dark theme) */
   --home-bg: #090909;
   --home-ink: #fafafa;
   --home-muted: rgba(255, 255, 255, 0.45);
@@ -174,16 +173,16 @@ html {
 }
 
 html.light-mode .home-portfolio::after {
-  opacity: 0.04;
+  opacity: 0.032;
 }
 
 html.light-mode {
   --home-bg: #fdf5f5;
-  --home-ink: #1a1010;
-  --home-muted: rgba(0, 0, 0, 0.48);
+  --home-ink: #050505;
+  --home-muted: rgba(0, 0, 0, 0.64);
   --home-accent: #dc2626;
-  --home-soft: rgba(0, 0, 0, 0.03);
-  --hymn-stroke: rgba(26, 16, 16, 0.85);
+  --home-soft: rgba(0, 0, 0, 0.035);
+  --hymn-stroke: rgba(5, 5, 5, 0.92);
   color-scheme: light;
 }
 
@@ -192,29 +191,45 @@ html.light-mode .home-portfolio {
 }
 
 html.light-mode ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.14);
 }
 html.light-mode ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.26);
 }
 
 html.light-mode .home-portfolio [class*="text-white"] {
-  color: rgba(15, 15, 15, 0.85) !important;
+  color: rgba(0, 0, 0, 0.90) !important;
+}
+
+html.light-mode .home-portfolio [class*="text-white\/25"],
+html.light-mode .home-portfolio [class*="text-white\/30"],
+html.light-mode .home-portfolio [class*="text-white\/35"],
+html.light-mode .home-portfolio [class*="text-white\/40"] {
+  color: rgba(0, 0, 0, 0.58) !important;
+}
+
+html.light-mode .home-portfolio [class*="text-white\/50"],
+html.light-mode .home-portfolio [class*="text-white\/55"],
+html.light-mode .home-portfolio [class*="text-white\/60"],
+html.light-mode .home-portfolio [class*="text-white\/65"],
+html.light-mode .home-portfolio [class*="text-white\/70"],
+html.light-mode .home-portfolio [class*="text-white\/75"] {
+  color: rgba(0, 0, 0, 0.74) !important;
 }
 
 html.light-mode .home-portfolio [class*="border-white"] {
-  border-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.07) !important;
 }
 html.light-mode .home-portfolio [class*="divide-white"] > * + * {
-  border-color: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
 }
 
 html.light-mode .home-portfolio [class*="bg-black"] {
-  background-color: rgba(0, 0, 0, 0.04) !important;
+  background-color: rgba(0, 0, 0, 0.045) !important;
 }
 html.light-mode .home-portfolio .bg-white\/\[0\.02\],
 html.light-mode .home-portfolio .bg-white\/\[0\.04\] {
-  background-color: rgba(0, 0, 0, 0.02) !important;
+  background-color: rgba(0, 0, 0, 0.025) !important;
 }
 
 html.light-mode .home-portfolio .hover\:bg-white\/\[0\.01\]:hover,
@@ -222,17 +237,17 @@ html.light-mode .home-portfolio .hover\:bg-white\/\[0\.03\]:hover,
 html.light-mode .home-portfolio .hover\:bg-white\/\[0\.04\]:hover,
 html.light-mode .home-portfolio .hover\:bg-white\/\[0\.06\]:hover,
 html.light-mode .home-portfolio .hover\:bg-white\/\[0\.07\]:hover {
-  background-color: rgba(0, 0, 0, 0.04) !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
 }
 
 html.light-mode header [class*="bg-black"] {
-  background-color: rgba(255, 255, 255, 0.90) !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
 }
 html.light-mode header [class*="border-white"] {
-  border-color: rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(0, 0, 0, 0.14) !important;
 }
 html.light-mode header [class*="text-white"] {
-  color: rgba(15, 15, 15, 0.80) !important;
+  color: rgba(0, 0, 0, 0.86) !important;
 }
 html.light-mode header [class*="shadow"] {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10) !important;
@@ -242,17 +257,17 @@ html.light-mode nav[class*="bg-black"] {
   background-color: rgba(245, 245, 245, 0.98) !important;
 }
 html.light-mode nav [class*="text-white"] {
-  color: rgba(15, 15, 15, 0.85) !important;
+  color: rgba(0, 0, 0, 0.90) !important;
 }
 html.light-mode nav [class*="border-white"] {
-  border-color: rgba(0, 0, 0, 0.10) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
 }
 html.light-mode nav [class*="bg-black"] {
-  background-color: rgba(0, 0, 0, 0.04) !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
 }
 
 html.light-mode [class*="bg-white"][class*="0.05"] {
-  background-color: rgba(0, 0, 0, 0.06) !important;
+  background-color: rgba(0, 0, 0, 0.07) !important;
 }
 
 .bg-grid-pattern {
@@ -262,7 +277,7 @@ html.light-mode [class*="bg-white"][class*="0.05"] {
 }
 
 html.light-mode .bg-grid-pattern {
-  --dot-color: rgba(0, 0, 0, 0.15);
+  --dot-color: rgba(0, 0, 0, 0.18);
 }
 
 .home-portfolio section:not(#top) {
