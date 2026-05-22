@@ -10,6 +10,8 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+const siteUrl = 'https://hymndavinci.my.id';
+
 const themeInitScript = `
 (function () {
   try {
@@ -24,11 +26,17 @@ const themeInitScript = `
 `;
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hymndavinci.my.id'),
+  metadataBase: new URL(siteUrl),
+  applicationName: "Hymn Portfolio",
   title: "Hymn",
   description: "Developer building modern web experiences with clean UI and smooth interactions.",
   keywords: ["Portfolio", "Web Developer", "Software Engineer", "Next.js", "TypeScript", "React"],
-  authors: [{ name: "Hymn Davinci" }],
+  authors: [{ name: "Hymn Davinci", url: siteUrl }],
+  creator: "Hymn Davinci",
+  publisher: "Hymn Davinci",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
@@ -36,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hymn — Portfolio",
     description: "Developer building modern web experiences with clean UI and smooth interactions.",
-    url: "https://hymndavinci.my.id",
+    url: siteUrl,
     siteName: "Hymn",
     images: [
       {
@@ -54,6 +62,7 @@ export const metadata: Metadata = {
     title: "Hymn — Portfolio",
     description: "Developer building modern web experiences with clean UI and smooth interactions.",
     images: ["/og-image.png"],
+    creator: "@hymndavinci",
   },
 };
 
