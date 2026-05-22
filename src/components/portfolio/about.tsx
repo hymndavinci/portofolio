@@ -43,8 +43,8 @@ export default function About() {
       <div className="space-y-10">
         <SectionHeading
           tag="About"
-          title="Focused on Consistency"
-          description="I am Bintang, I enjoy building useful and meaningful solutions while continuously learning and improving. I focus on keeping things simple, structured, and easy to understand whether it's software, systems, or ideas."
+          title="Built with Clarity"
+          description="I am Bintang, a web developer focused on building useful interfaces, practical systems, and clean digital experiences. I care about structure, readability, and making every detail easier to understand."
         />
 
         {/* Principles grid — 3 columns like Phyon */}
