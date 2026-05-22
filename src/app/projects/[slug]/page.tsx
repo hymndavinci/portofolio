@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2, Layers, Target, Wrench } from 'lucide-react'
 import { getProjectBySlug, projects } from '@/lib/project-data'
+import Comments from '@/components/portfolio/comments'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -126,8 +127,10 @@ export default async function ProjectDetailPage({ params }: Props) {
           </aside>
         </section>
 
+        <Comments targetType="project" targetSlug={slug} />
+
         {(previousProject || nextProject) && (
-          <section className="grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
+          <section className="mt-16 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
             {previousProject ? (
               <Link
                 href={`/projects/${previousProject.slug}`}
