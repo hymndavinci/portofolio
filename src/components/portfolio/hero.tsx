@@ -26,16 +26,7 @@ const socials = [
   },
 ]
 
-const statusColors: Record<string, string> = {
-  online: 'bg-emerald-500',
-  idle: 'bg-amber-400',
-  dnd: 'bg-red-500',
-  offline: 'bg-zinc-500',
-}
-
-function HeroAvatar({ src, status, mounted }: { src: string; status: string; mounted: boolean }) {
-  const dotColor = mounted ? statusColors[status] || statusColors.offline : statusColors.offline
-
+function HeroAvatar({ src }: { src: string }) {
   return (
     <motion.div
       initial={{ scale: 0.95, opacity: 0 }}
@@ -62,15 +53,12 @@ function HeroAvatar({ src, status, mounted }: { src: string; status: string; mou
         className="pointer-events-none absolute inset-0 z-10 h-full w-full object-contain select-none"
         draggable={false}
       />
-
-      <div className={`absolute bottom-10 right-8 z-20 h-4 w-4 rounded-full border-[3px] border-[var(--home-bg)] ${dotColor} shadow-sm`} />
     </motion.div>
   )
 }
 
 export default function Hero({ avatarSrc }: { avatarSrc: string }) {
   const { presence, mounted } = useLanyard('443335216833101825')
-  const discordStatus = presence?.data?.discord_status || 'offline'
   const discordUser = presence?.data?.discord_user
   const liveAvatarSrc =
     mounted && discordUser?.avatar
@@ -79,7 +67,7 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
 
   return (
     <section id="top" className="grid gap-10 pb-14 pt-6 lg:grid-cols-[280px_1fr] lg:items-center">
-      <HeroAvatar src={liveAvatarSrc} status={discordStatus} mounted={mounted} />
+      <HeroAvatar src={liveAvatarSrc} />
 
       <motion.div
         initial={{ y: 12, opacity: 0 }}
