@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
           <BlogActions
             title={post.title}
-            url={`https://hymndavinci.web.id/blog/${slug}`}
+            url={`https://hymndavinci.my.id/blog/${slug}`}
           />
         </div>
       </div>
