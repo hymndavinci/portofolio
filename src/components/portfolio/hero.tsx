@@ -100,12 +100,12 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
           <div className="space-y-3 pt-2">
             <Reveal delay={0.1}>
               <p className="text-[15px] font-medium tracking-wide text-white/90">
-                Software Engineer Enthusiast | Web Developer Enthusiast
+                Web developer focused on modern interfaces and practical user experiences.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="max-w-xl text-sm leading-relaxed text-[var(--home-muted)]">
-                Constantly learning, improving, and expanding my skills across different fields.
+                I build clean, responsive web apps with stable functionality, thoughtful details, and real-world usability.
               </p>
             </Reveal>
           </div>
