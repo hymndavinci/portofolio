@@ -100,7 +100,7 @@ export default function PortfolioRating() {
     <section id="rating" className="scroll-mt-24">
       <div className="space-y-7 border-t border-white/10 pt-6">
         <Reveal>
-          <div className="grid gap-6 lg:grid-cols-[1fr_220px] lg:items-end">
+          <div className="grid gap-6 lg:grid-cols-[1fr_180px] lg:items-end">
             <div className="space-y-3">
               <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--home-muted)]">Rating</p>
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Rate This Portfolio</h2>
@@ -109,7 +109,7 @@ export default function PortfolioRating() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.018] p-4 lg:text-right">
+            <div className="lg:text-right">
               <div className="flex items-end gap-2 lg:justify-end">
                 <span className="text-4xl font-bold leading-none text-white">{roundedAverage}</span>
                 <span className="pb-1 text-[12px] text-white/35">/ 5.0</span>
@@ -130,7 +130,7 @@ export default function PortfolioRating() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.018] p-4 sm:p-5">
+          <div className="border-y border-white/10 py-5">
             {status === 'loading' ? (
               <div className="flex items-center gap-2 text-[12px] text-white/40">
                 <Loader2 className="h-4 w-4 animate-spin" /> Checking session...
@@ -173,7 +173,7 @@ export default function PortfolioRating() {
                   onChange={(event) => setMessage(event.target.value.slice(0, 500))}
                   placeholder="Tulis pesan singkat buat portfolio ini..."
                   rows={3}
-                  className="w-full resize-none rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-[13px] leading-relaxed text-white/75 outline-none transition placeholder:text-white/25 focus:border-white/25"
+                  className="w-full resize-none rounded-xl border border-white/10 bg-transparent px-4 py-3 text-[13px] leading-relaxed text-white/75 outline-none transition placeholder:text-white/25 focus:border-white/25"
                 />
 
                 <div className="flex items-center justify-between gap-3">
@@ -224,14 +224,14 @@ export default function PortfolioRating() {
           </div>
 
           {loading ? (
-            <div className="flex items-center gap-2 rounded-2xl border border-white/10 p-4 text-[12px] text-white/35">
+            <div className="flex items-center gap-2 border-b border-white/10 pb-4 text-[12px] text-white/35">
               <Loader2 className="h-4 w-4 animate-spin" /> Loading ratings...
             </div>
           ) : featuredRatings.length > 0 ? (
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-x-6 sm:grid-cols-2">
               {featuredRatings.map((item) => (
                 <Reveal key={item.id}>
-                  <article className="h-full rounded-2xl border border-white/10 bg-white/[0.012] p-4 transition hover:border-white/20 hover:bg-white/[0.025]">
+                  <article className="border-b border-white/10 py-4">
                     <div className="mb-3 flex items-start justify-between gap-3">
                       <div className="flex min-w-0 items-center gap-2">
                         {item.user.image ? (
@@ -256,7 +256,7 @@ export default function PortfolioRating() {
               ))}
             </div>
           ) : (
-            <p className="rounded-2xl border border-dashed border-white/10 p-5 text-center text-[12px] text-white/35">
+            <p className="border-b border-white/10 pb-4 text-center text-[12px] text-white/35">
               No portfolio ratings yet.
             </p>
           )}
