@@ -1,5 +1,5 @@
 const techStack = [
-  'Building with Next.js',
+  'Next.js',
   'TypeScript',
   'React',
   'Tailwind CSS',
@@ -12,50 +12,33 @@ const techStack = [
   'Vercel',
 ]
 
-const repeatedStack = [...techStack, ...techStack]
+function MarqueeGroup() {
+  return (
+    <div className="tech-marquee-group" aria-hidden="true">
+      {techStack.map((item) => (
+        <span key={item} className="tech-marquee-item">
+          <span className="tech-marquee-dot" />
+          {item}
+        </span>
+      ))}
+    </div>
+  )
+}
 
 export default function TechMarquee() {
   return (
-    <section aria-label="Technology stack" className="mt-12 overflow-hidden border-y border-white/10 py-3">
-      <div className="relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-        <div className="flex min-w-max items-center gap-3 pr-3 tech-marquee-track">
-          {repeatedStack.map((item, index) => (
-            <span
-              key={`${item}-${index}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-white/45"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--home-accent)]" />
-              {item}
-            </span>
-          ))}
+    <section aria-label="Built with technology stack" className="mt-12 border-y border-white/10 py-3">
+      <div className="flex items-center gap-4 overflow-hidden">
+        <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--home-accent)]">
+          Built with
+        </p>
+        <div className="tech-marquee-mask">
+          <div className="tech-marquee-track">
+            <MarqueeGroup />
+            <MarqueeGroup />
+          </div>
         </div>
       </div>
-
-      <style>{`
-        .tech-marquee-track {
-          animation: tech-marquee 34s linear infinite;
-        }
-
-        section:hover .tech-marquee-track {
-          animation-play-state: paused;
-        }
-
-        @keyframes tech-marquee {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .tech-marquee-track {
-            animation: none;
-            transform: none;
-          }
-        }
-      `}</style>
     </section>
   )
 }
