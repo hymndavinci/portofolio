@@ -38,19 +38,61 @@ const socials = [
   },
 ]
 
+const statusColors: Record<string, string> = {
+  online: 'bg-emerald-500',
+  idle: 'bg-amber-400',
+  dnd: 'bg-red-500',
+  offline: 'bg-zinc-500',
+}
+
+function HeroAvatar({ src, status, mounted }: { src: string; status: string; mounted: boolean }) {
+  const dotColor = mounted ? statusColors[status] || statusColors.offline : statusColors.offline
+
+  return (
+    <motion.div
+      initial={{ scale: 0.95, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto h-56 w-56 sm:h-72 sm:w-72 lg:mx-0"
+    >
+      <span className="pointer-events-none absolute inset-0 rounded-full border-[3px] border-transparent border-l-red-500 border-t-red-500 rotate-[-16deg]" />
+      <span className="pointer-events-none absolute inset-[6px] rounded-full border-[3px] border-transparent border-r-red-500 border-b-red-400 rotate-[22deg]" />
+      <span className="pointer-events-none absolute inset-[-5px] rounded-full border border-transparent border-l-red-400/70 border-t-red-400/70 rotate-[-34deg]" />
+      <span className="pointer-events-none absolute inset-[14px] rounded-full bg-red-500/10 blur-2xl" />
+
+      <div className="absolute inset-[18px] overflow-hidden rounded-full border border-[color:var(--home-border-strong,rgba(255,255,255,0.15))] bg-[var(--home-soft)] shadow-[0_24px_70px_rgba(239,68,68,0.18)]">
+        <Image
+          src={src}
+          alt="hymndavinci profile photo"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 220px, 260px"
+          priority
+          unoptimized
+        />
+      </div>
+
+      <div className="absolute bottom-4 left-1 flex h-11 w-11 items-center justify-center rounded-full border-[3px] border-[var(--home-bg)] bg-[var(--home-surface)] text-2xl font-black leading-none text-[var(--home-ink)] shadow-lg shadow-black/15">
+        !
+      </div>
+
+      <div className="absolute bottom-6 right-2 flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-[var(--home-bg)] bg-violet-600 text-white shadow-lg shadow-violet-500/25">
+        <span className="ml-0.5 text-sm font-black">▶</span>
+      </div>
+
+      <div className="absolute right-5 top-6 flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-[var(--home-bg)] bg-red-500 text-white shadow-lg shadow-red-500/25">
+        <span className="text-lg font-black leading-none">✦</span>
+      </div>
+
+      <div className={`absolute left-[62%] top-[22%] h-4 w-4 rounded-full border-[3px] border-[var(--home-bg)] ${dotColor} shadow-sm`} />
+    </motion.div>
+  )
+}
+
 export default function Hero({ avatarSrc }: { avatarSrc: string }) {
   const { presence, mounted } = useLanyard("443335216833101825")
   const discordStatus = presence?.data?.discord_status || 'offline'
 
-  const statusColors: Record<string, string> = {
-    online: 'bg-emerald-500',
-    idle: 'bg-amber-400',
-    dnd: 'bg-red-500',
-    offline: 'bg-zinc-500',
-  }
-  const dotColor = mounted ? statusColors[discordStatus] : statusColors.offline
-
-  // Update avatarSrc secara real-time jika Lanyard sudah load & avatar berubah
   const discordUser = presence?.data?.discord_user
   const liveAvatarSrc =
     mounted && discordUser?.avatar
@@ -62,22 +104,7 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
       id="top"
       className="grid gap-10 pb-14 pt-6 lg:grid-cols-[280px_1fr] lg:items-center"
     >
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mx-auto h-56 w-56 overflow-hidden rounded-full border-2 border-white/10 bg-[var(--home-soft)] shadow-[0_0_60px_rgba(239,68,68,0.08)] sm:h-72 sm:w-72 lg:mx-0"
-      >
-        <Image
-          src={liveAvatarSrc}
-          alt="hymndavinci profile photo"
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 256px, 280px"
-          priority
-          unoptimized
-        />
-      </motion.div>
+      <HeroAvatar src={liveAvatarSrc} status={discordStatus} mounted={mounted} />
 
       <motion.div
         initial={{ y: 12, opacity: 0 }}
@@ -92,14 +119,13 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="text-4xl font-sans font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[4.5rem]">
-
+            <h1 className="text-4xl font-sans font-bold leading-tight tracking-tight text-[var(--home-ink)] sm:text-5xl lg:text-[4.5rem]">
               Bintang Kurniawan
             </h1>
           </Reveal>
           <div className="space-y-3 pt-2">
             <Reveal delay={0.1}>
-              <p className="text-[15px] font-medium tracking-wide text-white/90">
+              <p className="text-[15px] font-medium tracking-wide text-[var(--home-ink)] opacity-90">
                 Web developer focused on modern interfaces and practical user experiences.
               </p>
             </Reveal>
@@ -120,7 +146,7 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   title={social.label}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/30 text-white/70 shadow-[0_18px_40px_rgba(0,0,0,0.25)] transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--home-border)] bg-[var(--home-surface)] text-[var(--home-muted)] shadow-[0_18px_40px_rgba(0,0,0,0.10)] transition hover:border-[color:var(--home-accent)] hover:bg-[var(--home-surface-soft)] hover:text-[var(--home-ink)]"
                 >
                   {social.icon}
                 </a>
@@ -128,8 +154,6 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
             </div>
           </Reveal>
         </div>
-
-        {/* Discord Presence handles Activity heading to match layout */}
 
         <DiscordPresence presence={presence} mounted={mounted} />
       </motion.div>
