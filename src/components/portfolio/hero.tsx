@@ -38,8 +38,6 @@ const socials = [
   },
 ]
 
-const availability = ['Available for freelance', 'UI implementation', 'Remote collaboration']
-
 export default function Hero({ avatarSrc }: { avatarSrc: string }) {
   const { presence, mounted } = useLanyard("443335216833101825")
   const discordStatus = presence?.data?.discord_status || 'offline'
@@ -111,19 +109,6 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
               </p>
             </Reveal>
           </div>
-
-          <Reveal delay={0.18}>
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              {availability.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white/45"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </Reveal>
 
           <Reveal delay={0.2}>
             <div className="flex flex-wrap items-center gap-2 pt-1">
