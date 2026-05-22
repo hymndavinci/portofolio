@@ -1,0 +1,31 @@
+#top a[aria-label="Instagram"],
+#top a[aria-label="TikTok"],
+#top a[aria-label="Discord"] {
+  background: var(--home-surface) !important;
+  border-color: var(--home-border) !important;
+  color: var(--home-muted) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10) !important;
+}
+
+#top a[aria-label="Instagram"]:hover,
+#top a[aria-label="TikTok"]:hover,
+#top a[aria-label="Discord"]:hover {
+  background: var(--home-surface-soft) !important;
+  border-color: var(--home-accent) !important;
+  transform: translateY(-2px);
+}
+
+#top a[aria-label="Instagram"] img,
+#top a[aria-label="TikTok"] img,
+#top a[aria-label="Discord"] img {
+  opacity: 0.9;
+  filter: invert(1);
+}
+
+html.light-mode #top a[aria-label="Instagram"] img,
+html.light-mode #top a[aria-label="TikTok"] img,
+html.light-mode #top a[aria-label="Discord"] img {
+  filter: none;
+}
