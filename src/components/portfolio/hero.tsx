@@ -9,9 +9,21 @@ import { useLanyard } from '@/hooks/use-lanyard'
 const ANGRY_DECORATION_SRC = 'https://raw.githubusercontent.com/Hayanaga/SillyTavern-AvatarDecorations-CSS/main/dc-decorations/1_Angry.png'
 
 const socials = [
-  { label: 'Instagram', href: 'https://www.instagram.com/bintankdisini', text: 'IG' },
-  { label: 'TikTok', href: 'https://www.tiktok.com/@hymndavinci', text: 'TT' },
-  { label: 'Discord', href: 'https://discord.gg/dgmK9F2tvc', text: 'DC' },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/bintankdisini',
+    icon: 'https://cdn.simpleicons.org/instagram/ffffff',
+  },
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@hymndavinci',
+    icon: 'https://cdn.simpleicons.org/tiktok/ffffff',
+  },
+  {
+    label: 'Discord',
+    href: 'https://discord.gg/dgmK9F2tvc',
+    icon: 'https://cdn.simpleicons.org/discord/ffffff',
+  },
 ]
 
 const statusColors: Record<string, string> = {
@@ -109,9 +121,9 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   title={social.label}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--home-border)] bg-[var(--home-surface)] text-[11px] font-bold text-[var(--home-muted)] shadow-[0_18px_40px_rgba(0,0,0,0.10)] transition hover:border-[color:var(--home-accent)] hover:bg-[var(--home-surface-soft)] hover:text-[var(--home-ink)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--home-border)] bg-slate-950 text-white shadow-[0_18px_40px_rgba(0,0,0,0.10)] transition hover:border-[color:var(--home-accent)] hover:bg-[var(--home-accent)]"
                 >
-                  {social.text}
+                  <img src={social.icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" draggable={false} />
                 </a>
               ))}
             </div>
