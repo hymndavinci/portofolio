@@ -68,11 +68,11 @@ export default async function Home() {
             {/* Main content */}
             <div className="space-y-24 lg:min-w-0 lg:flex-[1_1_0%]">
               <About />
-              <Learning />
+              <Projects />
               <Skills />
               <Experience />
+              <Learning />
               <Certificates />
-              <Projects />
               <Blog />
               <Contact />
             </div>
