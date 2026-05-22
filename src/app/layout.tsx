@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import BackToTop from "@/components/portfolio/back-to-top";
+import ThemeSync from "@/components/portfolio/theme-sync";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -64,6 +65,7 @@ export default function RootLayout({
         className={`${jakarta.variable} antialiased home-portfolio`}
         suppressHydrationWarning
       >
+        <ThemeSync />
         {/* Background Effects */}
         <div className="pointer-events-none fixed inset-0 z-[-1]">
           <div className="absolute inset-0 bg-[var(--home-bg)]" />
