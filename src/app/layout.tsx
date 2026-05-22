@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import "./marquee-motion.css";
+import "./light-mode-fixes.css";
 import { Toaster } from "@/components/ui/toaster";
 import BackToTop from "@/components/portfolio/back-to-top";
 import ThemeSync from "@/components/portfolio/theme-sync";
