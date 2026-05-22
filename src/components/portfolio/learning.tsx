@@ -17,49 +17,49 @@ const learningItems = [
     id: '01',
     icon: Code2,
     title: 'Programming fundamentals',
-    description: 'Writing logic clearly and understanding how code runs.',
+    description: 'Writing clear logic and understanding how code executes.',
   },
   {
     id: '05',
     icon: Database,
     title: 'Databases',
-    description: 'Modeling data, writing queries, and managing relationships.',
+    description: 'Designing data models, writing queries, and managing relationships.',
   },
   {
     id: '02',
     icon: HardDrive,
     title: 'Data structures & algorithms',
-    description: 'Learning how data is organized and problems are solved efficiently.',
+    description: 'Learning how data is organized and how problems can be solved efficiently.',
   },
   {
     id: '06',
     icon: Terminal,
     title: 'Operating systems',
-    description: 'Studying processes, files, memory, and the system layer underneath.',
+    description: 'Studying processes, files, memory, and the system layer underneath applications.',
   },
   {
     id: '03',
     icon: Globe,
     title: 'Web systems',
-    description: 'Exploring how frontend, backend, APIs, and servers communicate.',
+    description: 'Understanding how frontend, backend, APIs, and servers communicate.',
   },
   {
     id: '07',
     icon: Wrench,
     title: 'Git, Linux & tooling',
-    description: 'Using developer tools to work, debug, and manage projects better.',
+    description: 'Using developer tools to build, debug, and manage projects with better control.',
   },
   {
     id: '04',
     icon: Layout,
     title: 'Application architecture',
-    description: 'Understanding how app features are structured and connected.',
+    description: 'Structuring features, data flow, and components so applications stay maintainable.',
   },
   {
     id: '08',
     icon: Lightbulb,
     title: 'Problem solving',
-    description: 'Breaking complex ideas into smaller steps that can be tested.',
+    description: 'Breaking complex ideas into smaller steps that can be tested and improved.',
   },
 ]
 
@@ -71,10 +71,10 @@ export default function Learning() {
         <Reveal>
           <div className="space-y-2">
             <p className="text-[11px] uppercase tracking-[0.35em] text-[var(--home-muted)]">
-              Currently Learning
+              Learning Path
             </p>
             <p className="text-[14px] text-[var(--home-muted)]">
-              Areas I am exploring step by step to understand the bigger picture of computer science.
+              Core areas I am building step by step to strengthen my computer science foundation.
             </p>
           </div>
         </Reveal>
