@@ -130,7 +130,6 @@
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -145,18 +144,15 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection */
 ::selection {
   background: rgba(239, 68, 68, 0.3);
   color: #fafafa;
 }
 
-/* Hide scrollbar utility (for sticky sidebar) */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -165,7 +161,6 @@ html {
   display: none;
 }
 
-/* Noise texture overlay — subtle grain */
 .home-portfolio::after {
   content: '';
   position: fixed;
@@ -181,7 +176,6 @@ html {
 html.light-mode .home-portfolio::after {
   opacity: 0.04;
 }
-
 
 html.light-mode {
   --home-bg: #fdf5f5;
@@ -204,12 +198,10 @@ html.light-mode ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.22);
 }
 
-/* Text: all white variants → dark */
 html.light-mode .home-portfolio [class*="text-white"] {
   color: rgba(15, 15, 15, 0.85) !important;
 }
 
-/* Borders: white → very subtle dark */
 html.light-mode .home-portfolio [class*="border-white"] {
   border-color: rgba(0, 0, 0, 0.05) !important;
 }
@@ -217,10 +209,9 @@ html.light-mode .home-portfolio [class*="divide-white"] > * + * {
   border-color: rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Backgrounds: black/* → off-white */
 html.light-mode .home-portfolio [class*="bg-black"] {
   background-color: rgba(0, 0, 0, 0.04) !important;
-}/* Specific backgrounds and hover states for light mode */
+}
 html.light-mode .home-portfolio .bg-white\/\[0\.02\],
 html.light-mode .home-portfolio .bg-white\/\[0\.04\] {
   background-color: rgba(0, 0, 0, 0.02) !important;
@@ -234,10 +225,6 @@ html.light-mode .home-portfolio .hover\:bg-white\/\[0\.07\]:hover {
   background-color: rgba(0, 0, 0, 0.04) !important;
 }
 
-
-
-
-/* Navbar pill, hamburger, theme toggle */
 html.light-mode header [class*="bg-black"] {
   background-color: rgba(255, 255, 255, 0.90) !important;
 }
@@ -251,7 +238,6 @@ html.light-mode header [class*="shadow"] {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10) !important;
 }
 
-/* Full-screen menu overlay */
 html.light-mode nav[class*="bg-black"] {
   background-color: rgba(245, 245, 245, 0.98) !important;
 }
@@ -265,12 +251,10 @@ html.light-mode nav [class*="bg-black"] {
   background-color: rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Contribution graph empty cells */
 html.light-mode [class*="bg-white"][class*="0.05"] {
   background-color: rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Responsive Dot Pattern */
 .bg-grid-pattern {
   --dot-color: rgba(255, 255, 255, 0.15);
   background-size: 24px 24px;
@@ -279,4 +263,19 @@ html.light-mode [class*="bg-white"][class*="0.05"] {
 
 html.light-mode .bg-grid-pattern {
   --dot-color: rgba(0, 0, 0, 0.15);
+}
+
+.home-portfolio section:not(#top) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .home-portfolio::after {
+    display: none;
+  }
 }
