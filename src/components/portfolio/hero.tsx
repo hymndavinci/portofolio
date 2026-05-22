@@ -12,17 +12,17 @@ const socials = [
   {
     label: 'Instagram',
     href: 'https://www.instagram.com/bintankdisini',
-    icon: 'https://cdn.simpleicons.org/instagram/ffffff',
+    icon: 'https://cdn.simpleicons.org/instagram/111827',
   },
   {
     label: 'TikTok',
     href: 'https://www.tiktok.com/@hymndavinci',
-    icon: 'https://cdn.simpleicons.org/tiktok/ffffff',
+    icon: 'https://cdn.simpleicons.org/tiktok/111827',
   },
   {
     label: 'Discord',
     href: 'https://discord.gg/dgmK9F2tvc',
-    icon: 'https://cdn.simpleicons.org/discord/ffffff',
+    icon: 'https://cdn.simpleicons.org/discord/111827',
   },
 ]
 
@@ -121,9 +121,9 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   title={social.label}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--home-border)] bg-slate-950 text-white shadow-[0_18px_40px_rgba(0,0,0,0.10)] transition hover:border-[color:var(--home-accent)] hover:bg-[var(--home-accent)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--home-border)] bg-white/70 text-[var(--home-ink)] shadow-[0_18px_40px_rgba(0,0,0,0.10)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-[color:var(--home-accent)] hover:bg-white/90 dark:bg-white/[0.06] dark:hover:bg-white/[0.10]"
                 >
-                  <img src={social.icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" draggable={false} />
+                  <img src={social.icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain opacity-90" draggable={false} />
                 </a>
               ))}
             </div>
