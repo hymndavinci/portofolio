@@ -1,0 +1,156 @@
+html.light-mode {
+  --home-bg: #f8fafc;
+  --home-ink: #020617;
+  --home-muted: rgba(15, 23, 42, 0.72);
+  --home-accent: #2563eb;
+  --home-soft: rgba(15, 23, 42, 0.045);
+  --hymn-stroke: rgba(2, 6, 23, 0.94);
+  --home-border: rgba(15, 23, 42, 0.12);
+  --home-border-strong: rgba(15, 23, 42, 0.18);
+  --home-surface: rgba(255, 255, 255, 0.72);
+  --home-surface-soft: rgba(15, 23, 42, 0.045);
+}
+
+html.light-mode .home-portfolio {
+  background: var(--home-bg) !important;
+  color: var(--home-ink) !important;
+}
+
+html.light-mode .home-portfolio [class*="text-white"] {
+  color: rgba(2, 6, 23, 0.92) !important;
+}
+
+html.light-mode .home-portfolio [class*="text-white\/10"],
+html.light-mode .home-portfolio [class*="text-white\/15"],
+html.light-mode .home-portfolio [class*="text-white\/18"],
+html.light-mode .home-portfolio [class*="text-white\/20"] {
+  color: rgba(15, 23, 42, 0.42) !important;
+}
+
+html.light-mode .home-portfolio [class*="text-white\/25"],
+html.light-mode .home-portfolio [class*="text-white\/30"],
+html.light-mode .home-portfolio [class*="text-white\/35"],
+html.light-mode .home-portfolio [class*="text-white\/40"],
+html.light-mode .home-portfolio [class*="text-white\/45"] {
+  color: rgba(15, 23, 42, 0.66) !important;
+}
+
+html.light-mode .home-portfolio [class*="text-white\/50"],
+html.light-mode .home-portfolio [class*="text-white\/55"],
+html.light-mode .home-portfolio [class*="text-white\/60"],
+html.light-mode .home-portfolio [class*="text-white\/65"],
+html.light-mode .home-portfolio [class*="text-white\/70"],
+html.light-mode .home-portfolio [class*="text-white\/75"] {
+  color: rgba(15, 23, 42, 0.80) !important;
+}
+
+html.light-mode .home-portfolio [class*="border-white\/5"],
+html.light-mode .home-portfolio [class*="border-white\/\[0\.05\]"] {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light-mode .home-portfolio [class*="border-white\/10"],
+html.light-mode .home-portfolio [class*="border-white\/\[0\.07\]"],
+html.light-mode .home-portfolio [class*="border-white\/\[0\.08\]"] {
+  border-color: var(--home-border) !important;
+}
+
+html.light-mode .home-portfolio [class*="border-white\/15"],
+html.light-mode .home-portfolio [class*="border-white\/20"],
+html.light-mode .home-portfolio [class*="border-white\/25"],
+html.light-mode .home-portfolio [class*="border-white\/30"] {
+  border-color: var(--home-border-strong) !important;
+}
+
+html.light-mode .home-portfolio [class*="divide-white"] > * + * {
+  border-color: rgba(15, 23, 42, 0.10) !important;
+}
+
+html.light-mode .home-portfolio [class*="bg-black\/10"],
+html.light-mode .home-portfolio [class*="bg-black\/15"],
+html.light-mode .home-portfolio [class*="bg-black\/20"],
+html.light-mode .home-portfolio [class*="bg-black\/30"],
+html.light-mode .home-portfolio [class*="bg-black\/50"] {
+  background-color: rgba(255, 255, 255, 0.68) !important;
+}
+
+html.light-mode .home-portfolio .bg-white\/\[0\.01\],
+html.light-mode .home-portfolio .bg-white\/\[0\.015\],
+html.light-mode .home-portfolio .bg-white\/\[0\.018\],
+html.light-mode .home-portfolio .bg-white\/\[0\.02\],
+html.light-mode .home-portfolio .bg-white\/\[0\.025\],
+html.light-mode .home-portfolio .bg-white\/\[0\.03\],
+html.light-mode .home-portfolio .bg-white\/\[0\.04\],
+html.light-mode .home-portfolio .bg-white\/\[0\.05\] {
+  background-color: rgba(255, 255, 255, 0.64) !important;
+}
+
+html.light-mode .home-portfolio .hover\:bg-white\/\[0\.01\]:hover,
+html.light-mode .home-portfolio .hover\:bg-white\/\[0\.03\]:hover,
+html.light-mode .home-portfolio .hover\:bg-white\/\[0\.04\]:hover,
+html.light-mode .home-portfolio .hover\:bg-white\/\[0\.06\]:hover,
+html.light-mode .home-portfolio .hover\:bg-white\/\[0\.07\]:hover {
+  background-color: rgba(15, 23, 42, 0.055) !important;
+}
+
+html.light-mode .home-portfolio [class*="placeholder:text-white"]::placeholder {
+  color: rgba(15, 23, 42, 0.42) !important;
+}
+
+html.light-mode .home-portfolio textarea,
+html.light-mode .home-portfolio input {
+  color: rgba(2, 6, 23, 0.88) !important;
+}
+
+html.light-mode .home-portfolio textarea:focus,
+html.light-mode .home-portfolio input:focus {
+  border-color: rgba(37, 99, 235, 0.35) !important;
+}
+
+html.light-mode .home-portfolio .text-emerald-400,
+html.light-mode .home-portfolio .text-emerald-400\/80 {
+  color: #059669 !important;
+}
+
+html.light-mode .home-portfolio .text-red-400,
+html.light-mode .home-portfolio .text-red-500 {
+  color: #dc2626 !important;
+}
+
+html.light-mode header [class*="bg-black"],
+html.light-mode .home-portfolio nav[class*="bg-black"] {
+  background-color: rgba(255, 255, 255, 0.86) !important;
+  backdrop-filter: blur(16px);
+}
+
+html.light-mode header [class*="border-white"],
+html.light-mode .home-portfolio nav [class*="border-white"] {
+  border-color: rgba(15, 23, 42, 0.14) !important;
+}
+
+html.light-mode header [class*="text-white"],
+html.light-mode .home-portfolio nav [class*="text-white"] {
+  color: rgba(2, 6, 23, 0.86) !important;
+}
+
+html.light-mode .home-portfolio .bg-grid-pattern {
+  --dot-color: rgba(15, 23, 42, 0.16);
+}
+
+html.light-mode .tech-marquee-shell,
+html.light-mode .tech-marquee-item {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  background-color: rgba(255, 255, 255, 0.68) !important;
+}
+
+html.light-mode .tech-marquee-key {
+  color: rgba(15, 23, 42, 0.52) !important;
+}
+
+html.light-mode .tech-marquee-eq {
+  color: rgba(15, 23, 42, 0.38) !important;
+}
+
+html.light-mode .tech-marquee-value {
+  color: rgba(15, 23, 42, 0.82) !important;
+}
