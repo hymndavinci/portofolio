@@ -41,15 +41,15 @@ function HeroAvatar({ src, status, mounted }: { src: string; status: string; mou
       initial={{ scale: 0.95, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto h-56 w-56 sm:h-72 sm:w-72 lg:mx-0"
+      className="relative mx-auto h-52 w-52 sm:h-64 sm:w-64 lg:mx-0"
     >
-      <div className="absolute inset-[14px] overflow-hidden rounded-full border border-[color:var(--home-border-strong,rgba(255,255,255,0.15))] bg-[var(--home-soft)] shadow-[0_24px_70px_rgba(239,68,68,0.12)] sm:inset-[18px]">
+      <div className="absolute inset-[13px] overflow-hidden rounded-full border border-[color:var(--home-border-strong,rgba(255,255,255,0.15))] bg-[var(--home-soft)] shadow-[0_24px_70px_rgba(239,68,68,0.12)] sm:inset-[16px]">
         <Image
           src={src}
           alt="hymndavinci profile photo"
           fill
           className="object-cover"
-          sizes="(max-width: 1024px) 220px, 260px"
+          sizes="(max-width: 1024px) 208px, 256px"
           priority
           unoptimized
         />
@@ -63,7 +63,7 @@ function HeroAvatar({ src, status, mounted }: { src: string; status: string; mou
         draggable={false}
       />
 
-      <div className={`absolute bottom-11 right-9 z-20 h-4 w-4 rounded-full border-[3px] border-[var(--home-bg)] ${dotColor} shadow-sm`} />
+      <div className={`absolute bottom-10 right-8 z-20 h-4 w-4 rounded-full border-[3px] border-[var(--home-bg)] ${dotColor} shadow-sm`} />
     </motion.div>
   )
 }
