@@ -17,10 +17,9 @@ const navLinks = [
   { label: 'Connect', href: '#contact' },
 ]
 
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { presence, mounted } = useLanyard("443335216833101825")
+  const { presence } = useLanyard("443335216833101825")
   const { isLight, toggle } = useTheme()
 
   const discordUser = presence?.data?.discord_user
@@ -38,7 +37,6 @@ export default function Navbar() {
         className="fixed left-0 right-0 top-0 z-40 px-4 pt-5"
       >
         <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between">
-          {/* Logo pill */}
           <a
             href="#top"
             className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/70 px-4 py-2 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] backdrop-blur transition hover:border-white/20"
@@ -58,7 +56,6 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* Desktop nav links (tengah/kanan) — muncul di lg ke atas */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
             {navLinks.map((link) => (
               <Link
@@ -71,9 +68,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right actions */}
           <div className="flex items-center gap-2">
-            {/* Theme toggle */}
             <button
               onClick={toggle}
               aria-label="Toggle theme"
@@ -84,7 +79,6 @@ export default function Navbar() {
               </span>
             </button>
 
-            {/* Hamburger button */}
             <button
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
@@ -103,7 +97,6 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Fullscreen overlay menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -114,12 +107,17 @@ export default function Navbar() {
             aria-hidden={!menuOpen}
             className="fixed inset-0 z-50 flex items-center bg-black/95 backdrop-blur-sm"
           >
+            <div className="absolute left-6 top-6 text-[10px] uppercase tracking-[0.3em] text-white/30 sm:left-10">
+              Navigation
+            </div>
+
             <button
               onClick={() => setMenuOpen(false)}
-              className="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white/80 backdrop-blur transition hover:border-white/20 hover:text-white"
+              className="absolute right-5 top-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/70 px-3 py-2 text-white/80 backdrop-blur transition hover:border-white/20 hover:text-white"
               aria-label="Close menu"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06]">
+              <span className="hidden text-[10px] uppercase tracking-[0.2em] text-white/45 sm:inline">Close</span>
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.06]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
                   <path d="M18 6 6 18" />
                   <path d="m6 6 12 12" />
@@ -139,7 +137,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block w-fit font-sans font-semibold leading-[0.95] tracking-tight transition text-[clamp(2.15rem,6vw,4.5rem)] text-white hover:text-white/55"
+                    className="block w-fit font-sans font-semibold leading-[0.95] tracking-tight transition text-[clamp(2.15rem,6vw,4.5rem)] text-white hover:translate-x-2 hover:text-white/55"
                   >
                     {link.label}
                   </Link>
