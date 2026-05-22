@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Layers, Target, Wrench } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2, Layers, Target, Wrench } from 'lucide-react'
 import { getProjectBySlug, projects } from '@/lib/project-data'
 
 interface Props {
@@ -29,6 +29,10 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = getProjectBySlug(slug)
 
   if (!project) return notFound()
+
+  const currentIndex = projects.findIndex((item) => item.slug === slug)
+  const previousProject = currentIndex > 0 ? projects[currentIndex - 1] : null
+  const nextProject = currentIndex >= 0 && currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
 
   return (
     <div className="min-h-screen" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
@@ -121,6 +125,38 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
           </aside>
         </section>
+
+        {(previousProject || nextProject) && (
+          <section className="grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
+            {previousProject ? (
+              <Link
+                href={`/projects/${previousProject.slug}`}
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.04]"
+              >
+                <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35">
+                  <ArrowLeft className="h-3 w-3" /> Previous project
+                </p>
+                <p className="line-clamp-2 text-[14px] font-semibold leading-snug text-white/75 transition group-hover:text-white">
+                  {previousProject.title}
+                </p>
+              </Link>
+            ) : <div />}
+
+            {nextProject ? (
+              <Link
+                href={`/projects/${nextProject.slug}`}
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-left transition hover:border-white/20 hover:bg-white/[0.04] sm:text-right"
+              >
+                <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35 sm:justify-end">
+                  Next project <ArrowRight className="h-3 w-3" />
+                </p>
+                <p className="line-clamp-2 text-[14px] font-semibold leading-snug text-white/75 transition group-hover:text-white">
+                  {nextProject.title}
+                </p>
+              </Link>
+            ) : <div />}
+          </section>
+        )}
       </main>
     </div>
   )
