@@ -14,16 +14,18 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const siteUrl = 'https://hymndavinci.my.id';
+const siteTitle = 'Muhammad Bintang Kurniawan — Portfolio';
+const siteDescription = 'Software engineering enthusiast focused on modern web interfaces, full-stack projects, automation tools, and clean digital experiences.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "Hymn Portfolio",
-  title: "Hymn",
-  description: "Developer building modern web experiences with clean UI and smooth interactions.",
-  keywords: ["Portfolio", "Web Developer", "Software Engineer", "Next.js", "TypeScript", "React"],
-  authors: [{ name: "Hymn Davinci", url: siteUrl }],
-  creator: "Hymn Davinci",
-  publisher: "Hymn Davinci",
+  applicationName: "Muhammad Bintang Kurniawan Portfolio",
+  title: siteTitle,
+  description: siteDescription,
+  keywords: ["Muhammad Bintang Kurniawan", "Hymn Davinci", "Portfolio", "Web Developer", "Software Engineer", "Next.js", "TypeScript", "React"],
+  authors: [{ name: "Muhammad Bintang Kurniawan", url: siteUrl }],
+  creator: "Muhammad Bintang Kurniawan",
+  publisher: "Muhammad Bintang Kurniawan",
   alternates: {
     canonical: "/",
   },
@@ -32,16 +34,16 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Hymn — Portfolio",
-    description: "Developer building modern web experiences with clean UI and smooth interactions.",
+    title: siteTitle,
+    description: siteDescription,
     url: siteUrl,
-    siteName: "Hymn",
+    siteName: "Muhammad Bintang Kurniawan Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hymn - Bintang Kurniawan",
+        alt: "Muhammad Bintang Kurniawan portfolio preview",
       },
     ],
     locale: "en_US",
@@ -49,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hymn — Portfolio",
-    description: "Developer building modern web experiences with clean UI and smooth interactions.",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/og-image.png"],
     creator: "@hymndavinci",
   },
