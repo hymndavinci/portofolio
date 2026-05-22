@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light-mode" suppressHydrationWarning>
       <body
         className={`${jakarta.variable} antialiased home-portfolio`}
         suppressHydrationWarning
