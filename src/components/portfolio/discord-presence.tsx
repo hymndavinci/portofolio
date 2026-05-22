@@ -100,14 +100,12 @@ function getActivityImage(activity: LanyardData['data']['activities'][0]): strin
     if (slashIndex === -1) return null
     let afterHash = withoutPrefix.slice(slashIndex + 1)
     
-    // Safely extract the http or https URL
     if (afterHash.includes('https/')) {
       return 'https://' + afterHash.split('https/')[1]
     } else if (afterHash.includes('http/')) {
       return 'http://' + afterHash.split('http/')[1]
     }
     
-    // Fallback original replacement
     return afterHash.replace(/^(https?)\//, '$1://')
   }
 
@@ -167,33 +165,35 @@ export default function DiscordPresence({ presence, mounted }: { presence: Lanya
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="relative h-16 w-16 shrink-0 rounded-xl bg-black/50 overflow-hidden shadow-inner">
-              {activityImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={activityImage}
-                  alt={activity.assets?.large_text || activity.name}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center text-xl font-bold uppercase text-white/20">
-                  {activity.name.charAt(0)}
-                </div>
-              )}
+            <div className="relative h-16 w-16 shrink-0 rounded-xl bg-black/50 overflow-visible shadow-inner">
+              <div className="h-full w-full overflow-hidden rounded-xl">
+                {activityImage ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={activityImage}
+                    alt={activity.assets?.large_text || activity.name}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-xl font-bold uppercase text-white/20">
+                    {activity.name.charAt(0)}
+                  </div>
+                )}
+              </div>
               {activity.assets?.small_image && (
-                <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full border-[3px] border-transparent bg-black overflow-hidden">
+                <div className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-[var(--home-bg)] bg-white p-1 shadow-sm overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={getActivityImage({ ...activity, assets: { large_image: activity.assets.small_image } }) || ''}
                     alt={activity.assets.small_text || ''}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 </div>
               )}
             </div>
 
             <div className="flex flex-1 flex-col justify-center">
-              <p className="text-[15px] font-semibold text-white">{activity.name}</p>
+              <p className="text-[15px] font-semibold text-[var(--home-ink)]">{activity.name}</p>
               {activity.details && (
                 <p className="mt-0.5 text-[13px] text-[var(--home-muted)]">{activity.details}</p>
               )}
