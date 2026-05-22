@@ -15,6 +15,16 @@ const projects = [
     github: 'https://github.com/hymndavinci/Kasir-Pintar',
   },
   {
+    id: 'hymn-plus',
+    title: 'Hymn+',
+    description: 'Dashboard personal untuk mengelola workflow Discord, status akun, music system, AI chat, screenshot utility, dan worker tools dalam satu panel yang ringan dan terstruktur.',
+    badge: 'Dashboard · Automation',
+    live: true,
+    tags: ['Node.js', 'Express', 'EJS', 'Lavalink', 'NVIDIA NIM'],
+    href: null,
+    github: null,
+  },
+  {
     id: 'bintang-movies',
     title: 'BintangMovies',
     description: 'Netflix-style streaming web app untuk browsing dan nonton film & serial TV dengan subtitle Indonesia. Didukung TMDB API, multi video player, dan fitur Film Sub Indo via IdlixAPI.',
