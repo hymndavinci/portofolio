@@ -15,84 +15,94 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
-    title: 'I Was Trying to Be Someone',
+    title: 'Becoming Someone I Was Not',
     slug: 'i-was-trying-to-be-someone',
-    tagline: 'Sebuah upaya panjang untuk menjadi seseorang yang berbeda demi diterima — hingga menyadari bahwa diri yang asli sudah lama hilang di tengah jalan.',
+    tagline: 'Tentang usaha menjadi versi lain demi diterima — sampai akhirnya sadar bahwa diri sendiri perlahan tertinggal di tengah jalan.',
     date: 'February 24, 2026',
     views: 50,
     author: 'Hymn',
     category: 'Love',
     color: 'from-violet-500/20 to-purple-900/20',
     relatedSlugs: ['merelakannya'],
-    content: `Pernah nggak kamu sadar bahwa kamu sedang berpura-pura menjadi seseorang yang bukan dirimu sendiri? Bukan di depan orang banyak, bukan di panggung — tapi di depan seseorang yang kamu harap bisa menerima kamu apa adanya.
+    content: `Ada fase ketika kamu tidak benar-benar berubah karena ingin tumbuh, tapi karena takut tidak cukup untuk seseorang.
 
-Kamu mulai mengubah cara bicaramu. Cara bersikap. Cara mengekspresikan rasa. Bukan karena dia memintanya, tapi karena kamu takut. Takut kalau menjadi dirimu sendiri tidak cukup. Takut kalau versi aslimu terlalu banyak, terlalu berlebihan, atau justru terlalu sedikit.
+Awalnya kecil. Kamu mulai menahan cara bicaramu. Menyusun ulang sikapmu. Menimbang setiap pesan sebelum dikirim. Bukan karena dia meminta, tapi karena kamu mulai percaya bahwa versi asli dirimu mungkin terlalu banyak, terlalu berantakan, atau tidak cukup layak untuk diterima.
 
-Jadi kamu berubah. Pelan-pelan. Tanpa kamu sadari, kamu mulai menjadi seseorang yang kamu pikir lebih layak untuk diterima.
+Lalu pelan-pelan, kamu menjadi seseorang yang terasa aman untuk ditampilkan. Lebih rapi. Lebih tenang. Lebih sesuai dengan bentuk yang kamu kira dia inginkan.
 
-Dan lelahnya bukan seperti kelelahan setelah berlari. Ini lelah yang berbeda — lelah yang datang setiap pagi bahkan sebelum harimu dimulai. Karena setiap hari, kamu bangun dan langsung memakai topeng yang kamu bikin sendiri, dengan tanganmu sendiri.
+Masalahnya, berpura-pura tidak selalu terasa seperti kebohongan. Kadang ia terasa seperti usaha. Seperti pengorbanan. Seperti bukti bahwa kamu serius menjaga sesuatu yang kamu anggap penting.
 
-Kamu membaca setiap isyaratnya, setiap diamnya, setiap reaksi kecilnya — dan kamu jadikan itu panduan untuk terus memodifikasi dirimu. Semakin keras kamu berusaha, semakin kamu tidak mengenali bayangan dirimu sendiri.
+Padahal di saat yang sama, kamu sedang menjauh dari dirimu sendiri.
 
-Kamu berdiri di depan cermin dan yang kamu lihat bukan kamu. Itu seseorang yang kamu rekayasa dengan hati-hati agar bisa pas di ruang yang dia sediakan. Dan di suatu titik, kamu mulai lupa rasa aslimu sendiri. Cara tertawamu yang sebenarnya. Hal-hal yang sungguh-sungguh kamu sukai sebelum kamu mulai menyesuaikan segalanya.
+Kamu membaca setiap diamnya. Setiap perubahan nada. Setiap respons yang sedikit berbeda. Semua itu kamu jadikan petunjuk untuk terus memperbaiki versi buatanmu. Semakin keras kamu berusaha terlihat layak, semakin asing kamu pada bayanganmu sendiri.
 
-Kamu pikir itu bentuk usaha. Bahwa rela berubah berarti kamu sungguh-sungguh. Tapi yang sebenarnya terjadi adalah kamu sedang melarikan diri dari dirimu sendiri, dengan dia sebagai alasannya.
+Di depan cermin, kamu masih mengenali wajahmu. Tapi tidak lagi mengenali caramu hadir. Tidak lagi mengenali tawa yang dulu keluar tanpa dipikirkan. Tidak lagi mengenali hal-hal kecil yang pernah kamu suka sebelum semuanya kamu sesuaikan demi seseorang.
 
-Dan ketika semuanya berakhir, kamu sadar — orang yang ada di sana selama ini bukan kamu yang asli. Yang diperjuangkan, yang dipertahankan, yang dimodifikasi terus-menerus — itu bukan kamu.
+Dan ketika semuanya selesai, bagian paling menyakitkan bukan hanya kehilangan dia. Tapi menyadari bahwa orang yang selama ini kamu perjuangkan untuk diterima bukanlah kamu yang sebenarnya.
 
-Sekarang kamu tahu: yang layak hadir di sisimu adalah seseorang yang membuat kamu merasa aman untuk berdiri — apa adanya, tanpa perlu mengecil, tanpa perlu berpura-pura.`,
+Kamu pernah mengira berubah demi seseorang adalah bentuk cinta. Sekarang kamu tahu, cinta yang sehat tidak meminta kamu menghilang dari dirimu sendiri.
+
+Yang layak tinggal adalah seseorang yang membuatmu merasa cukup untuk hadir apa adanya — tanpa perlu mengecil, tanpa perlu memakai topeng, tanpa perlu menjadi orang lain hanya agar tidak ditinggalkan.`,
   },
   {
     id: '2',
-    title: 'Merelakannya?',
+    title: 'Letting Go Without Losing the Feeling',
     slug: 'merelakannya',
-    tagline: 'Ada hal-hal yang memang harus dilepaskan — bukan karena tidak mampu memegang, melainkan karena mempertahankannya hanya akan mengikis lebih dalam.',
+    tagline: 'Ada rasa yang tidak langsung hilang setelah dilepaskan. Kadang merelakan hanya berarti berhenti memaksa sesuatu yang terus melukai.',
     date: 'August 15, 2025',
     views: 41,
     author: 'Hymn',
     category: 'Personal',
     color: 'from-emerald-500/20 to-teal-900/20',
     relatedSlugs: ['i-was-trying-to-be-someone', 'cs-ive-always-had-vision-of-us-standing-like-this'],
-    content: `Merelakan seseorang yang kamu cintai adalah proses panjang yang perlahan mengikis bahagia dalam dirimu. Bukan karena perasaanmu kurang kuat, tapi karena semesta seolah tak pernah berpihak. Kamu pernah berdoa dengan air mata yang jatuh diam-diam di malam hari. Kamu pernah berharap setiap harimu hanya tentang dia.
+    content: `Merelakan seseorang tidak selalu berarti perasaanmu selesai. Kadang yang selesai hanya keberanianmu untuk terus memaksa keadaan.
 
-Namun pada akhirnya, kamu harus sadar bahwa tidak semua rasa layak diperjuangkan sampai habis-habisan. Kamu mulai belajar menerima, walau hatimu menolak. Kamu mulai berjalan menjauh, walau jiwamu ingin tetap tinggal. Kamu mulai belajar tersenyum di tengah luka yang tak pernah bisa kamu sembuhkan sendiri.
+Kamu masih mengingat banyak hal. Cara dia bicara. Cara dia diam. Hal-hal kecil yang seharusnya biasa saja, tapi tetap punya tempat sendiri di kepala. Kamu mencoba terlihat baik-baik saja, meski ada bagian dari dirimu yang masih tertinggal di waktu yang sama.
 
-Setiap hari kamu berpura-pura tidak apa-apa, walau di dalam kepalamu namanya masih berisik. Suaranya masih terngiang, senyumnya masih kamu ingat dengan jelas. Kamu mencoba menghapus kenangan, tapi kenangan tak bisa kamu buang begitu saja.
+Dulu kamu mungkin pernah berharap terlalu jauh. Membayangkan hari-hari yang lebih tenang. Membayangkan semuanya bisa berjalan seperti yang kamu mau. Kamu pernah berdoa diam-diam, menyimpan harap yang tidak selalu bisa kamu jelaskan ke siapa pun.
 
-Kamu mencoba mencintai orang lain, tapi tak ada yang mampu menggantikan tempatnya. Kamu mencoba membenci, tapi hatimu tetap lembut jika bicara tentang dia. Dan di antara semua itu, kamu tetap menyimpan rasa dalam diam, dalam jarak, dalam rindu yang tak bisa kamu tunjukkan.
+Tapi hidup tidak selalu bergerak mengikuti rasa yang paling besar.
 
-Kamu belajar mengikhlaskan tanpa menghapus rasa. Belajar menerima tanpa benar-benar rela. Belajar berjalan sendiri tanpa arah yang jelas. Dan mungkin inilah bentuk paling sunyi dari sebuah perasaan: ketika kamu harus melepaskan seseorang yang kamu tahu adalah satu-satunya yang ingin kamu genggam selamanya.
+Pada akhirnya, kamu mulai mengerti bahwa tidak semua yang kamu cintai harus kamu pertahankan sampai hancur. Tidak semua yang pernah terasa tepat akan tetap menjadi tempat pulang. Ada hal-hal yang perlu dilepaskan bukan karena rasanya hilang, tapi karena menggenggamnya hanya membuat luka semakin dalam.
 
-Kamu tetap berdoa agar dia bahagia, walau bukan denganmu. Kamu tetap berharap dia baik-baik saja, meski kamu sendiri tidak pernah benar-benar baik sejak kehilangan dia. Dan akhirnya kamu sadar, merelakan bukan soal berhenti merasa — tapi soal keberanian untuk melepaskan saat tetap bersamanya hanya membuatmu terluka lebih dalam setiap harinya.`,
+Merelakan bukan proses yang rapi. Ada hari ketika kamu merasa sudah baik-baik saja. Ada hari ketika satu hal kecil bisa membuat semuanya kembali terasa dekat. Kamu tidak benar-benar lupa. Kamu hanya belajar untuk tidak lagi tinggal di sana.
+
+Dan mungkin itu bagian tersulitnya: menerima bahwa kamu masih peduli, tapi tidak lagi bisa menjadikannya alasan untuk kembali.
+
+Kamu tetap berharap dia bahagia. Tetap berharap dia baik-baik saja. Tapi untuk pertama kalinya, kamu juga mulai mengizinkan dirimu sendiri untuk tidak terus menunggu di tempat yang sama.
+
+Merelakan bukan tentang berhenti merasa. Merelakan adalah keberanian untuk berjalan, bahkan ketika sebagian kecil dari hatimu masih menoleh ke belakang.`,
   },
   {
     id: '3',
-    title: "cs i've always had vision of us standing like this",
+    title: 'A Vision of Us Standing Like This',
     slug: 'cs-ive-always-had-vision-of-us-standing-like-this',
-    tagline: 'Sebuah bayangan yang terbentuk sejak awal — tentang kita yang berdiri berdampingan dengan jujur, yang tak pernah sempat menjadi nyata.',
+    tagline: 'Tentang bayangan sederhana yang terasa nyata sejak awal — dua orang berdiri berdampingan, sebelum semuanya berubah menjadi sesuatu yang harus direlakan.',
     date: 'May 19, 2026',
     views: 0,
     author: 'Hymn',
     category: 'Personal',
     color: 'from-blue-500/20 to-indigo-900/20',
     relatedSlugs: ['i-was-trying-to-be-someone', 'merelakannya'],
-    content: `Kamu pernah punya bayangan itu, kan? Sesuatu yang muncul diam-diam, bahkan sebelum kamu sadar sedang merasakannya. Bukan sesuatu yang besar atau dramatis — hanya sebuah gambar sederhana. Tentang kamu dan dia. Berdiri berdampingan. Di suatu tempat yang tidak pernah kamu namai, tapi selalu terasa nyata di kepalamu.
+    content: `Pernah ada bayangan yang muncul bahkan sebelum kamu sempat menyebutnya harapan.
 
-Bayangan itu hadir sebelum kalian benar-benar menjadi apa-apa. Sebelum kamu sadar bahwa kamu sedang jatuh. Ia masuk diam-diam, seperti seseorang yang sudah ada di dalam rumah sebelum kamu sempat membuka pintunya.
+Bukan sesuatu yang besar. Bukan adegan yang dramatis. Hanya gambar sederhana tentang kamu dan dia yang berdiri berdampingan. Di tempat yang tidak jelas namanya, tapi terasa sangat nyata di kepala.
+
+Bayangan itu datang diam-diam. Sebelum semuanya punya bentuk. Sebelum kamu tahu apakah perasaanmu akan tumbuh atau hanya lewat sebentar. Ia hadir seperti sesuatu yang sudah lebih dulu menunggu, lalu perlahan membuatmu percaya bahwa mungkin, suatu hari, gambar itu bisa benar-benar terjadi.
 
 Cs I've always had a vision of us standing like this.
 
-Dan rasanya waktu itu — menyenangkan sekaligus menakutkan. Kamu tidak tahu apakah itu nyata atau hanya kepalamu yang sedang terlalu kreatif. Kamu tidak tahu apakah dia juga melihat hal yang sama, atau hanya kamu yang diam-diam sedang membangun gedung di atas tanah kosong.
+Kalimat itu terdengar sederhana, tapi beratnya tidak sesederhana itu. Karena yang kamu lihat bukan hanya seseorang. Kamu melihat kemungkinan. Melihat versi hidup yang terasa lebih hangat. Melihat dirimu berdiri di sebelahnya tanpa perlu menjelaskan terlalu banyak.
 
-Tapi bayangan itu tidak pernah pergi. Justru semakin tajam seiring waktu.
+Tapi semakin lama kamu memegang bayangan itu, semakin kamu mulai membentuk dirimu agar muat di dalamnya. Kamu menyesuaikan cara bicara. Cara hadir. Cara menahan rasa. Semua dilakukan agar kamu tetap punya tempat di gambar yang kamu bangun sendiri.
 
-Sayangnya, semakin jelas gambar itu di kepalamu, semakin kamu mulai kehilangan dirimu sendiri di dalamnya. Tanpa sadar, kamu mulai menyesuaikan segalanya — cara bicaramu, cara bersikap, cara kamu hadir — supaya terasa pas di sebelahnya. Supaya kamu layak masuk ke dalam gambar yang sudah kamu susun sendiri itu.
+Lalu ketika semuanya tidak menjadi nyata, kamu sadar bahwa yang paling sulit dilepas bukan hanya orangnya. Bukan hanya kenangannya. Tapi versi masa depan yang sudah berkali-kali kamu putar di kepala.
 
-Dan ketika semuanya berakhir, kamu baru menyadari: visi yang selama ini kamu pegang tidak pernah benar-benar terjadi. Bukan karena kalian tidak punya waktu. Tapi karena orang yang berdiri di sebelahnya selama ini bukan kamu yang sebenarnya.
+Itu yang membuatnya berat: kamu tidak hanya kehilangan seseorang. Kamu juga kehilangan kemungkinan.
 
-Itu yang paling sulit untuk direlakan — bukan dia, bukan kenangan tentang kalian. Tapi gambar itu. Bayangan tentang dua orang yang berdiri berdampingan dengan jujur, tanpa rekayasa, tanpa topeng yang dipakai demi diterima.
+Namun sekarang kamu mulai paham, bayangan itu mungkin tidak sepenuhnya sia-sia. Ia menunjukkan sesuatu yang pernah kamu inginkan dengan jujur. Ia mengingatkan bahwa suatu hari kamu ingin berdiri di samping seseorang tanpa topeng, tanpa rekayasa, tanpa harus menghilangkan bagian asli dari dirimu.
 
-Visi itu masih ada di kepalamu. Mungkin selamanya. Tapi sekarang kamu tahu: ia bukan tentang dia dan kamu yang kemarin. Mungkin ia adalah petunjuk tentang seperti apa kamu harus berdiri — untuk dirimu sendiri, terlebih dahulu — sebelum bisa berdiri jujur di sebelah siapa pun.`,
+Mungkin visi itu bukan tentang dia lagi. Mungkin ia adalah pengingat tentang cara kamu ingin dicintai, dan cara kamu harus belajar berdiri untuk dirimu sendiri terlebih dahulu.`,
   },
 ]
 
