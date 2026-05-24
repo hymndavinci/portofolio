@@ -89,12 +89,12 @@ export default function Hero({ avatarSrc }: { avatarSrc: string }) {
           <div className="space-y-3 pt-2">
             <Reveal delay={0.1}>
               <p className="text-[15px] font-medium tracking-wide text-[var(--home-ink)] opacity-90">
-                Web developer focused on modern interfaces and practical user experiences.
+                Web developer building clean interfaces, practical dashboards, and automation-driven web tools.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="max-w-xl text-sm leading-relaxed text-[var(--home-muted)]">
-                I build clean, responsive web apps with stable functionality, thoughtful details, and real-world usability.
+                I focus on responsive front-end systems, useful product flows, and details that make web apps feel stable, fast, and intentional.
               </p>
             </Reveal>
           </div>
