@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2, Layers, Target, Wrench } from 'lucide-react'
-import { getProjectBySlug, projects } from '@/lib/project-data'
+import { getProjectBySlug, getProjectCopy, projects, type ProjectLocale } from '@/lib/project-data'
 import Comments from '@/components/portfolio/comments'
 
 interface Props {
   params: Promise<{ slug: string }>
+  searchParams?: Promise<{ lang?: string }>
 }
 
 export function generateStaticParams() {
@@ -25,12 +26,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProjectDetailPage({ params }: Props) {
+export default async function ProjectDetailPage({ params, searchParams }: Props) {
   const { slug } = await params
+  const query = searchParams ? await searchParams : {}
   const project = getProjectBySlug(slug)
 
   if (!project) return notFound()
 
+  const locale: ProjectLocale = query.lang === 'id' ? 'id' : 'en'
+  const copy = getProjectCopy(project, locale)
   const currentIndex = projects.findIndex((item) => item.slug === slug)
   const previousProject = currentIndex > 0 ? projects[currentIndex - 1] : null
   const nextProject = currentIndex >= 0 && currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
@@ -46,7 +50,10 @@ export default async function ProjectDetailPage({ params }: Props) {
             <ArrowLeft className="h-3 w-3 shrink-0" />
             <span className="truncate">Back to Projects</span>
           </Link>
-          <span className="text-[10px] uppercase tracking-[0.22em] text-white/30">Project Detail</span>
+          <div className="flex items-center gap-2">
+            <LanguageLink slug={slug} value="en" active={locale === 'en'} label="EN" />
+            <LanguageLink slug={slug} value="id" active={locale === 'id'} label="ID" />
+          </div>
         </div>
       </div>
 
@@ -64,7 +71,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             {project.title}
           </h1>
           <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-white/60 sm:text-[16px]">
-            {project.tagline}
+            {copy.tagline}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2">
@@ -93,17 +100,17 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         <section className="grid gap-10 py-10 lg:grid-cols-[1fr_260px] lg:items-start">
           <article className="space-y-10">
-            <DetailBlock icon={Layers} title="Overview" body={project.overview} />
+            <DetailBlock icon={Layers} title="Overview" body={copy.overview} />
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <DetailBlock icon={Target} title="Problem" body={project.problem} />
-              <DetailBlock icon={Wrench} title="Solution" body={project.solution} />
+              <DetailBlock icon={Target} title="Problem" body={copy.problem} />
+              <DetailBlock icon={Wrench} title="Solution" body={copy.solution} />
             </div>
 
             <div className="space-y-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/45">Key Features</p>
               <div className="grid gap-3 sm:grid-cols-2">
-                {project.features.map((feature) => (
+                {copy.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-4">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400/80" />
                     <span className="text-[13px] leading-relaxed text-white/65">{feature}</span>
@@ -112,7 +119,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
             </div>
 
-            <DetailBlock icon={Wrench} title="My Role" body={project.role} />
+            <DetailBlock icon={Wrench} title="My Role" body={copy.role} />
           </article>
 
           <aside className="rounded-2xl border border-white/10 bg-black/20 p-5 lg:sticky lg:top-20">
@@ -133,7 +140,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <section className="mt-16 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
             {previousProject ? (
               <Link
-                href={`/projects/${previousProject.slug}`}
+                href={`/projects/${previousProject.slug}?lang=${locale}`}
                 className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.04]"
               >
                 <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35">
@@ -147,7 +154,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
             {nextProject ? (
               <Link
-                href={`/projects/${nextProject.slug}`}
+                href={`/projects/${nextProject.slug}?lang=${locale}`}
                 className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-left transition hover:border-white/20 hover:bg-white/[0.04] sm:text-right"
               >
                 <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35 sm:justify-end">
@@ -162,6 +169,21 @@ export default async function ProjectDetailPage({ params }: Props) {
         )}
       </main>
     </div>
+  )
+}
+
+function LanguageLink({ slug, value, active, label }: { slug: string; value: ProjectLocale; active: boolean; label: string }) {
+  return (
+    <Link
+      href={`/projects/${slug}?lang=${value}`}
+      className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+        active
+          ? 'border-white/25 bg-white/10 text-white'
+          : 'border-white/10 bg-white/[0.02] text-white/35 hover:border-white/20 hover:text-white/70'
+      }`}
+    >
+      {label}
+    </Link>
   )
 }
 
