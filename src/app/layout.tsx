@@ -17,7 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 const siteUrl = 'https://hymndavinci.my.id';
 const siteTitle = 'Muhammad Bintang Kurniawan — Portfolio';
-const siteDescription = 'Software engineering enthusiast focused on modern web interfaces, full-stack projects, automation tools, and clean digital experiences.';
+const siteDescription = 'Software engineering enthusiast focused on modern web interfaces, automation tools, practical dashboards, and clean digital experiences.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
