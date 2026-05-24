@@ -10,6 +10,31 @@ interface Props {
   searchParams?: Promise<{ lang?: string }>
 }
 
+const labels = {
+  en: {
+    back: 'Back to Projects',
+    overview: 'Overview',
+    problem: 'Problem',
+    solution: 'Solution',
+    features: 'Key Features',
+    role: 'My Role',
+    stack: 'Tech Stack',
+    previous: 'Previous project',
+    next: 'Next project',
+  },
+  id: {
+    back: 'Kembali ke Projects',
+    overview: 'Ringkasan',
+    problem: 'Masalah',
+    solution: 'Solusi',
+    features: 'Fitur Utama',
+    role: 'Peran Saya',
+    stack: 'Teknologi',
+    previous: 'Project sebelumnya',
+    next: 'Project berikutnya',
+  },
+} satisfies Record<ProjectLocale, Record<string, string>>
+
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }))
 }
@@ -35,6 +60,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
 
   const locale: ProjectLocale = query.lang === 'id' ? 'id' : 'en'
   const copy = getProjectCopy(project, locale)
+  const text = labels[locale]
   const currentIndex = projects.findIndex((item) => item.slug === slug)
   const previousProject = currentIndex > 0 ? projects[currentIndex - 1] : null
   const nextProject = currentIndex >= 0 && currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
@@ -48,7 +74,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
             className="flex min-w-0 items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-white/40 transition hover:text-white/70 sm:text-[11px] sm:tracking-[0.25em]"
           >
             <ArrowLeft className="h-3 w-3 shrink-0" />
-            <span className="truncate">Back to Projects</span>
+            <span className="truncate">{text.back}</span>
           </Link>
           <div className="flex items-center gap-2">
             <LanguageLink slug={slug} value="en" active={locale === 'en'} label="EN" />
@@ -100,15 +126,15 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
 
         <section className="grid gap-10 py-10 lg:grid-cols-[1fr_260px] lg:items-start">
           <article className="space-y-10">
-            <DetailBlock icon={Layers} title="Overview" body={copy.overview} />
+            <DetailBlock icon={Layers} title={text.overview} body={copy.overview} />
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <DetailBlock icon={Target} title="Problem" body={copy.problem} />
-              <DetailBlock icon={Wrench} title="Solution" body={copy.solution} />
+              <DetailBlock icon={Target} title={text.problem} body={copy.problem} />
+              <DetailBlock icon={Wrench} title={text.solution} body={copy.solution} />
             </div>
 
             <div className="space-y-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/45">Key Features</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/45">{text.features}</p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {copy.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-4">
@@ -119,11 +145,11 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
               </div>
             </div>
 
-            <DetailBlock icon={Wrench} title="My Role" body={copy.role} />
+            <DetailBlock icon={Wrench} title={text.role} body={copy.role} />
           </article>
 
           <aside className="rounded-2xl border border-white/10 bg-black/20 p-5 lg:sticky lg:top-20">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/45">Tech Stack</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/45">{text.stack}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span key={tag} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] text-white/55">
@@ -144,7 +170,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                 className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.04]"
               >
                 <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35">
-                  <ArrowLeft className="h-3 w-3" /> Previous project
+                  <ArrowLeft className="h-3 w-3" /> {text.previous}
                 </p>
                 <p className="line-clamp-2 text-[14px] font-semibold leading-snug text-white/75 transition group-hover:text-white">
                   {previousProject.title}
@@ -158,7 +184,7 @@ export default async function ProjectDetailPage({ params, searchParams }: Props)
                 className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-left transition hover:border-white/20 hover:bg-white/[0.04] sm:text-right"
               >
                 <p className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35 sm:justify-end">
-                  Next project <ArrowRight className="h-3 w-3" />
+                  {text.next} <ArrowRight className="h-3 w-3" />
                 </p>
                 <p className="line-clamp-2 text-[14px] font-semibold leading-snug text-white/75 transition group-hover:text-white">
                   {nextProject.title}
