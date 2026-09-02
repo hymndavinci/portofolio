@@ -58,7 +58,7 @@ function HeroAvatar({ src }: { src: string }) {
 }
 
 export default function Hero({ avatarSrc }: { avatarSrc: string }) {
-  const { presence, mounted } = useLanyard('443335216833101825')
+  const { presence, mounted } = useLanyard('1528259806199152772')
   const discordUser = presence?.data?.discord_user
   const liveAvatarSrc =
     mounted && discordUser?.avatar
