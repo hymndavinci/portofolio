@@ -16,7 +16,7 @@ import https from 'https'
 
 export const dynamic = 'force-dynamic'
 
-const DISCORD_USER_ID = '443335216833101825'
+const DISCORD_USER_ID = '1528259806199152772'
 
 async function getDiscordAvatarSrc(): Promise<string> {
   try {
