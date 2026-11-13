@@ -20,6 +20,7 @@ async function getRatingSummary() {
 export async function GET() {
   const session = await getServerSession(authOptions)
   const sessionEmail = session?.user?.email ?? null
+  const sessionUserId = session?.user?.id ?? null
 
   const ratings = await db.portfolioRating.findMany({
     orderBy: { updatedAt: 'desc' },
@@ -30,23 +31,21 @@ export async function GET() {
           id: true,
           name: true,
           image: true,
-          email: true,
         },
       },
     },
   })
 
-  const currentUserRating = sessionEmail
-    ? ratings.find((item) => item.user.email === sessionEmail) ??
+  const currentUserRating = sessionUserId
+    ? ratings.find((item) => item.user.id === sessionUserId) ??
       await db.portfolioRating.findFirst({
-        where: { user: { email: sessionEmail } },
+        where: { userId: sessionUserId },
         include: {
           user: {
             select: {
               id: true,
               name: true,
               image: true,
-              email: true,
             },
           },
         },
@@ -105,7 +104,6 @@ export async function POST(request: NextRequest) {
           id: true,
           name: true,
           image: true,
-          email: true,
         },
       },
     },

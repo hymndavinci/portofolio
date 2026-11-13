@@ -98,7 +98,7 @@ function getActivityImage(activity: LanyardData['data']['activities'][0]): strin
     const withoutPrefix = img.replace('mp:external/', '')
     const slashIndex = withoutPrefix.indexOf('/')
     if (slashIndex === -1) return null
-    let afterHash = withoutPrefix.slice(slashIndex + 1)
+    const afterHash = withoutPrefix.slice(slashIndex + 1)
     
     if (afterHash.includes('https/')) {
       return 'https://' + afterHash.split('https/')[1]
@@ -168,7 +168,6 @@ export default function DiscordPresence({ presence, mounted }: { presence: Lanya
             <div className="relative h-16 w-16 shrink-0 rounded-xl bg-black/50 overflow-visible shadow-inner">
               <div className="h-full w-full overflow-hidden rounded-xl">
                 {activityImage ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={activityImage}
                     alt={activity.assets?.large_text || activity.name}
@@ -182,7 +181,6 @@ export default function DiscordPresence({ presence, mounted }: { presence: Lanya
               </div>
               {activity.assets?.small_image && (
                 <div className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-transparent shadow-sm overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={getActivityImage({ ...activity, assets: { large_image: activity.assets.small_image } }) || ''}
                     alt={activity.assets.small_text || ''}

@@ -53,7 +53,7 @@ export default function Skills() {
   return (
     <section id="skills" className="scroll-mt-24">
       <SectionHeading
-        kicker="Skills"
+        tag="Skills"
         title="Languages and tools"
         description="A focused set of technologies organized by how I use them across the projects I build."
       />

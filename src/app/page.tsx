@@ -12,36 +12,20 @@ import PortfolioRating from '@/components/portfolio/portfolio-rating'
 import Sidebar, { MobileSidebar } from '@/components/portfolio/sidebar'
 import Footer from '@/components/portfolio/footer'
 import MotionMain from '@/components/portfolio/motion-main'
-import https from 'https'
-
-export const dynamic = 'force-dynamic'
 
 const DISCORD_USER_ID = '1528259806199152772'
 
 async function getDiscordAvatarSrc(): Promise<string> {
   try {
-    const data = await new Promise<{ success: boolean; data: { discord_user: { id: string; avatar: string } } }>(
-      (resolve, reject) => {
-        const req = https.request(
-          {
-            hostname: 'api.lanyard.rest',
-            path: `/v1/users/${DISCORD_USER_ID}`,
-            method: 'GET',
-            rejectUnauthorized: false,
-          },
-          (res) => {
-            let raw = ''
-            res.on('data', (chunk) => { raw += chunk })
-            res.on('end', () => {
-              try { resolve(JSON.parse(raw)) }
-              catch (e) { reject(e) }
-            })
-          }
-        )
-        req.on('error', reject)
-        req.end()
-      }
-    )
+    const res = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`, {
+      // Cache 1 jam: halaman bisa static (ISR) dan tidak fetch Lanyard tiap request
+      next: { revalidate: 3600 },
+    })
+    if (!res.ok) return '/profile.png'
+    const data = (await res.json()) as {
+      success: boolean
+      data: { discord_user: { id: string; avatar: string | null } }
+    }
     const user = data?.data?.discord_user
     if (user?.avatar) {
       const ext = user.avatar.startsWith('a_') ? 'gif' : 'png'

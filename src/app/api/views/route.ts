@@ -8,7 +8,7 @@ export async function GET() {
     const records = await db.postView.findMany()
     const viewMap = Object.fromEntries(records.map((r) => [r.slug, r.views]))
     return NextResponse.json(viewMap)
-  } catch (error) {
+  } catch {
     return NextResponse.json({}, { status: 500 })
   }
 }
