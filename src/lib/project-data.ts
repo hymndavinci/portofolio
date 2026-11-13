@@ -24,6 +24,43 @@ export interface ProjectDetail extends ProjectCopy {
 
 export const projects: ProjectDetail[] = [
   {
+    id: 'hymn-router',
+    slug: 'hymn-router',
+    title: 'Hymn Router',
+    badge: 'AI · API Gateway',
+    status: 'Live',
+    tags: ['Next.js', 'TypeScript', 'Vercel', 'Neon Postgres', 'OpenAI API'],
+    href: 'https://hymnrouter.my.id',
+    github: 'https://github.com/hymndavinci/hymn-router',
+    tagline: 'Free AI gateway — one OpenAI-compatible endpoint for 9 free LLM providers.',
+    description: 'A free AI gateway that unifies 9 free LLM providers behind a single OpenAI-compatible endpoint, with automatic fallback, SSE streaming, per-user API keys, usage analytics, and a free daily quota.',
+    overview: 'Hymn Router is a free AI gateway that routes requests across 9 free LLM providers — Groq, NVIDIA, Gemini, OpenRouter, Mistral, Kilo, LLM7, Pollinations, and OVH — through one OpenAI-compatible API with automatic fallback when a provider fails or runs out of quota.',
+    problem: 'Free LLM tiers are scattered across providers with different endpoints, keys, and limits, so using them means juggling multiple integrations and handling failures by hand.',
+    solution: 'Hymn Router puts one endpoint in front of all of them: sign in, create an API key, and call any model with automatic fallback, streaming, and usage tracking built in.',
+    features: ['9 free LLM providers, one endpoint', 'Automatic fallback chain', 'OpenAI-compatible API + SSE streaming', 'Per-user API keys', 'Usage analytics dashboard', 'Free daily quota', 'Google, GitHub & email login', 'EN/ID interface'],
+    role: 'I designed and built the gateway end to end — provider routing with fallback, the OpenAI-compatible API, auth (Google, GitHub, email), dashboard analytics, and the quota system.',
+    translations: {
+      en: {
+        tagline: 'Free AI gateway — one OpenAI-compatible endpoint for 9 free LLM providers.',
+        description: 'A free AI gateway that unifies 9 free LLM providers behind a single OpenAI-compatible endpoint, with automatic fallback, SSE streaming, per-user API keys, usage analytics, and a free daily quota.',
+        overview: 'Hymn Router is a free AI gateway that routes requests across 9 free LLM providers — Groq, NVIDIA, Gemini, OpenRouter, Mistral, Kilo, LLM7, Pollinations, and OVH — through one OpenAI-compatible API with automatic fallback when a provider fails or runs out of quota.',
+        problem: 'Free LLM tiers are scattered across providers with different endpoints, keys, and limits, so using them means juggling multiple integrations and handling failures by hand.',
+        solution: 'Hymn Router puts one endpoint in front of all of them: sign in, create an API key, and call any model with automatic fallback, streaming, and usage tracking built in.',
+        features: ['9 free LLM providers, one endpoint', 'Automatic fallback chain', 'OpenAI-compatible API + SSE streaming', 'Per-user API keys', 'Usage analytics dashboard', 'Free daily quota', 'Google, GitHub & email login', 'EN/ID interface'],
+        role: 'I designed and built the gateway end to end — provider routing with fallback, the OpenAI-compatible API, auth (Google, GitHub, email), dashboard analytics, and the quota system.',
+      },
+      id: {
+        tagline: 'AI gateway gratis — satu endpoint OpenAI-compatible untuk 9 provider LLM gratis.',
+        description: 'AI gateway gratis yang menyatukan 9 provider LLM gratis di balik satu endpoint OpenAI-compatible, dengan fallback otomatis, SSE streaming, API key per pengguna, analitik pemakaian, dan kuota harian gratis.',
+        overview: 'Hymn Router adalah AI gateway gratis yang me-routing request ke 9 provider LLM gratis — Groq, NVIDIA, Gemini, OpenRouter, Mistral, Kilo, LLM7, Pollinations, dan OVH — melalui satu API OpenAI-compatible dengan fallback otomatis saat provider gagal atau kuotanya habis.',
+        problem: 'Tier LLM gratis tersebar di banyak provider dengan endpoint, key, dan limit yang berbeda-beda, sehingga memakainya berarti mengelola banyak integrasi sekaligus menangani kegagalan secara manual.',
+        solution: 'Hymn Router menaruh satu endpoint di depan semuanya: masuk, buat API key, dan panggil model apa pun dengan fallback otomatis, streaming, dan pelacakan pemakaian bawaan.',
+        features: ['9 provider LLM gratis, satu endpoint', 'Fallback chain otomatis', 'API OpenAI-compatible + SSE streaming', 'API key per pengguna', 'Dashboard analitik pemakaian', 'Kuota harian gratis', 'Login Google, GitHub & email', 'Interface EN/ID'],
+        role: 'Saya merancang dan membangun gateway ini end to end — routing provider dengan fallback, API OpenAI-compatible, auth (Google, GitHub, email), analitik dashboard, dan sistem kuota.',
+      },
+    },
+  },
+  {
     id: 'kasir-pintar',
     slug: 'kasir-pintar-ai',
     title: 'KasirPintar AI',
