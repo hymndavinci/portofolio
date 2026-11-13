@@ -17,10 +17,13 @@ atas permintaan pemilik (source code tidak akan disebar).
 
 ## Build & database
 
-- `package.json` — Script `build` diubah dari `prisma db push` menjadi
-  `prisma migrate deploy`, supaya deploy tidak mengubah skema DB produksi
-  tanpa migrasi terkontrol. Nama package diubah dari
-  `nextjs_tailwind_shadcn_ts` menjadi `hymn-portfolio`.
+- `package.json` — Nama package diubah dari `nextjs_tailwind_shadcn_ts`
+  menjadi `hymn-portfolio`. Script `build` tetap memakai
+  `prisma db push`: proyek ini belum punya folder `prisma/migrations`,
+  jadi `prisma migrate deploy` gagal dengan P3005 di Vercel (database
+  sudah berisi tabel tapi tidak ada riwayat migrasi). Kalau mau pindah ke
+  migrations, baseline dulu dari schema yang ada, baru ganti build
+  script ke `migrate deploy`.
 - `prisma/schema.prisma` — Model `Post` yang tidak dipakai dihapus.
   Wajib jalankan migrasi setelah update (lihat "Langkah setelah ekstrak").
 
@@ -73,10 +76,13 @@ atas permintaan pemilik (source code tidak akan disebar).
 
 ```bash
 npm install
-npx prisma migrate dev --name remove_unused_post
 npm run lint
 npm run build
 ```
+
+Tidak ada langkah migrasi: `db push` di dalam build script sudah
+menyelaraskan database dengan schema, termasuk menghapus tabel `Post`
+yang tidak terpakai.
 
 ## Catatan verifikasi
 
