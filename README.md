@@ -61,6 +61,15 @@ Create a `.env` file if the database or Prisma setup is needed.
 DATABASE_URL="your-database-url"
 ```
 
+## Database
+
+PostgreSQL via Prisma. The schema is synced with `prisma db push` — this
+project has **no migration history** (`prisma/migrations` does not exist).
+
+> Do not run `prisma migrate deploy` or `prisma migrate dev`: without a
+> baseline migration they fail (P3005) and break the build. The build
+> script already runs `prisma generate && prisma db push && next build`.
+
 ## Project Structure
 
 ```txt
